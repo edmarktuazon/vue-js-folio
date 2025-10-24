@@ -1,5 +1,12 @@
 <script setup>
 import { useMotionScrollAnim } from "@/composables/useMotion.js";
+import steelasiaImg from "@/assets/images/steelasia.png";
+import bayfieldImg from "@/assets/images/bayfield.png";
+import smbImg from "@/assets/images/smb.png";
+import home4pawsImg from "@/assets/images/home4paws.png";
+import spcImg from "@/assets/images/spc.png";
+import mmImg from "@/assets/images/mm.png";
+import orImg from "@/assets/images/OR-site.png";
 
 const { portfolios } = useMotionScrollAnim();
 
@@ -7,7 +14,7 @@ const portfolioSet = [
   {
     title: "Steel Asia",
     year: "01/2023",
-    image: "../assets/images/steelasia.png",
+    image: steelasiaImg,
     link: "https://www.steelasia.com/",
     description:
       "A corporate web project developed for SteelAsia Manufacturing Corporation, the leading steel company in the Philippines. The website highlights the company’s operations, sustainability efforts, and nationwide presence, providing an informative and professional online platform for clients and partners.",
@@ -21,7 +28,7 @@ const portfolioSet = [
   {
     title: "Bayfield Equipment Corp.",
     year: "10/2022",
-    image: "../assets/images/bayfield.png",
+    image: bayfieldImg,
     link: "https://www.bayfieldequipment.com/",
     description:
       "A corporate web project developed for Bayfield Equipment Corporation (BEC), the national dealer of Wirtgen Group products in the Philippines. The website showcases BEC’s product lineup, brand partnerships, and nationwide reach, highlighting its role in delivering premium construction solutions.",
@@ -35,7 +42,7 @@ const portfolioSet = [
   {
     title: "She Means Business",
     year: "07/2022",
-    image: "../assets/images/smb.png",
+    image: smbImg,
     link: "https://shemeansbusiness.net.au/",
     description:
       "A corporate web project developed for She Means Business, an Australian full-service marketing agency passionate about driving growth and results for its clients. The site emphasizes brand storytelling, service clarity, and a results-driven approach.",
@@ -49,7 +56,7 @@ const portfolioSet = [
   {
     title: "Home4Paws",
     year: "10/2025",
-    image: "../assets/images/home4paws.png",
+    image: home4pawsImg,
     link: "https://hope4paws.infinityfreeapp.com/",
     description:
       "A freelance web project developed for Home4Paws with Admin CMS access, a pet adoption web application designed to connect animal shelters with potential adopters, allows users to browse adoptable pets, learn their stories, and apply for adoption online.",
@@ -64,7 +71,7 @@ const portfolioSet = [
   {
     title: "Major Milestones",
     year: "03/2025",
-    image: "../assets/images/mm.png",
+    image: mmImg,
     link: "https://majormilestonesupports.com.au/",
     description:
       "A corporate web project developed for Major Milestone Supports with Admin CMS access, a trusted Australian provider offering disability support and community care services. The project focused on clear communication, inclusivity, and easy navigation for users seeking essential care information.",
@@ -79,7 +86,7 @@ const portfolioSet = [
   {
     title: "Satrap Power Corporation (SPC)",
     year: "10/2025",
-    image: "../assets/images/spc.png",
+    image: spcImg,
     link: "https://satrap-power-corporation.vercel.app/",
     description:
       "A personal web project developed for Satrap Power Corporation using latest Vue.js, a renewable energy company under the LCS Group. The site highlights SPC’s mission, sustainable energy projects, and commitment to empowering local communities.",
@@ -92,7 +99,7 @@ const portfolioSet = [
   {
     title: "Olivia Rodrigo Site",
     year: "08/2022",
-    image: "../assets/images/OR-site.png",
+    image: orImg,
     link: "https://olivia-rodrigo-site-cloned.vercel.app/",
     description:
       "A practice personal project replicating the official Olivia Rodrigo Store website. Built to improve frontend skill specially Vue.js.",
