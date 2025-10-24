@@ -1,12 +1,12 @@
 <script setup>
 import { useMotionScrollAnim } from "@/composables/useMotion.js";
-import steelasiaImg from "@/assets/images/steelasia.png";
-import bayfieldImg from "@/assets/images/bayfield.png";
-import smbImg from "@/assets/images/smb.png";
-import home4pawsImg from "@/assets/images/home4paws.png";
-import spcImg from "@/assets/images/spc.png";
-import mmImg from "@/assets/images/mm.png";
-import orImg from "@/assets/images/OR-site.png";
+import steelasiaImg from "../assets/images/steelasia.png";
+import bayfieldImg from "../assets/images/bayfield.png";
+import smbImg from "../assets/images/smb.png";
+import home4pawsImg from "../assets/images/home4paws.png";
+import spcImg from "../assets/images/spc.png";
+import mmImg from "../assets/images/mm.png";
+import orImg from "../assets/images/OR-site.png";
 
 const { portfolios } = useMotionScrollAnim();
 
