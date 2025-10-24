@@ -123,7 +123,7 @@ const portfolioSet = [
     class="bg-neutral-800 py-24 min-h-screen grid place-items-center text-white"
   >
     <div
-      class="px-8 xl:px-14 2xl:px-0 w-full lg:w-full xl:max-w-[80%] 2xl:max-w-[60%]"
+      class="px-8 xl:px-14 2xl:px-0 w-full z-50 lg:w-full xl:max-w-[80%] 2xl:max-w-[60%]"
     >
       <div
         class="flex justify-start items-center my-8 gap-3 relative after:hidden after:w-full after:h-[0.0625rem] after:bg-neutral-600 after:mt-2 lg:after:block"
