@@ -6,14 +6,16 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#1d1e21",
-        backupPrimary: "#161719",
-        secondary: "#aaaaaa",
-        backupSecondary: "#28292cb6",
-        gray: "#c1c1c1",
-        lightGray: "#6c717e",
-        lightBlue: "#0dcaf0",
-        yellow: "#ffc107",
+        "neutral-900": "#1d1e21",
+        "neutral-800": "#161719",
+        "neutral-600": "#28292cb6",
+        "neutral-400": "#aaaaaa",
+        "neutral-300": "#c1c1c1",
+        "neutral-200": "#6c717e",
+
+        // Accent
+        "accent-blue": "#0dcaf0",
+        "accent-yellow": "#ffc107",
       },
     },
   },

@@ -1,97 +1,49 @@
+<!-- AboutSection.vue -->
 <script setup>
 import CV from "../assets/docs/edmarktuazon-cv.pdf";
-import EdmarkImg from "../assets/images/ed.jpg";
+import EdmarkImg from "../assets/images/ed.jfif";
+import { reactive } from "vue";
+import { useMotionScrollAnim } from "@/composables/useMotion.js";
 
-import { useMotion } from "@vueuse/motion";
-import { defineComponent, reactive, ref } from "vue";
+const { targetEl_ul } = useMotionScrollAnim();
 
-import NavMenu from "../components/Navigation.vue";
-
-defineComponent({
-  NavMenu,
-});
-
-// motion
-const targetEl_info = ref();
-const targetEl_ul = ref();
-
-useMotion(targetEl_info, {
-  initial: { opacity: 0, y: 40 },
-  enter: { opacity: 1, y: 0, scale: 1, transition: { duration: 700 } },
-  variants: { custom: { scale: 2 } },
-  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 700 } },
-});
-
-useMotion(targetEl_ul, {
-  initial: { opacity: 0, y: 40 },
-  enter: { opacity: 1, y: 0, scale: 1, transition: { duration: 900 } },
-  variants: { custom: { scale: 2 } },
-  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 900 } },
-});
-
-// dynamic skills list
-const skillList = reactive({
-  frontendSkills: [
-    {
-      id: 1,
-      name: "HTML5",
-    },
-    {
-      id: 2,
-      name: "CSS3(SASS)",
-    },
-    {
-      id: 3,
-      name: "Tailwind CSS",
-    },
-    {
-      id: 4,
-      name: "Bootstrap",
-    },
-    {
-      id: 5,
-      name: "Javascript",
-    },
-    {
-      id: 6,
-      name: "Vue JS",
-    },
-    {
-      id: 6,
-      name: "Git",
-    },
-    {
-      id: 7,
-      name: "GitHub",
-    },
-    {
-      id: 8,
-      name: "Go Daddy",
-    },
-    {
-      id: 9,
-      name: "Hostinger",
-    },
-  ],
-});
+const skillSet = reactive([
+  { name: "HTML5", icon: "fa-brands fa-html5" },
+  { name: "CSS3 (SASS)", icon: "fa-brands fa-css3-alt" },
+  { name: "Tailwind CSS", icon: "fa-solid fa-palette" },
+  { name: "Bootstrap", icon: "fa-brands fa-bootstrap" },
+  { name: "JavaScript", icon: "fa-brands fa-js" },
+  { name: "Vue.js", icon: "fa-brands fa-vuejs" },
+  { name: "PHP", icon: "fa-brands fa-php" },
+  { name: "MySQL", icon: "fa-solid fa-database" },
+  { name: "Git", icon: "fa-brands fa-git-alt" },
+  { name: "GitHub", icon: "fa-brands fa-github" },
+  { name: "GoDaddy", icon: "fa-solid fa-globe" },
+  { name: "Hostinger", icon: "fa-solid fa-server" },
+  { name: "Namecheap", icon: "fa-solid fa-cloud" },
+]);
 </script>
+
 <template>
   <section
     id="about"
-    class="bg-backupPrimary py-24 min-h-screen grid place-items-center dark:bg-white"
+    ref="aboutSection"
+    class="bg-neutral-800 py-24 min-h-screen grid place-items-center"
   >
     <div
       class="z-50 relative px-8 xl:px-14 2xl:px-0 w-full lg:w-full xl:max-w-[80%] 2xl:max-w-[60%]"
     >
-      <div class="about-title flex justify-start items-center my-8 gap-3">
+      <div
+        class="flex justify-start items-center my-8 gap-3 relative after:hidden after:w-full after:h-[0.0625rem] after:bg-neutral-600 after:mt-2 lg:after:block"
+      >
         <h3
-          class="text-lightGray font-bold dark:text-backupSecondary text-4xl mb-2 whitespace-wrap lg:whitespace-nowrap"
+          class="text-neutral-200 font-bold text-4xl mb-2 whitespace-wrap lg:whitespace-nowrap"
         >
-          Technologies I've been working
+          Technologies I've been Working
         </h3>
       </div>
       <div class="grid gap-10 grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 m-auto">
-        <figure class="place-items-center mx-auto grid sm:block">
+        <figure class="place-items-center mx-auto hidden lg:block">
           <img
             :src="EdmarkImg"
             alt="edmark image"
@@ -101,33 +53,34 @@ const skillList = reactive({
             <a
               :href="CV"
               target="_blank"
-              class="w-full whitespace-nowrap text-lightGray p-2 rounded-lg mt-8 text-center text-sm hover:bg-lightGray hover:text-white border-lightGray border"
+              class="w-full whitespace-nowrap text-neutral-200 p-2 rounded-lg mt-8 text-center text-sm hover:bg-neutral-200 hover:text-white border-neutral-200 border"
             >
               <font-awesome-icon icon="fa-solid fa-file" /> &nbsp;Take a Peek at
-              My CV
+              my CV
             </a>
           </div>
         </figure>
         <div class="relative lg:mt-0 col-span-1 xl:col-span-2 row-start-1">
-          <p class="text-lightGray leading-7 mb-8">
-            I have experience building responsive, dynamic websites using modern
-            frontend technologies such as HTML5, CSS3 (SASS), JavaScript, and
-            VueJS. I utilize version control with Git and GitHub, and employ
-            frameworks like Tailwind CSS and Bootstrap for efficient UI
-            development. Additionally, I have managed web hosting and domain
-            services through platforms like GoDaddy and Hostinger, ensuring
-            seamless deployment and website performance.
+          <p class="text-neutral-200 leading-7 mb-8">
+            Using modern frontend technologies comprising HTML5, CSS3 (SASS),
+            JavaScript, and Vue.js, I have experience developing dynamic,
+            responsive websites. For efficient UI development, I use frameworks
+            like Tailwind CSS and Bootstrap and version control with Git and
+            GitHub. Furthermore, I have managed domain and web hosting services
+            using GoDaddy, Namecheap and Hostinger, providing smooth website
+            performance and deployment.
           </p>
           <ul
             ref="targetEl_ul"
-            class="grid grid-cols-2 sm:grid-cols-3 gap-0 sm:gap-1 items-center text-lightGray leading-7"
+            class="grid grid-cols-2 sm:grid-cols-3 gap-0 sm:gap-1 items-center text-neutral-200 leading-7"
           >
             <li
-              class="leading-7 text-sm"
-              v-for="skills in skillList.frontendSkills"
-              :key="skills.id"
+              v-for="(skill, index) in skillSet"
+              :key="index"
+              class="flex items-center gap-2 leading-7 text-sm text-neutral-200"
             >
-              {{ skills.name }}
+              <font-awesome-icon :icon="skill.icon" />
+              <span>{{ skill.name }}</span>
             </li>
           </ul>
         </div>
@@ -135,18 +88,3 @@ const skillList = reactive({
     </div>
   </section>
 </template>
-
-<style scoped>
-.about-title::after {
-  display: none;
-}
-@media only screen and (min-width: 992px) {
-  .about-title::after {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 1px;
-    background-color: rgb(32, 32, 32);
-  }
-}
-</style>

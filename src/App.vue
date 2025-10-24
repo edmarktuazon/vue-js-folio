@@ -1,17 +1,17 @@
 <script setup>
 import TheAboutSection from "./components/AboutSection.vue";
 import ContactSection from "./components/ContactSection.vue";
-import Footer from "./components/Footer.vue";
-import TheNavigation from "./components/Navigation.vue";
+import FooterSection from "./components/FooterSection.vue";
+import NavigationSection from "./components/NavigationSection.vue";
 import PortfolioSection from "./components/PortfolioSection.vue";
 </script>
 
 <template>
-  <TheNavigation />
+  <NavigationSection />
   <RouterView />
   <TheAboutSection />
   <PortfolioSection />
   <!-- <FeedbacksSection /> -->
   <ContactSection />
-  <Footer />
+  <FooterSection />
 </template>

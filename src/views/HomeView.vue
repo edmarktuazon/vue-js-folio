@@ -6,20 +6,14 @@ import InstagramIcon from "../components/icons/IconInstagram.vue";
 import LinkedInIcon from "../components/icons/IconLinkedIn.vue";
 
 // USE MOTION PLUGIN
-import { useMotion } from "@vueuse/motion";
-import { reactive, ref, toRefs } from "vue";
+import { reactive, toRefs } from "vue";
+import { useMotionScrollAnim } from "@/composables/useMotion.js";
 
-const targetEl_headings = ref();
-
-useMotion(targetEl_headings, {
-  initial: { opacity: 0, y: 40 },
-  enter: { opacity: 1, y: 0, scale: 1, transition: { duration: 700 } },
-  variants: { custom: { scale: 2 } },
-});
+const { targetEl_headings } = useMotionScrollAnim();
 
 const links = reactive({
-  facebook: "https://www.facebook.com/edmark.io/",
-  instagram: "https://www.instagram.com/edmark.ig/",
+  facebook: "https://www.facebook.com/me.edmarktuazon",
+  instagram: "https://www.instagram.com/_edmarktuazon/",
   linkedin: "https://www.linkedin.com/in/edmarktuazon/",
   github: "https://github.com/edmarktuazon",
 });
@@ -29,39 +23,36 @@ const { facebook, instagram, linkedin, github } = toRefs(links);
 
 <template>
   <section
-    class="bg-backupPrimary h-screen flex justify-center items-center flex-col dark:bg-[#f1f1f1]"
+    id="home"
+    ref="homeSection"
+    class="bg-neutral-800 h-screen flex justify-center items-center flex-col"
   >
     <div
       class="z-50 relative px-8 xl:px-14 2xl:px-0 w-full lg:w-full xl:max-w-[80%] 2xl:max-w-[60%]"
     >
       <div ref="targetEl_headings">
-        <h4
-          class="text-lightGray dark:text-backupSecondary tracking-wide text-xl"
-        >
-          Hey, I'm
-        </h4>
+        <h4 class="text-neutral-200 tracking-wide text-xl">Hey, I'm</h4>
+
         <h1
-          class="heading-h1 font-bold text-gray dark:text-backupSecondary my-4 tracking-wide"
+          class="font-bold text-accent-blue my-4 tracking-wide leading-none text-[clamp(2.75rem,2.0603rem+3.4483vw,4rem)]"
         >
           Edmark Tuazon<br />
-          <span class="text-lightBlue">I build things for the web.</span>
+          <span class="text-neutral-200">I build things for the web.</span>
         </h1>
-        <h3
-          class="heading-h3 text-lightGray dark:text-backupSecondary tracking-wide text-lg"
-        >
-          A Frontend Web Developer with a background in HTML, CSS, and
-          JavaScript.
-          <br class="hidden sm:flex" />
-          I have hands-on experience in building visually appealing responsive
-          websites, <br class="hidden sm:flex" />
-          ensuring smooth user experiences across multiple platforms.
+
+        <h3 class="text-neutral-200 tracking-wide text-lg">
+          A frontend developer specializing in building responsive interfaces
+          <br class="hidden lg:block" />
+          and dynamic user experiences for the modern web.
         </h3>
       </div>
+
       <div class="mt-16">
-        <h3 class="text-lightGray dark:text-backupSecondary text-sm mb-2">
-          connect with me
-        </h3>
-        <div class="icons-container flex justify-start items-center gap-3">
+        <h3 class="text-neutral-200 text-sm mb-2">Let's connect!</h3>
+
+        <div
+          class="relative flex justify-start items-center gap-3 w-full after:content-[''] after:block after:w-full after:h-[1px] after:bg-neutral-800 after:absolute after:bottom-[-1rem]"
+        >
           <a :href="facebook" target="_blank">
             <FacebookIcon />
           </a>
@@ -79,21 +70,3 @@ const { facebook, instagram, linkedin, github } = toRefs(links);
     </div>
   </section>
 </template>
-<style scoped>
-.heading-h1 {
-  font-size: clamp(3rem, 0.3231rem + 7.2034vw, 4.375rem);
-  line-height: 1.1;
-}
-
-.icons-container {
-  width: 100%;
-}
-.icons-container::after {
-  content: "";
-  display: block;
-
-  width: 100%;
-  height: 1px;
-  background-color: rgb(32, 32, 32);
-}
-</style>
