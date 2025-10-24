@@ -8,7 +8,7 @@ import spcImg from "../assets/images/spc.png";
 import mmImg from "../assets/images/mm.png";
 import orImg from "../assets/images/OR-site.png";
 
-const { portfolios } = useMotionScrollAnim();
+const { targetElPortfolio } = useMotionScrollAnim();
 
 const portfolioSet = [
   {
@@ -129,14 +129,13 @@ const portfolioSet = [
         class="flex justify-start items-center my-8 gap-3 relative after:hidden after:w-full after:h-[0.0625rem] after:bg-neutral-600 after:mt-2 lg:after:block"
       >
         <h3
-          ref="targetEl_headings"
           class="text-neutral-200 font-bold text-4xl mb-2 whitespace-wrap lg:whitespace-nowrap"
         >
           Projects that I've Built
         </h3>
       </div>
 
-      <div ref="portfolios">
+      <div ref="targetElPortfolio">
         <div
           v-for="(portfolio, index) in portfolioSet"
           :key="index"

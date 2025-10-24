@@ -1,33 +1,63 @@
 import { useMotion } from "@vueuse/motion";
-import { ref } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 
 export function useMotionScrollAnim() {
-  const targetEl_headings = ref();
-  const targetEl_ul = ref();
-  const portfolios = ref();
+  const targetElHeroText = ref();
+  const targetElAboutTextList = ref();
+  const targetElPortfolio = ref();
+  let lastScrollY = ref(0);
+  let isScrollingDown = ref(false);
 
-  useMotion(targetEl_headings, {
-    initial: { opacity: 0, y: 40 },
-    enter: { opacity: 1, y: 0, scale: 1, transition: { duration: 700 } },
-    variants: { custom: { scale: 2 } },
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY;
+    isScrollingDown.value = currentScrollY > lastScrollY.value;
+    lastScrollY.value = currentScrollY;
+  };
+
+  onMounted(() => {
+    window.addEventListener("scroll", handleScroll);
   });
 
-  useMotion(targetEl_ul, {
-    initial: { opacity: 0, y: 40 },
-    enter: { opacity: 1, y: 0, scale: 1, transition: { duration: 900 } },
-    variants: { custom: { scale: 2 } },
-    visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 900 } },
+  onUnmounted(() => {
+    window.removeEventListener("scroll", handleScroll);
   });
-  useMotion(portfolios, {
+
+  useMotion(targetElHeroText, {
     initial: { opacity: 0, y: 40 },
-    enter: { opacity: 1, y: 0, scale: 1, transition: { duration: 900 } },
-    variants: { custom: { scale: 2 } },
-    visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 900 } },
+    visibleOnce: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: { duration: 700 },
+      apply: () => isScrollingDown.value,
+    },
+  });
+
+  useMotion(targetElAboutTextList, {
+    initial: { opacity: 0, y: 40 },
+    visibleOnce: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: { duration: 900 },
+      apply: () => isScrollingDown.value,
+    },
+  });
+
+  useMotion(targetElPortfolio, {
+    initial: { opacity: 0, y: 40 },
+    visibleOnce: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: { duration: 900 },
+      apply: () => isScrollingDown.value,
+    },
   });
 
   return {
-    targetEl_headings,
-    targetEl_ul,
-    portfolios,
+    targetElHeroText,
+    targetElAboutTextList,
+    targetElPortfolio,
   };
 }

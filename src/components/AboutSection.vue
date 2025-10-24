@@ -5,7 +5,7 @@ import EdmarkImg from "../assets/images/ed.jfif";
 import { reactive } from "vue";
 import { useMotionScrollAnim } from "@/composables/useMotion.js";
 
-const { targetEl_ul } = useMotionScrollAnim();
+const { targetElAboutTextList } = useMotionScrollAnim();
 
 const skillSet = reactive([
   { name: "HTML5", icon: "fa-brands fa-html5" },
@@ -71,7 +71,7 @@ const skillSet = reactive([
             performance and deployment.
           </p>
           <ul
-            ref="targetEl_ul"
+            ref="targetElAboutTextList"
             class="grid grid-cols-2 sm:grid-cols-3 gap-0 sm:gap-1 items-center text-neutral-200 leading-7"
           >
             <li

@@ -9,7 +9,7 @@ import LinkedInIcon from "../components/icons/IconLinkedIn.vue";
 import { reactive, toRefs } from "vue";
 import { useMotionScrollAnim } from "@/composables/useMotion.js";
 
-const { targetEl_headings } = useMotionScrollAnim();
+const { targetElHeroText } = useMotionScrollAnim();
 
 const links = reactive({
   facebook: "https://www.facebook.com/me.edmarktuazon",
@@ -30,7 +30,7 @@ const { facebook, instagram, linkedin, github } = toRefs(links);
     <div
       class="z-50 relative px-8 xl:px-14 2xl:px-0 w-full lg:w-full xl:max-w-[80%] 2xl:max-w-[60%]"
     >
-      <div ref="targetEl_headings">
+      <div ref="targetElHeroText">
         <h4 class="text-neutral-200 tracking-wide text-xl">Hey, I'm</h4>
 
         <h1
