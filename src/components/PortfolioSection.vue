@@ -7,7 +7,7 @@ const portfolioSet = [
   {
     title: "Steel Asia",
     year: "01/2023",
-    image: "/src/assets/images/steelasia.png",
+    image: "/assets/images/steelasia.png",
     link: "https://www.steelasia.com/",
     description:
       "A corporate web project developed for SteelAsia Manufacturing Corporation, the leading steel company in the Philippines. The website highlights the company’s operations, sustainability efforts, and nationwide presence, providing an informative and professional online platform for clients and partners.",
@@ -21,7 +21,7 @@ const portfolioSet = [
   {
     title: "Bayfield Equipment Corp.",
     year: "10/2022",
-    image: "/src/assets/images/bayfield.png",
+    image: "/assets/images/bayfield.png",
     link: "https://www.bayfieldequipment.com/",
     description:
       "A corporate web project developed for Bayfield Equipment Corporation (BEC), the national dealer of Wirtgen Group products in the Philippines. The website showcases BEC’s product lineup, brand partnerships, and nationwide reach, highlighting its role in delivering premium construction solutions.",
@@ -35,7 +35,7 @@ const portfolioSet = [
   {
     title: "She Means Business",
     year: "07/2022",
-    image: "/src/assets/images/smb.png",
+    image: "/assets/images/smb.png",
     link: "https://shemeansbusiness.net.au/",
     description:
       "A corporate web project developed for She Means Business, an Australian full-service marketing agency passionate about driving growth and results for its clients. The site emphasizes brand storytelling, service clarity, and a results-driven approach.",
@@ -49,7 +49,7 @@ const portfolioSet = [
   {
     title: "Home4Paws",
     year: "10/2025",
-    image: "/src/assets/images/home4paws.png",
+    image: "/assets/images/home4paws.png",
     link: "https://hope4paws.infinityfreeapp.com/",
     description:
       "A freelance web project developed for Home4Paws with Admin CMS access, a pet adoption web application designed to connect animal shelters with potential adopters, allows users to browse adoptable pets, learn their stories, and apply for adoption online.",
@@ -64,7 +64,7 @@ const portfolioSet = [
   {
     title: "Major Milestones",
     year: "03/2025",
-    image: "/src/assets/images/mm.png",
+    image: "/assets/images/mm.png",
     link: "https://majormilestonesupports.com.au/",
     description:
       "A corporate web project developed for Major Milestone Supports with Admin CMS access, a trusted Australian provider offering disability support and community care services. The project focused on clear communication, inclusivity, and easy navigation for users seeking essential care information.",
@@ -79,7 +79,7 @@ const portfolioSet = [
   {
     title: "Satrap Power Corporation (SPC)",
     year: "10/2025",
-    image: "/src/assets/images/spc.png",
+    image: "/assets/images/spc.png",
     link: "https://satrap-power-corporation.vercel.app/",
     description:
       "A personal web project developed for Satrap Power Corporation using latest Vue.js, a renewable energy company under the LCS Group. The site highlights SPC’s mission, sustainable energy projects, and commitment to empowering local communities.",
@@ -92,7 +92,7 @@ const portfolioSet = [
   {
     title: "Olivia Rodrigo Site",
     year: "08/2022",
-    image: "/src/assets/images/OR-site.png",
+    image: "/assets/images/OR-site.png",
     link: "https://olivia-rodrigo-site-cloned.vercel.app/",
     description:
       "A practice personal project replicating the official Olivia Rodrigo Store website. Built to improve frontend skill specially Vue.js.",
