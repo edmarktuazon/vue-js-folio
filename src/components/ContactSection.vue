@@ -5,9 +5,9 @@ const igLink = "https://www.instagram.com/_edmarktuazon/";
   <section
     id="contact"
     ref="contactSection"
-    class="bg-neutral-800 flex justify-center items-center flex-col min-h-[50vh]"
+    class="bg-neutral-800 min-h-[50vh]"
   >
-    <div class="z-50">
+    <div class="flex justify-center items-center flex-col z-50 relative">
       <h3 class="text-neutral-300 text-3xl font-bold text-center">
         Get in touch
       </h3>

@@ -20,11 +20,13 @@ const { facebook, instagram, linkedin, github } = toRefs(links);
 </script>
 <template>
   <footer class="bg-neutral-900 p-6 z-50 relative px-8 xl:px-36">
-    <div class="flex items-center justify-between">
+    <div
+      class="flex gap-4 lg:gap-0 items-center justify-between lg:flex-row flex-col-reverse"
+    >
       <p class="text-center text-neutral-200">
         Copyright &copy;{{ currentYear }} Edmark Tuazon. All rights reserved.
       </p>
-      <div class="flex justify-start items-center gap-3">
+      <div class="flex justify-center items-center gap-3">
         <a :href="facebook" target="_blank">
           <FacebookIcon />
         </a>
