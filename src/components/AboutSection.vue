@@ -55,7 +55,7 @@ const skillSet = reactive([
               target="_blank"
               class="w-full whitespace-nowrap text-neutral-200 p-2 rounded-lg mt-8 text-center text-sm hover:bg-neutral-200 hover:text-white border-neutral-200 border"
             >
-              <font-awesome-icon icon="fa-solid fa-file" /> &nbsp;Take a Peek at
+              <font-awesome-icon icon="fa-solid fa-file" /> &nbsp;Take a peek at
               my CV
             </a>
           </div>
