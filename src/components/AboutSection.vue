@@ -1,11 +1,20 @@
 <!-- AboutSection.vue -->
 <script setup>
 import CV from "../assets/docs/edmarktuazon-cv.pdf";
-import EdmarkImg from "../assets/images/ed.jfif";
-import { reactive } from "vue";
+import EdmarkImg from "../assets/images/me.jpg";
+import SquidWardImg from "../assets/images/squidward.jpg";
+import { reactive, ref } from "vue";
 import { useMotionScrollAnim } from "@/composables/useMotion.js";
 
 const { targetElAboutTextList } = useMotionScrollAnim();
+
+const currentImg = ref(SquidWardImg);
+const isRevealed = ref(false);
+
+const viewImg = () => {
+  currentImg.value = EdmarkImg;
+  isRevealed.value = true;
+};
 
 const skillSet = reactive([
   { name: "HTML5", icon: "fa-brands fa-html5" },
@@ -43,11 +52,25 @@ const skillSet = reactive([
         </h3>
       </div>
       <div class="grid gap-10 grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 m-auto">
-        <figure class="place-items-center mx-auto hidden lg:block">
+        <div class="place-items-center mx-auto hidden lg:block">
+          <div
+            v-if="!isRevealed"
+            class="bg-neutral-600 text-white px-4 py-3 rounded-xl shadow-lg w-72 text-center relative mb-3"
+          >
+            <p class="text-sm leading-snug">
+              Oops, this is not my actual face 😂 This is my favorite character
+              in SpongeBob; Kinda like my personality 😏 To view real me, click
+              the image — unless you’d rather stay with Squidward! 😆
+            </p>
+            <span
+              class="absolute bottom-[-6px] left-1/2 -translate-x-1/2 w-3 h-3 bg-neutral-600 rotate-45"
+            ></span>
+          </div>
           <img
-            :src="EdmarkImg"
-            alt="edmark image"
-            class="h-[300px] object-cover sm:max-w-[300px] w-full rounded-lg"
+            :src="currentImg"
+            alt="Clickable image"
+            class="w-56 h-56 object-cover cursor-pointer"
+            @click="viewImg"
           />
           <div class="mt-8 mx-16">
             <a
@@ -59,7 +82,7 @@ const skillSet = reactive([
               my CV
             </a>
           </div>
-        </figure>
+        </div>
         <div class="relative lg:mt-0 col-span-1 xl:col-span-2 row-start-1">
           <p class="text-neutral-200 leading-7 mb-8">
             Using modern frontend technologies comprising HTML5, CSS3 (SASS),
