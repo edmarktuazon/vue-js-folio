@@ -1,5 +1,4 @@
 <script setup>
-import { useMotionScrollAnim } from "@/composables/useMotion.js";
 import steelasiaImg from "../assets/images/steelasia.png";
 import bayfieldImg from "../assets/images/bayfield.png";
 import smbImg from "../assets/images/smb.png";
@@ -7,10 +6,41 @@ import home4pawsImg from "../assets/images/home4paws.png";
 import spcImg from "../assets/images/spc.png";
 import mmImg from "../assets/images/mm.png";
 import orImg from "../assets/images/OR-site.png";
+import { useMotionScrollAnim } from "@/composables/useMotion.js";
+import { reactive } from "vue";
 
 const { targetElPortfolio } = useMotionScrollAnim();
 
+const urlText = reactive({
+  home4Paws: {
+    url: "https://hope4paws.infinityfreeapp.com/",
+    title: "Home4Paws",
+  },
+  majorMilestones: {
+    url: "https://majormilestonesupports.com.au/",
+    title: "Major Milestones",
+  },
+  oliviaRodrigo: {
+    url: "https://olivia-rodrigo-site-cloned.vercel.app/",
+    title: "Olivia Rodrigo",
+  },
+});
+
 const portfolioSet = [
+  {
+    title: "Home4Paws",
+    year: "10/2025",
+    image: home4pawsImg,
+    link: "https://hope4paws.infinityfreeapp.com/",
+    description: `A freelance web project developed for <a href="${urlText.home4Paws.url}" target="_blank" class="text-neutral-200 underline"><em>${urlText.home4Paws.title}</em></a> with Admin CMS access, a pet adoption web application designed to connect animal shelters with potential adopters, allows users to browse adoptable pets, learn their stories, and apply for adoption online.`,
+    techStack: [
+      { name: "Tailwind CSS", icon: ["fa", "palette"] },
+      { name: "JavaScript", icon: ["fab", "js"] },
+      { name: "PHP", icon: ["fab", "php"] },
+      { name: "MySQL", icon: ["fa", "database"] },
+    ],
+    type: "Freelance Project",
+  },
   {
     title: "Steel Asia",
     year: "01/2023",
@@ -54,27 +84,13 @@ const portfolioSet = [
     type: "Corporate Project",
   },
   {
-    title: "Home4Paws",
-    year: "10/2025",
-    image: home4pawsImg,
-    link: "https://hope4paws.infinityfreeapp.com/",
-    description:
-      "A freelance web project developed for Home4Paws with Admin CMS access, a pet adoption web application designed to connect animal shelters with potential adopters, allows users to browse adoptable pets, learn their stories, and apply for adoption online.",
-    techStack: [
-      { name: "Tailwind CSS", icon: ["fa", "palette"] },
-      { name: "JavaScript", icon: ["fab", "js"] },
-      { name: "PHP", icon: ["fab", "php"] },
-      { name: "MySQL", icon: ["fa", "database"] },
-    ],
-    type: "Freelance Project",
-  },
-  {
     title: "Major Milestones",
     year: "03/2025",
     image: mmImg,
     link: "https://majormilestonesupports.com.au/",
-    description:
-      "A corporate web project developed for Major Milestone Supports with Admin CMS access, a trusted Australian provider offering disability support and community care services. The project focused on clear communication, inclusivity, and easy navigation for users seeking essential care information.",
+    description: `A corporate web project developed for <a href="${urlText.majorMilestones.url}" target="_blank" class="text-neutral-200 underline"><em>${urlText.majorMilestones.title}</em></a> Supports with Admin
+       CMS access, a trusted Australian provider offering disability support and community care services. The project focused on clear communication, inclusivity, 
+       and easy navigation for users seeking essential care information.`,
     techStack: [
       { name: "Tailwind CSS", icon: ["fa", "palette"] },
       { name: "JavaScript", icon: ["fab", "js"] },
@@ -101,8 +117,7 @@ const portfolioSet = [
     year: "08/2022",
     image: orImg,
     link: "https://olivia-rodrigo-site-cloned.vercel.app/",
-    description:
-      "A practice personal project replicating the official Olivia Rodrigo Store website. Built to improve frontend skill specially Vue.js.",
+    description: `A practice personal project replicating the official <a href="${urlText.oliviaRodrigo.url}" target="_blank" class="text-neutral-200 underline"><em>${urlText.oliviaRodrigo.title}</em></a> Store website. Built to improve frontend skill specially Vue.js.`,
     techStack: [
       { name: "Tailwind CSS", icon: ["fa", "palette"] },
       { name: "Vue.js", icon: ["fab", "vuejs"] },
@@ -114,6 +129,10 @@ const portfolioSet = [
   const [nextMonth, nextYear] = nextItem.year.split("/").map(Number);
   return nextYear - currentYear || nextMonth - currentMonth;
 });
+
+const formatDescription = (description) => {
+  return description;
+};
 </script>
 
 <template>
@@ -146,8 +165,13 @@ const portfolioSet = [
               <span class="text-accent-blue text-sm"
                 >{{ portfolio.type }} - {{ portfolio.year }}</span
               >
-              <h4 class="text-4xl font-bold mt-2">{{ portfolio.title }}</h4>
-              <p class="text-neutral-200 mt-4">{{ portfolio.description }}</p>
+              <h4 class="text-4xl font-bold mt-2 text-neutral-400">
+                {{ portfolio.title }}
+              </h4>
+              <p
+                class="text-neutral-200 mt-4"
+                v-html="formatDescription(portfolio.description)"
+              ></p>
               <div class="flex flex-wrap gap-2 mt-4">
                 <span
                   v-for="(tech, index) in portfolio.techStack"
@@ -179,6 +203,7 @@ const portfolioSet = [
                     : 'group block overflow-hidden relative'
                 "
                 target="_blank"
+                rel="noopener"
               >
                 <img
                   :src="portfolio.image"
