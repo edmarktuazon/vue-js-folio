@@ -58,9 +58,9 @@ const skillSet = reactive([
             class="bg-neutral-600 text-white px-4 py-3 rounded-xl shadow-lg w-72 text-center relative mb-3"
           >
             <p class="text-sm leading-snug">
-              Oops, this is not my actual face 😂 This is my favorite character
-              in SpongeBob; Kinda like my personality 😏 To view real me, click
-              the image — unless you’d rather stay with Squidward! 😆
+              This is my favorite character; Kinda like my personality 😏 To
+              view real me, click the image — unless you’d rather stay with
+              Squidward! 😆
             </p>
             <span
               class="absolute bottom-[-6px] left-1/2 -translate-x-1/2 w-3 h-3 bg-neutral-600 rotate-45"
