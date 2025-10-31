@@ -31,9 +31,7 @@ const scrollToSection = (sectionId) => {
       <div class="flex lg:justify-around justify-between items-center py-6">
         <!-- Logo -->
         <a href="/" class="z-50">
-          <span class="text-accent-blue font-bold text-base"
-            >DevelopedByEd</span
-          >
+          <span class="text-accent-blue font-bold">DevelopedByEd</span>
         </a>
 
         <!-- Desktop Menu -->
@@ -42,7 +40,7 @@ const scrollToSection = (sectionId) => {
             <a
               href="#home"
               @click.prevent="scrollToSection('home')"
-              class="nav-links text-neutral-300 hover:text-accent-blue transition duration-300 tracking-wide"
+              class="text-neutral-300 hover:text-accent-blue transition duration-300 tracking-wide"
             >
               {{ home }}
             </a>
@@ -51,7 +49,7 @@ const scrollToSection = (sectionId) => {
             <a
               href="#about"
               @click.prevent="scrollToSection('about')"
-              class="nav-links text-neutral-300 hover:text-accent-blue transition duration-300 tracking-wide"
+              class="text-neutral-300 hover:text-accent-blue transition duration-300 tracking-wide"
             >
               {{ about }}
             </a>
@@ -60,7 +58,7 @@ const scrollToSection = (sectionId) => {
             <a
               href="#portfolio"
               @click.prevent="scrollToSection('portfolio')"
-              class="nav-links text-neutral-300 hover:text-accent-blue transition duration-300 tracking-wide"
+              class="text-neutral-300 hover:text-accent-blue transition duration-300 tracking-wide"
             >
               {{ portfolio }}
             </a>
@@ -69,7 +67,7 @@ const scrollToSection = (sectionId) => {
             <a
               href="mailto:edmarktuazon03@gmail.com"
               target="_blank"
-              class="nav-links text-neutral-300 hover:text-accent-blue transition duration-300 tracking-wide"
+              class="text-neutral-300 hover:text-accent-blue transition duration-300 tracking-wide"
             >
               {{ contact }}
             </a>
