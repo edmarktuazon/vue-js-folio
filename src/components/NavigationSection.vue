@@ -27,11 +27,13 @@ const scrollToSection = (sectionId) => {
 
 <template>
   <header class="fixed top-0 w-full z-[999] bg-neutral-900">
-    <nav class="px-8 xl:px-36">
-      <div class="flex justify-between items-center py-6">
+    <nav class="px-8 xl:px-14 2xl:px-0">
+      <div class="flex lg:justify-around justify-between items-center py-6">
         <!-- Logo -->
         <a href="/" class="z-50">
-          <span class="text-accent-blue font-bold text-2xl">ET</span>
+          <span class="text-accent-blue font-bold text-base"
+            >DevelopedByEd</span
+          >
         </a>
 
         <!-- Desktop Menu -->
