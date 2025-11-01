@@ -21,7 +21,9 @@ const igLink = "https://www.instagram.com/_edmarktuazon/";
         target="_blank"
         class="text-neutral-200 p-2 text-sm rounded-lg w-32 text-center mt-6 border-neutral-200 border hover:bg-neutral-200 hover:text-white"
       >
-        <font-awesome-icon icon="fa-solid fa-paper-plane" />&nbsp; Say hello
+        Say hello&nbsp;&nbsp;<font-awesome-icon
+          icon="fa-solid fa-paper-plane"
+        />
       </a>
     </div>
   </section>
