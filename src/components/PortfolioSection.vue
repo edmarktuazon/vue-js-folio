@@ -6,8 +6,9 @@ import home4pawsImg from "../assets/images/home4paws.png";
 import spcImg from "../assets/images/spc.png";
 import mmImg from "../assets/images/mm.png";
 import orImg from "../assets/images/OR-site.png";
+import TailwindCSSIcon from "../components/icons/IconTailwindCSS.vue";
 import { useMotionScrollAnim } from "@/composables/useMotion.js";
-import { reactive } from "vue";
+import { reactive, markRaw } from "vue";
 
 const { targetElPortfolio } = useMotionScrollAnim();
 
@@ -34,7 +35,7 @@ const portfolioSet = [
     link: "https://hope4paws.infinityfreeapp.com/",
     description: `A freelance web project developed for <a href="${urlText.home4Paws.url}" target="_blank" class="text-neutral-200 underline"><em>${urlText.home4Paws.title}</em></a> with Admin CMS access, a pet adoption web application designed to connect animal shelters with potential adopters, allows users to browse adoptable pets, learn their stories, and apply for adoption online.`,
     techStack: [
-      { name: "Tailwind CSS", icon: ["fa", "palette"] },
+      { name: "Tailwind CSS", icon: markRaw(TailwindCSSIcon) },
       { name: "JavaScript", icon: ["fab", "js"] },
       { name: "PHP", icon: ["fab", "php"] },
       { name: "MySQL", icon: ["fa", "database"] },
@@ -49,7 +50,7 @@ const portfolioSet = [
     description:
       "A corporate web project developed for SteelAsia Manufacturing Corporation, the leading steel company in the Philippines. The website highlights the company’s operations, sustainability efforts, and nationwide presence, providing an informative and professional online platform for clients and partners.",
     techStack: [
-      { name: "Tailwind CSS", icon: ["fa", "palette"] },
+      { name: "Tailwind CSS", icon: markRaw(TailwindCSSIcon) },
       { name: "JavaScript", icon: ["fab", "js"] },
       { name: "PHP", icon: ["fab", "php"] },
     ],
@@ -63,7 +64,7 @@ const portfolioSet = [
     description:
       "A corporate web project developed for Bayfield Equipment Corporation (BEC), the national dealer of Wirtgen Group products in the Philippines. The website showcases BEC’s product lineup, brand partnerships, and nationwide reach, highlighting its role in delivering premium construction solutions.",
     techStack: [
-      { name: "Tailwind CSS", icon: ["fa", "palette"] },
+      { name: "Tailwind CSS", icon: markRaw(TailwindCSSIcon) },
       { name: "JavaScript", icon: ["fab", "js"] },
       { name: "PHP", icon: ["fab", "php"] },
     ],
@@ -77,7 +78,7 @@ const portfolioSet = [
     description:
       "A corporate web project developed for She Means Business, an Australian full-service marketing agency passionate about driving growth and results for its clients. The site emphasizes brand storytelling, service clarity, and a results-driven approach.",
     techStack: [
-      { name: "Tailwind CSS", icon: ["fa", "palette"] },
+      { name: "Tailwind CSS", icon: markRaw(TailwindCSSIcon) },
       { name: "JavaScript", icon: ["fab", "js"] },
       { name: "PHP", icon: ["fab", "php"] },
     ],
@@ -92,7 +93,7 @@ const portfolioSet = [
        CMS access, a trusted Australian provider offering disability support and community care services. The project focused on clear communication, inclusivity, 
        and easy navigation for users seeking essential care information.`,
     techStack: [
-      { name: "Tailwind CSS", icon: ["fa", "palette"] },
+      { name: "Tailwind CSS", icon: markRaw(TailwindCSSIcon) },
       { name: "JavaScript", icon: ["fab", "js"] },
       { name: "PHP", icon: ["fab", "php"] },
       { name: "MySQL", icon: ["fa", "database"] },
@@ -107,7 +108,7 @@ const portfolioSet = [
     description:
       "A personal web project developed for Satrap Power Corporation using latest Vue.js, a renewable energy company under the LCS Group. The site highlights SPC’s mission, sustainable energy projects, and commitment to empowering local communities.",
     techStack: [
-      { name: "Tailwind CSS", icon: ["fa", "palette"] },
+      { name: "Tailwind CSS", icon: markRaw(TailwindCSSIcon) },
       { name: "Vue.js", icon: ["fab", "vuejs"] },
     ],
     type: "Freelance Corporate Project",
@@ -119,7 +120,7 @@ const portfolioSet = [
     link: "https://olivia-rodrigo-site-cloned.vercel.app/",
     description: `A practice personal project replicating the official <a href="${urlText.oliviaRodrigo.url}" target="_blank" class="text-neutral-200 underline"><em>${urlText.oliviaRodrigo.title}</em></a> Store website. Built to improve frontend skill specially Vue.js.`,
     techStack: [
-      { name: "Tailwind CSS", icon: ["fa", "palette"] },
+      { name: "Tailwind CSS", icon: markRaw(TailwindCSSIcon) },
       { name: "Vue.js", icon: ["fab", "vuejs"] },
     ],
     type: "Personal Project",
@@ -179,10 +180,16 @@ const formatDescription = (description) => {
                   class="text-sm bg-neutral-600 text-neutral-200 px-2 py-1 rounded flex items-center gap-1"
                 >
                   <font-awesome-icon
+                    v-if="Array.isArray(tech.icon)"
                     :icon="tech.icon"
                     class="w-3 h-3"
-                    v-if="tech.icon"
                   />
+                  <component
+                    :is="tech.icon"
+                    v-else
+                    class="w-3 h-3 text-cyan-400"
+                  />
+
                   {{ tech.name }}
                 </span>
               </div>

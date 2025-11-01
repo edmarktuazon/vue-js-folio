@@ -3,7 +3,8 @@
 import CV from "../assets/docs/edmarktuazon-cv.pdf";
 import EdmarkImg from "../assets/images/me.jpg";
 import SquidWardImg from "../assets/images/squidward.jpg";
-import { reactive, ref } from "vue";
+import TailwindCSSIcon from "../components/icons/IconTailwindCSS.vue";
+import { reactive, ref, markRaw } from "vue";
 import { useMotionScrollAnim } from "@/composables/useMotion.js";
 
 const { targetElAboutTextList } = useMotionScrollAnim();
@@ -16,10 +17,9 @@ const viewImg = () => {
   isRevealed.value = true;
 };
 
-const skillSet = reactive([
+const faSkills = reactive([
   { name: "HTML5", icon: "fa-brands fa-html5" },
   { name: "CSS3 (SASS)", icon: "fa-brands fa-css3-alt" },
-  { name: "Tailwind CSS", icon: "fa-solid fa-palette" },
   { name: "Bootstrap", icon: "fa-brands fa-bootstrap" },
   { name: "JavaScript", icon: "fa-brands fa-js" },
   { name: "Vue.js", icon: "fa-brands fa-vuejs" },
@@ -30,6 +30,13 @@ const skillSet = reactive([
   { name: "GoDaddy", icon: "fa-solid fa-globe" },
   { name: "Hostinger", icon: "fa-solid fa-server" },
   { name: "Namecheap", icon: "fa-solid fa-cloud" },
+]);
+
+const customSkills = reactive([
+  {
+    name: "Tailwind CSS",
+    icon: markRaw(TailwindCSSIcon),
+  },
 ]);
 </script>
 
@@ -98,11 +105,19 @@ const skillSet = reactive([
             class="grid grid-cols-2 sm:grid-cols-3 gap-0 sm:gap-1 items-center text-neutral-200 leading-7"
           >
             <li
-              v-for="(skill, index) in skillSet"
-              :key="index"
+              v-for="(skill, index) in faSkills"
+              :key="'fa-' + index"
               class="flex items-center gap-2 leading-7 text-sm text-neutral-200"
             >
               <font-awesome-icon :icon="skill.icon" />
+              <span>{{ skill.name }}</span>
+            </li>
+            <li
+              v-for="(skill, index) in customSkills"
+              :key="'custom-' + index"
+              class="flex items-center gap-2 leading-7 text-sm text-neutral-200"
+            >
+              <component :is="skill.icon" class="w-4 h-4 text-cyan-400" />
               <span>{{ skill.name }}</span>
             </li>
           </ul>
