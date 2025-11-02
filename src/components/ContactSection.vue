@@ -10,7 +10,7 @@ const igLink = "https://www.instagram.com/_edmarktuazon/";
     <div
       class="flex justify-center items-center flex-col z-50 relative px-8 xl:px-14 2xl:px-0"
     >
-      <h3 class="text-neutral-300 text-3xl font-bold text-center">
+      <h3 class="text-neutral-200 text-3xl font-bold text-center">
         Get in touch
       </h3>
       <h4 class="text-neutral-200 text-lg font-normal text-center mt-4">
