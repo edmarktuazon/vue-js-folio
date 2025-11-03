@@ -8,7 +8,7 @@ const igLink = "https://www.instagram.com/_edmarktuazon/";
     class="bg-neutral-800 min-h-[50vh] py-24"
   >
     <div
-      class="flex justify-center items-center flex-col z-50 relative px-8 lg:px-14 2xl:px-0"
+      class="flex justify-center items-center flex-col z-50 relative px-8 lg:px-14"
     >
       <h3 class="text-neutral-200 text-3xl font-bold text-center">
         Get in touch
