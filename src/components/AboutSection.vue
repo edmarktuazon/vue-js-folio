@@ -1,21 +1,10 @@
 <!-- AboutSection.vue -->
 <script setup>
-import CV from "../assets/docs/my-cv.pdf";
-import EdmarkImg from "../assets/images/edmark.jpg";
-import SquidWardImg from "../assets/images/squidward.jpg";
 import TailwindCSSIcon from "../components/icons/IconTailwindCSS.vue";
-import { reactive, ref, markRaw } from "vue";
+import { reactive, markRaw } from "vue";
 import { useMotionScrollAnim } from "@/composables/useMotion.js";
 
 const { targetElAboutContent } = useMotionScrollAnim();
-
-const currentImg = ref(SquidWardImg);
-const isRevealed = ref(false);
-
-const viewImg = () => {
-  currentImg.value = EdmarkImg;
-  isRevealed.value = true;
-};
 
 const faSkills = reactive([
   { name: "HTML5", icon: "fa-brands fa-html5" },
@@ -62,47 +51,14 @@ const customSkills = reactive([
         class="grid gap-10 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 m-auto"
         ref="targetElAboutContent"
       >
-        <div class="place-items-center mx-auto grid">
-          <div
-            v-if="!isRevealed"
-            class="bg-neutral-600 text-white px-4 py-3 rounded-xl shadow-lg w-72 text-center relative mb-3"
-          >
-            <p class="text-sm leading-snug">
-              This is my favorite character; Kinda like my personality 😏 To
-              view real me, click the image — unless you’d rather stay with
-              Squidward! 😆
-            </p>
-            <span
-              class="absolute bottom-[-6px] left-1/2 -translate-x-1/2 w-3 h-3 bg-neutral-600 rotate-45"
-            ></span>
-          </div>
-          <img
-            :src="currentImg"
-            alt="Clickable image"
-            class="w-64 h-64 object-cover cursor-pointer rounded-xl"
-            @click="viewImg"
-          />
-          <div class="mt-8 mx-16">
-            <a
-              :href="CV"
-              target="_blank"
-              class="w-full whitespace-nowrap text-neutral-200 p-2 rounded-lg mt-8 text-center text-sm hover:bg-neutral-200 hover:text-white border-neutral-200 border"
-            >
-              Take a peek at my CV&nbsp;&nbsp;<font-awesome-icon
-                icon="fa-solid fa-file"
-              />
-            </a>
-          </div>
-        </div>
         <div class="relative lg:mt-0 col-span-1 xl:col-span-2 row-start-1">
           <p class="text-neutral-200 leading-7 mb-8">
-            Using modern frontend technologies comprising HTML5, CSS3 (SASS),
-            JavaScript, and Vue.js, I have experience developing dynamic,
-            responsive websites. For efficient UI development, I use frameworks
-            like Tailwind CSS and Bootstrap and version control with Git and
-            GitHub. Furthermore, I have managed domain and web hosting services
-            using GoDaddy, Namecheap and Hostinger, providing smooth website
-            performance and deployment.
+            Using modern frontend technologies comprising strong I have
+            experience developing dynamic, responsive websites. For efficient UI
+            development, I use frameworks like Tailwind CSS and Bootstrap and
+            version control with Git and GitHub. Furthermore, I have managed
+            domain and web hosting services using GoDaddy, Namecheap and
+            Hostinger, providing smooth website performance and deployment.
           </p>
           <ul
             class="grid grid-cols-2 sm:grid-cols-3 gap-0 sm:gap-1 items-center text-neutral-200 leading-7"
@@ -120,10 +76,64 @@ const customSkills = reactive([
               :key="'custom-' + index"
               class="flex items-center gap-2 leading-7 text-sm text-neutral-200"
             >
-              <component :is="skill.icon" class="w-4 h-4 text-cyan-400" />
+              <component :is="skill.icon" class="w-4 h-4 text-neutral-400" />
               <span>{{ skill.name }}</span>
             </li>
           </ul>
+        </div>
+        <div class="space-y-6">
+          <div class="grid grid-cols-2 gap-4">
+            <div
+              class="bg-neutral-700/50 backdrop-blur p-4 rounded-xl text-center border border-neutral-600"
+            >
+              <div class="text-2xl font-bold text-accent-blue">2+</div>
+              <div class="text-base text-neutral-400">Years of experience</div>
+            </div>
+            <div
+              class="bg-neutral-700/50 backdrop-blur p-4 rounded-xl text-center border border-neutral-600"
+            >
+              <div class="text-2xl font-bold text-accent-blue">7</div>
+              <div class="text-base text-neutral-400">Live projects</div>
+            </div>
+          </div>
+          <div
+            class="bg-neutral-700/50 backdrop-blur p-4 rounded-xl text-center border border-neutral-600"
+          >
+            <p class="text-lg font-bold text-accent-blue">Coffee-Powered</p>
+            <p class="text-base text-neutral-400">3 cups daily</p>
+          </div>
+          <div
+            class="bg-neutral-700/50 backdrop-blur p-4 rounded-xl border border-neutral-600"
+          >
+            <h4
+              class="font-bold text-cyan-400 text-base mb-2 flex items-center gap-2"
+            >
+              <font-awesome-icon icon="fa-solid fa-star" class="text-base" />
+              Why Choose Me
+            </h4>
+            <ul class="text-sm text-neutral-300 space-y-2 leading-relaxed">
+              <li class="flex items-start gap-2">
+                <span
+                  ><strong>Attention to Detail</strong> – Exactly as intended,
+                  with pixel-perfect designs and excellent functionality.</span
+                >
+              </li>
+              <li class="flex items-start gap-2">
+                <span
+                  ><strong>Performance-Focused</strong> – Develop to deliver a
+                  smooth user experience by optimizing speed and
+                  efficiency.</span
+                >
+              </li>
+              <li class="flex items-start gap-2">
+                <span
+                  ><strong>Collaborative & Communicative</strong> – I
+                  effectively convey ideas by working closely with clients and
+                  designers.</span
+                >
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

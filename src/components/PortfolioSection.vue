@@ -140,7 +140,7 @@ const formatDescription = (description) => {
   <section
     id="portfolio"
     ref="portfolioSection"
-    class="bg-neutral-800 py-24 min-h-screen grid place-items-center text-white"
+    class="bg-neutral-800 py-24 min-h-screen grid place-items-center"
   >
     <div
       class="px-8 lg:px-14 2xl:px-0 w-full z-50 lg:w-full xl:max-w-[80%] 2xl:max-w-[60%]"

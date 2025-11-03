@@ -2,7 +2,7 @@ import { useMotion } from "@vueuse/motion";
 import { ref, onMounted, onUnmounted } from "vue";
 
 export function useMotionScrollAnim() {
-  const targetElHeroText = ref();
+  const targetElHeroContent = ref();
   const targetElAboutContent = ref();
   const targetElPortfolio = ref();
   let lastScrollY = ref(0);
@@ -22,7 +22,7 @@ export function useMotionScrollAnim() {
     window.removeEventListener("scroll", handleScroll);
   });
 
-  useMotion(targetElHeroText, {
+  useMotion(targetElHeroContent, {
     initial: { opacity: 0, y: 40 },
     visibleOnce: {
       opacity: 1,
@@ -56,7 +56,7 @@ export function useMotionScrollAnim() {
   });
 
   return {
-    targetElHeroText,
+    targetElHeroContent,
     targetElAboutContent,
     targetElPortfolio,
   };
