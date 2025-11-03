@@ -1,6 +1,6 @@
 <!-- AboutSection.vue -->
 <script setup>
-import CV from "../assets/docs/edmarktuazon-CV.pdf";
+import CV from "../assets/docs/my-cv.pdf";
 import EdmarkImg from "../assets/images/edmark.jpg";
 import SquidWardImg from "../assets/images/squidward.jpg";
 import TailwindCSSIcon from "../components/icons/IconTailwindCSS.vue";
