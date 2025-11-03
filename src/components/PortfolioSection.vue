@@ -159,10 +159,10 @@ const formatDescription = (description) => {
         <div
           v-for="(portfolio, index) in portfolioSet"
           :key="index"
-          class="mb-12"
+          class="mb-8"
         >
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-16">
-            <div class="lg:row-end-1 row-end-auto">
+            <div class="md:row-end-1 row-end-auto">
               <span class="text-accent-blue text-sm"
                 >{{ portfolio.type }} - {{ portfolio.year }}</span
               >
@@ -195,7 +195,7 @@ const formatDescription = (description) => {
               </div>
             </div>
 
-            <div class="w-full row-end-1">
+            <div class="w-full h-full grid row-end-1">
               <a
                 :href="
                   portfolio.type !== 'Corporate Project' &&
@@ -215,7 +215,7 @@ const formatDescription = (description) => {
                 <img
                   :src="portfolio.image"
                   :alt="portfolio.title"
-                  class="w-full h-full lg:h-72 object-cover transform transition-transform duration-300"
+                  class="w-full h-full object-contain transform transition-transform duration-300"
                   :class="
                     portfolio.type !== 'Corporate Project' &&
                     portfolio.type !== 'Freelance Corporate Project'
@@ -224,7 +224,7 @@ const formatDescription = (description) => {
                   "
                 />
                 <div
-                  class="absolute inset-0 bg-black bg-opacity-50 opacity-0 transition-opacity duration-300 flex items-center justify-center gap-2 text-white text-lg font-semibold"
+                  class="absolute inset-0 bg-black object-contain bg-opacity-50 opacity-0 transition-opacity duration-300 flex items-center justify-center gap-2 text-white text-lg font-semibold"
                   :class="
                     portfolio.type !== 'Corporate Project' &&
                     portfolio.type !== 'Freelance Corporate Project'

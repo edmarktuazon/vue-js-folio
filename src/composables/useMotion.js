@@ -3,7 +3,7 @@ import { ref, onMounted, onUnmounted } from "vue";
 
 export function useMotionScrollAnim() {
   const targetElHeroText = ref();
-  const targetElAboutTextList = ref();
+  const targetElAboutContent = ref();
   const targetElPortfolio = ref();
   let lastScrollY = ref(0);
   let isScrollingDown = ref(false);
@@ -33,7 +33,7 @@ export function useMotionScrollAnim() {
     },
   });
 
-  useMotion(targetElAboutTextList, {
+  useMotion(targetElAboutContent, {
     initial: { opacity: 0, y: 40 },
     visibleOnce: {
       opacity: 1,
@@ -57,7 +57,7 @@ export function useMotionScrollAnim() {
 
   return {
     targetElHeroText,
-    targetElAboutTextList,
+    targetElAboutContent,
     targetElPortfolio,
   };
 }

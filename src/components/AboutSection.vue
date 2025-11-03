@@ -7,7 +7,7 @@ import TailwindCSSIcon from "../components/icons/IconTailwindCSS.vue";
 import { reactive, ref, markRaw } from "vue";
 import { useMotionScrollAnim } from "@/composables/useMotion.js";
 
-const { targetElAboutTextList } = useMotionScrollAnim();
+const { targetElAboutContent } = useMotionScrollAnim();
 
 const currentImg = ref(SquidWardImg);
 const isRevealed = ref(false);
@@ -58,7 +58,10 @@ const customSkills = reactive([
           Technologies I've been Working
         </h3>
       </div>
-      <div class="grid gap-10 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 m-auto">
+      <div
+        class="grid gap-10 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 m-auto"
+        ref="targetElAboutContent"
+      >
         <div class="place-items-center mx-auto grid">
           <div
             v-if="!isRevealed"
@@ -102,7 +105,6 @@ const customSkills = reactive([
             performance and deployment.
           </p>
           <ul
-            ref="targetElAboutTextList"
             class="grid grid-cols-2 sm:grid-cols-3 gap-0 sm:gap-1 items-center text-neutral-200 leading-7"
           >
             <li
