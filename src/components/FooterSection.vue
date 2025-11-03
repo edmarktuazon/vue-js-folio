@@ -19,7 +19,7 @@ const links = reactive({
 const { facebook, instagram, linkedin, github } = toRefs(links);
 </script>
 <template>
-  <footer class="bg-neutral-900 p-6 z-50 relative px-8 xl:px-36">
+  <footer class="bg-neutral-900 p-6 z-50 relative px-8 lg:px-24">
     <div
       class="flex gap-4 lg:gap-0 items-center justify-between lg:flex-row flex-col-reverse"
     >
