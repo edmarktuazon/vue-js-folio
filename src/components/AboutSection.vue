@@ -1,7 +1,6 @@
-<!-- AboutSection.vue -->
 <script setup>
 import TailwindCSSIcon from "../components/icons/IconTailwindCSS.vue";
-import { reactive, markRaw } from "vue";
+import { reactive, markRaw, onMounted, ref } from "vue";
 import { useMotionScrollAnim } from "@/composables/useMotion.js";
 
 const { targetElAboutContent } = useMotionScrollAnim();
@@ -27,6 +26,43 @@ const customSkills = reactive([
     icon: markRaw(TailwindCSSIcon),
   },
 ]);
+
+const counts = ref({
+  years: 0,
+  projects: 0,
+  clients: 0,
+});
+
+const animateCounter = (targetKey, targetValue, duration = 2800) => {
+  const startTime = performance.now();
+  const animate = (currentTime) => {
+    let progress = (currentTime - startTime) / duration;
+    if (progress > 1) progress = 1;
+    const easeProgress = 1 - Math.pow(1 - progress, 3);
+    counts.value[targetKey] = Math.floor(easeProgress * targetValue);
+    if (progress < 1) requestAnimationFrame(animate);
+  };
+  requestAnimationFrame(animate);
+};
+
+onMounted(() => {
+  const section = document.getElementById("stats-section");
+  if (!section) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      if (entries[0].isIntersecting) {
+        animateCounter("years", 2);
+        animateCounter("projects", 7);
+        animateCounter("clients", 20);
+        observer.unobserve(section);
+      }
+    },
+    { threshold: 0.3 }
+  );
+
+  observer.observe(section);
+});
 </script>
 
 <template>
@@ -44,21 +80,22 @@ const customSkills = reactive([
         <h3
           class="text-neutral-200 font-bold text-4xl mb-2 whitespace-wrap md:whitespace-nowrap"
         >
-          Technologies I've been Working
+          Technologies I work with
         </h3>
       </div>
       <div
-        class="grid gap-10 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 m-auto"
+        class="grid gap-10 grid-cols-1 md:grid-cols-2 xl:grid-cols-8"
         ref="targetElAboutContent"
       >
-        <div class="relative lg:mt-0 col-span-1 xl:col-span-2 row-start-1">
+        <div class="col-span-1 xl:col-span-5">
           <p class="text-neutral-200 leading-7 mb-8">
-            Using modern frontend technologies comprising strong I have
+            Using modern frontend technologies and hands-on skills, I have
             experience developing dynamic, responsive websites. For efficient UI
-            development, I use frameworks like Tailwind CSS and Bootstrap and
-            version control with Git and GitHub. Furthermore, I have managed
-            domain and web hosting services using GoDaddy, Namecheap and
-            Hostinger, providing smooth website performance and deployment.
+            development, I use frameworks like Tailwind CSS and Bootstrap, and I
+            manage version control with Git and GitHub. Furthermore, I have
+            managed domain registration and web hosting services with GoDaddy,
+            Namecheap, and Hostinger, providing smooth website performance and
+            deployment.
           </p>
           <ul
             class="grid grid-cols-2 sm:grid-cols-3 gap-0 sm:gap-1 items-center text-neutral-200 leading-7"
@@ -81,55 +118,79 @@ const customSkills = reactive([
             </li>
           </ul>
         </div>
-        <div class="space-y-6">
-          <div class="grid grid-cols-2 gap-4">
+
+        <div
+          id="stats-section"
+          class="space-y-6 w-full h-full col-span-1 xl:col-span-3"
+        >
+          <div class="grid grid-cols-2 gap-5">
             <div
-              class="bg-neutral-700/50 backdrop-blur p-4 rounded-xl text-center border border-neutral-600"
+              class="bg-neutral-700/50 backdrop-blur p-6 rounded-xl text-center border border-neutral-600"
             >
-              <div class="text-2xl font-bold text-accent-blue">2+</div>
-              <div class="text-base text-neutral-400">Years of experience</div>
+              <div class="text-3xl font-bold text-accent-blue mb-2">
+                {{ counts.years }}+
+              </div>
+              <div class="text-neutral-400 uppercase font-medium">
+                Years of Experience
+              </div>
             </div>
             <div
-              class="bg-neutral-700/50 backdrop-blur p-4 rounded-xl text-center border border-neutral-600"
+              class="bg-neutral-700/50 backdrop-blur p-6 rounded-xl text-center border border-neutral-600"
             >
-              <div class="text-2xl font-bold text-accent-blue">7</div>
-              <div class="text-base text-neutral-400">Live projects</div>
+              <div class="text-3xl font-bold text-accent-blue mb-2">
+                {{ counts.projects }}
+              </div>
+              <div class="text-neutral-400 uppercase font-medium">
+                Live Projects
+              </div>
             </div>
           </div>
-          <div
-            class="bg-neutral-700/50 backdrop-blur p-4 rounded-xl text-center border border-neutral-600"
-          >
-            <p class="text-lg font-bold text-accent-blue">Coffee-Powered</p>
-            <p class="text-base text-neutral-400">3 cups daily</p>
-          </div>
-          <div
-            class="bg-neutral-700/50 backdrop-blur p-4 rounded-xl border border-neutral-600"
-          >
-            <h4
-              class="font-bold text-cyan-400 text-base mb-2 flex items-center gap-2"
+          <div class="grid grid-cols-2 gap-6">
+            <div
+              class="bg-neutral-700/50 backdrop-blur p-6 rounded-xl text-center border border-neutral-600"
             >
-              <font-awesome-icon icon="fa-solid fa-star" class="text-base" />
+              <div class="text-3xl font-bold text-accent-blue mb-2">
+                {{ counts.clients }}+
+              </div>
+              <div class="text-neutral-400 uppercase font-medium">
+                Awesome Clients
+              </div>
+            </div>
+            <div
+              class="bg-neutral-700/50 backdrop-blur p-6 rounded-xl text-center border border-neutral-600"
+            >
+              <div class="text-3xl font-bold text-accent-blue mb-2">Coffee</div>
+              <div class="text-neutral-400 uppercase font-medium">
+                3 Cups Daily
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="bg-neutral-700/50 backdrop-blur p-6 rounded-xl border border-neutral-600"
+          >
+            <h4 class="font-bold text-accent-blue mb-4 flex items-center gap-2">
               Why Choose Me
             </h4>
-            <ul class="text-sm text-neutral-300 space-y-2 leading-relaxed">
-              <li class="flex items-start gap-2">
+            <ul class="text-sm text-neutral-300 space-y-3 leading-relaxed">
+              <li class="flex items-start gap-3">
                 <span
-                  ><strong>Attention to Detail</strong> – Exactly as intended,
-                  with pixel-perfect designs and excellent functionality.</span
+                  ><strong>Quality-Driven</strong> – Exactly as intended, with
+                  well-crafted UI and excellent functionality.</span
                 >
               </li>
-              <li class="flex items-start gap-2">
+              <li class="flex items-start gap-3">
                 <span
-                  ><strong>Performance-Focused</strong> – Develop to deliver a
-                  smooth user experience by optimizing speed and
-                  efficiency.</span
+                  ><strong>Smooth UX Development</strong> – I build websites
+                  that provide seamless user interactions while maintaining
+                  reliable performance.</span
                 >
               </li>
-              <li class="flex items-start gap-2">
+              <li class="flex items-start gap-3">
                 <span
-                  ><strong>Collaborative & Communicative</strong> – I
-                  effectively convey ideas by working closely with clients and
-                  designers.</span
+                  ><strong>Team & Client-Oriented</strong> – I adapt to working
+                  with clients alone or alongside designers to ensure projects
+                  meet expectations.</span
                 >
               </li>
             </ul>

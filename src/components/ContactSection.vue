@@ -5,7 +5,7 @@ const igLink = "https://www.instagram.com/_edmarktuazon/";
   <section
     id="contact"
     ref="contactSection"
-    class="bg-neutral-800 min-h-[50vh] py-24"
+    class="bg-neutral-800 py-24 min-h-screen grid place-items-center"
   >
     <div
       class="flex justify-center items-center flex-col z-50 relative px-8 lg:px-14"
@@ -13,7 +13,7 @@ const igLink = "https://www.instagram.com/_edmarktuazon/";
       <h3 class="text-neutral-200 text-3xl font-bold text-center">
         Get in touch
       </h3>
-      <h4 class="text-neutral-200 text-lg font-normal text-center mt-4">
+      <h4 class="text-neutral-200 font-normal text-center mt-4">
         Have a project in mind? Let's talk!
       </h4>
       <a

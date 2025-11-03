@@ -161,8 +161,8 @@ const formatDescription = (description) => {
           :key="index"
           class="mb-8"
         >
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-16">
-            <div class="md:row-end-1 row-end-auto">
+          <div class="grid gap-10 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+            <div class="col-span-1 xl:col-span-2 md:row-end-1 row-end-auto">
               <span class="text-accent-blue text-sm"
                 >{{ portfolio.type }} - {{ portfolio.year }}</span
               >
@@ -195,7 +195,7 @@ const formatDescription = (description) => {
               </div>
             </div>
 
-            <div class="w-full h-full grid row-end-1">
+            <div class="w-full h-full col-span-1 xl:col-span-6 grid row-end-1">
               <a
                 :href="
                   portfolio.type !== 'Corporate Project' &&

@@ -23,7 +23,7 @@ const { facebook, instagram, linkedin, github } = toRefs(links);
     <div
       class="flex gap-4 lg:gap-0 items-center justify-between lg:flex-row flex-col-reverse"
     >
-      <p class="text-center text-neutral-200">
+      <p class="text-center text-sm text-neutral-200">
         Copyright &copy;{{ currentYear }} Edmark Tuazon. All rights reserved.
       </p>
       <div class="flex justify-center items-center gap-3">

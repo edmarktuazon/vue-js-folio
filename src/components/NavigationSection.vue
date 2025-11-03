@@ -31,7 +31,7 @@ const scrollToSection = (sectionId) => {
       <div class="flex lg:justify-around justify-between items-center py-6">
         <!-- Logo -->
         <a href="/" class="z-50">
-          <span class="text-accent-blue font-bold">DevelopedByEd</span>
+          <span class="text-neutral-400 font-bold">DevelopedByEd.</span>
         </a>
 
         <!-- Desktop Menu -->
@@ -40,7 +40,7 @@ const scrollToSection = (sectionId) => {
             <a
               href="#home"
               @click.prevent="scrollToSection('home')"
-              class="text-neutral-300 hover:text-accent-blue transition duration-300 tracking-wide"
+              class="text-neutral-400"
             >
               {{ home }}
             </a>
@@ -49,7 +49,7 @@ const scrollToSection = (sectionId) => {
             <a
               href="#about"
               @click.prevent="scrollToSection('about')"
-              class="text-neutral-300 hover:text-accent-blue transition duration-300 tracking-wide"
+              class="text-neutral-400"
             >
               {{ about }}
             </a>
@@ -58,7 +58,7 @@ const scrollToSection = (sectionId) => {
             <a
               href="#portfolio"
               @click.prevent="scrollToSection('portfolio')"
-              class="text-neutral-300 hover:text-accent-blue transition duration-300 tracking-wide"
+              class="text-neutral-400"
             >
               {{ portfolio }}
             </a>
@@ -67,7 +67,7 @@ const scrollToSection = (sectionId) => {
             <a
               href="mailto:edmarktuazon03@gmail.com"
               target="_blank"
-              class="text-neutral-300 hover:text-accent-blue transition duration-300 tracking-wide"
+              class="text-neutral-400"
             >
               {{ contact }}
             </a>

@@ -48,7 +48,6 @@ const viewImg = () => {
   isRevealed.value = true;
   localStorage.setItem("edmark-revealed", "true");
 
-  // Confetti party!
   confetti({
     particleCount: 80,
     spread: 70,
@@ -62,9 +61,10 @@ const viewImg = () => {
 const showNoGoBack = () => {
   const tooltip = document.createElement("div");
   tooltip.className =
-    "fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-red-600 text-white px-6 py-3 rounded-xl shadow-2xl font-medium text-sm z-50 animate-pulse";
+    "fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-red-600 text-white px-6 py-3 rounded-xl shadow-2xl text-sm z-50 animate-pulse";
   tooltip.innerHTML = `
-    Attempt failed. Squidward is on vacation already — permanently 😝
+    Click all you want. Squidward’s ghosted you,
+    and he’s playing clarinet in the afterlife.
   `;
   document.body.appendChild(tooltip);
 
@@ -78,25 +78,25 @@ const showNoGoBack = () => {
   <section
     id="home"
     ref="homeSection"
-    class="bg-neutral-800 py-32 md:py-24 min-h-screen grid place-items-center"
+    class="bg-neutral-800 pb-24 pt-44 lg:py-24 min-h-screen grid place-items-center"
   >
     <div
       class="px-8 lg:px-14 2xl:px-0 z-50 w-full lg:w-full xl:max-w-[80%] 2xl:max-w-[60%]"
     >
-      <div class="grid md:flex items-center gap-10" ref="targetElHeroContent">
-        <div class="space-y-4">
-          <h4 class="text-neutral-200 tracking-wide text-xl">Hey, I'm</h4>
-          <h1
-            class="font-bold text-accent-blue my-4 tracking-wide leading-none text-6xl"
-          >
-            Edmark Tuazon<br />
+      <div
+        class="grid gap-10 grid-cols-1 md:grid-cols-8"
+        ref="targetElHeroContent"
+      >
+        <div class="space-y-4 col-span-1 md:col-span-5">
+          <h4 class="text-neutral-200 tracking-wide leading-none text-xl">
+            Hey there, I'm
+          </h4>
+          <h1 class="font-bold text-neutral-400 my-4 leading-none text-7xl">
+            Edmark Tuazon
           </h1>
-          <h2 class="text-neutral-200 tracking-wide text-6xl font-bold">
-            I build things for the web.
-          </h2>
           <h3 class="text-neutral-200 tracking-wide text-lg">
-            A {{ age }} years of age frontend developer with 2 years and
-            counting commercial experience, specializing in building responsive
+            A {{ age }}-year-old frontend developer with over 2 years of
+            commercial experience, specializing in building responsive
             interfaces and dynamic user experiences for the modern web.
           </h3>
           <div class="pt-8">
@@ -110,23 +110,25 @@ const showNoGoBack = () => {
           </div>
         </div>
 
-        <div class="place-items-center mx-auto grid">
+        <div class="place-items-center mx-auto grid col-span-1 xl:col-span-3">
           <div
             v-if="!isRevealed"
-            class="bg-neutral-600 text-white px-4 py-3 rounded-xl shadow-lg w-72 text-center relative mb-3 font-medium z-10"
+            class="bg-neutral-600 text-white px-4 py-3 rounded-xl shadow-lg w-72 text-center relative mb-3 z-10"
           >
             <p class="text-sm leading-snug">
-              Squidy’s sad — maybe a new project would cheer him up! 😁 This is
-              my favorite character, kinda like my personality 🤨 if you're
-              interested click the image to see the real me — unless you’d
-              rather stay with Squidward 🙄😆
+              This is my favorite character, kinda like my personality 🤨 but
+              Squidy’s looks sad, maybe a new project would cheer him up! 😁 if
+              you're interested to see real me, click the image — unless you’d
+              rather stay with Squidward 🙄
             </p>
             <span
               class="absolute bottom-[-6px] left-1/2 -translate-x-1/2 w-3 h-3 bg-neutral-600 rotate-45"
             ></span>
           </div>
 
-          <div class="relative w-72 h-72 rounded-xl overflow-hidden shadow-xl">
+          <div
+            class="relative w-full max-w-md mx-auto aspect-square rounded-xl overflow-hidden shadow-xl"
+          >
             <img
               v-if="!isRevealed"
               :src="SquidWardImg"
@@ -151,31 +153,24 @@ const showNoGoBack = () => {
           >
             <div
               v-if="isRevealed"
-              class="bg-neutral-600 text-white px-4 py-3 rounded-xl shadow-lg w-72 text-center relative mt-3 font-medium z-10"
+              class="bg-neutral-600 text-white px-4 py-3 rounded-xl shadow-lg w-72 text-center relative mt-3 z-10"
             >
               <p class="text-sm leading-snug">
-                <span>Ta-da! The man behind the tentacles 😎</span><br />
-                <span
-                  >Hire me and I don’t want to go back to Squidward mode
-                  😭</span
+                <span>Ta-da! The man behind the tentacles. </span>
+                <span>Don’t make me slip back into Squidward mode 😭</span
+                >&nbsp;<a
+                  :href="CV"
+                  target="_blank"
+                  class="underline text-white transition"
                 >
+                  <em>Let's make SpongeBob proud</em>
+                </a>
               </p>
               <span
                 class="absolute top-[-6px] left-1/2 -translate-x-1/2 w-3 h-3 bg-neutral-600 rotate-45"
               ></span>
             </div>
           </transition>
-
-          <div class="mt-4 p-2">
-            <a
-              :href="CV"
-              target="_blank"
-              class="w-full flex items-center justify-center gap-2 text-neutral-200 p-2 rounded-lg text-center text-sm hover:bg-neutral-200 hover:text-white hover:border-neutral-200 border-neutral-200 border transition-colors"
-            >
-              Take a peek at my CV
-              <font-awesome-icon icon="fa-solid fa-file" />
-            </a>
-          </div>
         </div>
       </div>
     </div>
