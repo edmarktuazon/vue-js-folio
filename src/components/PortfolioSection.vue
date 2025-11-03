@@ -146,10 +146,10 @@ const formatDescription = (description) => {
       class="px-8 xl:px-14 2xl:px-0 w-full z-50 lg:w-full xl:max-w-[80%] 2xl:max-w-[60%]"
     >
       <div
-        class="flex justify-start items-center my-8 gap-3 relative after:hidden after:w-full after:h-[0.0625rem] after:bg-neutral-600 after:mt-2 lg:after:block"
+        class="flex justify-start items-center my-8 gap-3 relative after:hidden after:w-full after:h-[0.0625rem] after:bg-neutral-600 after:mt-2 md:after:block"
       >
         <h3
-          class="text-neutral-200 font-bold text-4xl mb-2 whitespace-wrap lg:whitespace-nowrap"
+          class="text-neutral-200 font-bold text-4xl mb-2 whitespace-wrap md:whitespace-nowrap"
         >
           Projects that I've Built
         </h3>
@@ -161,7 +161,7 @@ const formatDescription = (description) => {
           :key="index"
           class="mb-12"
         >
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-16">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-16">
             <div class="lg:row-end-1 row-end-auto">
               <span class="text-accent-blue text-sm"
                 >{{ portfolio.type }} - {{ portfolio.year }}</span

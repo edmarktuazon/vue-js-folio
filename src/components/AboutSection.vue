@@ -1,7 +1,7 @@
 <!-- AboutSection.vue -->
 <script setup>
 import CV from "../assets/docs/edmarktuazon-cv.pdf";
-import EdmarkImg from "../assets/images/me.jpg";
+import EdmarkImg from "../assets/images/edmark.jpg";
 import SquidWardImg from "../assets/images/squidward.jpg";
 import TailwindCSSIcon from "../components/icons/IconTailwindCSS.vue";
 import { reactive, ref, markRaw } from "vue";
@@ -47,19 +47,19 @@ const customSkills = reactive([
     class="bg-neutral-800 py-24 min-h-screen grid place-items-center"
   >
     <div
-      class="z-50 px-8 xl:px-14 2xl:px-0 w-full lg:w-full xl:max-w-[80%] 2xl:max-w-[60%]"
+      class="z-50 px-8 lg:px-14 2xl:px-0 w-full lg:w-full xl:max-w-[80%] 2xl:max-w-[60%]"
     >
       <div
-        class="flex justify-start items-center my-8 gap-3 relative after:hidden after:w-full after:h-[0.0625rem] after:bg-neutral-600 after:mt-2 lg:after:block"
+        class="flex justify-start items-center my-8 gap-3 relative after:hidden after:w-full after:h-[0.0625rem] after:bg-neutral-600 after:mt-2 md:after:block"
       >
         <h3
-          class="text-neutral-200 font-bold text-4xl mb-2 whitespace-wrap lg:whitespace-nowrap"
+          class="text-neutral-200 font-bold text-4xl mb-2 whitespace-wrap md:whitespace-nowrap"
         >
           Technologies I've been Working
         </h3>
       </div>
-      <div class="grid gap-10 grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 m-auto">
-        <div class="place-items-center mx-auto hidden lg:block">
+      <div class="grid gap-10 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 m-auto">
+        <div class="place-items-center mx-auto grid">
           <div
             v-if="!isRevealed"
             class="bg-neutral-600 text-white px-4 py-3 rounded-xl shadow-lg w-72 text-center relative mb-3"
@@ -76,7 +76,7 @@ const customSkills = reactive([
           <img
             :src="currentImg"
             alt="Clickable image"
-            class="w-56 h-56 object-cover cursor-pointer"
+            class="w-64 h-64 object-cover cursor-pointer rounded-xl"
             @click="viewImg"
           />
           <div class="mt-8 mx-16">

@@ -28,7 +28,7 @@ const { facebook, instagram, linkedin, github } = toRefs(links);
     class="bg-neutral-800 h-screen flex justify-center items-center flex-col"
   >
     <div
-      class="z-50 relative px-8 xl:px-14 2xl:px-0 w-full lg:w-full xl:max-w-[80%] 2xl:max-w-[60%]"
+      class="z-50 relative px-8 lg:px-14 2xl:px-0 w-full lg:w-full xl:max-w-[80%] 2xl:max-w-[60%]"
     >
       <div ref="targetElHeroText">
         <h4 class="text-neutral-200 tracking-wide text-xl">Hey, I'm</h4>
