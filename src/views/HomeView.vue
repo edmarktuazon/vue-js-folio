@@ -6,7 +6,7 @@ import LinkedInIcon from "../components/icons/IconLinkedIn.vue";
 import SquidWardImg from "../assets/images/squidward.jpg";
 import EdmarkImg from "../assets/images/edmark.jpg";
 import CV from "../assets/docs/edmarktuazon-cv.pdf";
-import { reactive, toRefs, computed, ref, onMounted } from "vue";
+import { reactive, toRefs, ref, onMounted } from "vue";
 import { useMotionScrollAnim } from "@/composables/useMotion.js";
 import confetti from "canvas-confetti";
 
@@ -20,15 +20,6 @@ const links = reactive({
 });
 
 const { facebook, instagram, linkedin, github } = toRefs(links);
-
-const birthDate = new Date(1998, 10, 3);
-const age = computed(() => {
-  const today = new Date();
-  let years = today.getFullYear() - birthDate.getFullYear();
-  const m = today.getMonth() - birthDate.getMonth();
-  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) years--;
-  return years;
-});
 
 const isRevealed = ref(false);
 
@@ -84,20 +75,22 @@ const showNoGoBack = () => {
       class="px-8 lg:px-14 2xl:px-0 z-50 w-full lg:w-full xl:max-w-[80%] 2xl:max-w-[60%]"
     >
       <div
-        class="grid gap-10 grid-cols-1 md:grid-cols-8"
+        class="grid gap-10 grid-cols-1 md:grid-cols-9 lg:grid-cols-8"
         ref="targetElHeroContent"
       >
         <div class="space-y-4 col-span-1 md:col-span-5">
           <h4 class="text-neutral-200 tracking-wide leading-none text-xl">
             Hey there, I'm
           </h4>
-          <h1 class="font-bold text-neutral-400 my-4 leading-none text-7xl">
+          <h1
+            class="font-bold text-neutral-400 my-4 leading-none text-[clamp(4.625rem,_4.2802rem_+_1.7241vw,_5.25rem)]"
+          >
             Edmark Tuazon
           </h1>
           <h3 class="text-neutral-200 tracking-wide text-lg">
-            A {{ age }}-year-old frontend developer with over 2 years of
-            commercial experience, specializing in building responsive
-            interfaces and dynamic user experiences for the modern web.
+            A Frontend Web Developer with over 2 years of commercial experience,
+            specializing in building responsive interfaces and dynamic user
+            experiences for the modern web.
           </h3>
           <div class="pt-8">
             <h3 class="text-neutral-200 mb-2">Let's connect!</h3>
