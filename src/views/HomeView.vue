@@ -6,9 +6,9 @@ import LinkedInIcon from "../components/icons/IconLinkedIn.vue";
 import SquidWardImg from "../assets/images/squidward.jpg";
 import EdmarkImg from "../assets/images/edmark.jpg";
 import CV from "../assets/docs/edmarktuazon-cv.pdf";
+
 import { reactive, toRefs, ref, onMounted } from "vue";
 import { useMotionScrollAnim } from "@/composables/useMotion.js";
-import confetti from "canvas-confetti";
 
 const { targetElHeroContent } = useMotionScrollAnim();
 
@@ -22,6 +22,7 @@ const links = reactive({
 const { facebook, instagram, linkedin, github } = toRefs(links);
 
 const isRevealed = ref(false);
+const showModal = ref(false);
 
 onMounted(() => {
   const saved = localStorage.getItem("edmark-revealed");
@@ -32,36 +33,16 @@ onMounted(() => {
 
 const viewImg = () => {
   if (isRevealed.value) {
-    showNoGoBack();
+    showModal.value = true;
     return;
   }
 
   isRevealed.value = true;
   localStorage.setItem("edmark-revealed", "true");
-
-  confetti({
-    particleCount: 80,
-    spread: 70,
-    origin: { y: 0.6 },
-    colors: ["#06b6d4", "#3b82f6", "#8b5cf6", "#ec4899"],
-    scalar: 0.8,
-    ticks: 60,
-  });
 };
 
-const showNoGoBack = () => {
-  const tooltip = document.createElement("div");
-  tooltip.className =
-    "fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-red-600 text-white px-6 py-3 rounded-xl shadow-2xl text-sm z-50 animate-pulse";
-  tooltip.innerHTML = `
-    Click all you want. Squidward’s ghosted you,
-    and he’s playing clarinet in the afterlife.
-  `;
-  document.body.appendChild(tooltip);
-
-  setTimeout(() => {
-    tooltip.remove();
-  }, 2500);
+const closeModal = () => {
+  showModal.value = false;
 };
 </script>
 
@@ -93,24 +74,76 @@ const showNoGoBack = () => {
             experiences for the modern web.
           </h3>
           <div class="pt-8">
-            <h3 class="text-neutral-200 mb-2">Let's connect!</h3>
+            <h3 class="text-neutral-200 mb-3">Let's connect!</h3>
             <div class="flex justify-start items-center gap-3">
-              <a :href="facebook" target="_blank"><FacebookIcon /></a>
-              <a :href="instagram" target="_blank"><InstagramIcon /></a>
-              <a :href="linkedin" target="_blank"><LinkedInIcon /></a>
-              <a :href="github" target="_blank"><GitHubIcon /></a>
+              <a
+                :href="instagram"
+                target="_blank"
+                class="group relative flex flex-col items-center"
+              >
+                <InstagramIcon
+                  class="w-6 h-6 text-neutral-400 group-hover:text-pink-500 transition-colors"
+                />
+                <span
+                  class="absolute -bottom-7 left-1/2 -translate-x-1/2 text-xs text-neutral-400 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-1 transition-all duration-200 whitespace-nowrap"
+                >
+                  Instagram
+                </span>
+              </a>
+              <a
+                :href="linkedin"
+                target="_blank"
+                class="group relative flex flex-col items-center"
+              >
+                <LinkedInIcon
+                  class="w-6 h-6 text-neutral-400 group-hover:text-blue-500 transition-colors"
+                />
+                <span
+                  class="absolute -bottom-7 left-1/2 -translate-x-1/2 text-xs text-neutral-400 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-1 transition-all duration-200 whitespace-nowrap"
+                >
+                  LinkedIn
+                </span>
+              </a>
+              <a
+                :href="facebook"
+                target="_blank"
+                class="group relative flex flex-col items-center"
+              >
+                <FacebookIcon
+                  class="w-6 h-6 text-neutral-400 group-hover:text-blue-600 transition-colors"
+                />
+                <span
+                  class="absolute -bottom-7 left-1/2 -translate-x-1/2 text-xs text-neutral-400 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-1 transition-all duration-200 whitespace-nowrap"
+                >
+                  Facebook
+                </span>
+              </a>
+              <a
+                :href="github"
+                target="_blank"
+                class="group relative flex flex-col items-center"
+              >
+                <GitHubIcon
+                  class="w-6 h-6 text-neutral-400 group-hover:text-neutral-100 transition-colors"
+                />
+                <span
+                  class="absolute -bottom-7 left-1/2 -translate-x-1/2 text-xs text-neutral-400 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-1 transition-all duration-200 whitespace-nowrap"
+                >
+                  GitHub
+                </span>
+              </a>
             </div>
           </div>
         </div>
 
-        <div class="place-items-center mx-auto grid col-span-1 xl:col-span-3">
+        <div class="place-content-center mx-auto grid col-span-1 xl:col-span-3">
           <div
             v-if="!isRevealed"
             class="bg-neutral-600 text-white px-4 py-3 rounded-xl shadow-lg w-72 text-center relative mb-3 z-10"
           >
             <p class="text-sm leading-snug">
-              This is my favorite character, kinda like my personality 🤨 but
-              Squidy’s looks sad, maybe a new project would cheer him up! 😁 if
+              This is my favorite character, kinda like my personality 🤨 But
+              Squidy’s looks sad, maybe a new project would cheer him up! 😁 If
               you're interested to see real me, click the image — unless you’d
               rather stay with Squidward 🙄
             </p>
@@ -138,6 +171,7 @@ const showNoGoBack = () => {
               @click="viewImg"
             />
           </div>
+
           <transition
             enter-active-class="transition ease-out duration-300"
             enter-from-class="opacity-0 scale-95 -translate-y-1"
@@ -154,9 +188,9 @@ const showNoGoBack = () => {
                 >&nbsp;<a
                   :href="CV"
                   target="_blank"
-                  class="underline text-white transition"
+                  class="underline text-white"
                 >
-                  <em>Let's make SpongeBob proud</em>
+                  <em>Let's make SpongeBob proud.</em>
                 </a>
               </p>
               <span
@@ -168,4 +202,54 @@ const showNoGoBack = () => {
       </div>
     </div>
   </section>
+  <teleport to="body">
+    <Transition name="modal-fade">
+      <div
+        v-if="showModal"
+        class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-900/70 backdrop-blur-sm"
+        @click.self="closeModal"
+      >
+        <div
+          class="bg-neutral-800 border border-neutral-700 rounded-xl p-6 max-w-sm w-full shadow-2xl text-center space-y-4"
+        >
+          <div class="mx-auto rounded-lg overflow-hidden shadow-md">
+            <img
+              src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExaTYza2tjZjc2YnR6aTFjOHFwYjdqajBuazVxZmQweTdlamtnbXM4ciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l1KtYYRMBUaTEsOJi/giphy.gif"
+              alt="Squidward"
+              class="w-full h-full object-cover"
+            />
+          </div>
+
+          <p class="text-neutral-300 text-sm leading-relaxed">
+            Click all you want 😝 Squidward’s ghosted you,<br />
+            and he’s playing clarinet in the afterlife.
+          </p>
+
+          <button
+            @click="closeModal"
+            class="mx-auto px-5 py-2 bg-neutral-700 text-neutral-300 rounded-full font-medium hover:bg-neutral-600 hover:text-white transition"
+          >
+            Got it
+          </button>
+        </div>
+      </div>
+    </Transition>
+  </teleport>
 </template>
+
+<style scoped>
+.modal-fade-enter-active,
+.modal-fade-leave-active {
+  transition: opacity 0.15s ease;
+}
+
+.modal-fade-enter-from,
+.modal-fade-leave-to {
+  opacity: 0;
+}
+
+.modal-fade-enter-to,
+.modal-fade-leave-from {
+  opacity: 1;
+}
+</style>

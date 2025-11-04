@@ -5,9 +5,10 @@ import { useMotionScrollAnim } from "@/composables/useMotion.js";
 
 const { targetElAboutContent } = useMotionScrollAnim();
 
-const faSkills = reactive([
+const skills = reactive([
   { name: "HTML5", icon: "fa-brands fa-html5" },
   { name: "CSS3 (SASS)", icon: "fa-brands fa-css3-alt" },
+  { name: "Tailwind CSS", icon: markRaw(TailwindCSSIcon) },
   { name: "Bootstrap", icon: "fa-brands fa-bootstrap" },
   { name: "JavaScript", icon: "fa-brands fa-js" },
   { name: "Vue.js", icon: "fa-brands fa-vuejs" },
@@ -20,16 +21,12 @@ const faSkills = reactive([
   { name: "Namecheap", icon: "fa-solid fa-cloud" },
 ]);
 
-const customSkills = reactive([
-  {
-    name: "Tailwind CSS",
-    icon: markRaw(TailwindCSSIcon),
-  },
-]);
+const columns = [skills.slice(0, 5), skills.slice(5, 9), skills.slice(9, 13)];
 
 const counts = ref({
   years: 0,
   projects: 0,
+  projectsDelivered: 0,
   clients: 0,
 });
 
@@ -54,7 +51,8 @@ onMounted(() => {
       if (entries[0].isIntersecting) {
         animateCounter("years", 2);
         animateCounter("projects", 7);
-        animateCounter("clients", 20);
+        animateCounter("projectsDelivered", 73);
+        animateCounter("clients", 80);
         observer.unobserve(section);
       }
     },
@@ -75,14 +73,15 @@ onMounted(() => {
       class="z-50 px-8 lg:px-14 2xl:px-0 w-full lg:w-full xl:max-w-[80%] 2xl:max-w-[60%]"
     >
       <div
-        class="flex justify-start items-center my-8 gap-3 relative after:hidden after:w-full after:h-[0.0625rem] after:bg-neutral-600 after:mt-2 md:after:block"
+        class="flex justify-start items-center mb-12 gap-3 relative after:hidden after:w-full after:h-[0.0625rem] after:bg-neutral-600 after:mt-2 md:after:block"
       >
         <h3
-          class="text-neutral-200 font-bold text-4xl mb-2 whitespace-wrap md:whitespace-nowrap"
+          class="text-neutral-200 font-bold text-4xl whitespace-wrap md:whitespace-nowrap"
         >
           Technologies I work with
         </h3>
       </div>
+
       <div
         class="grid gap-10 grid-cols-1 md:grid-cols-2 xl:grid-cols-8"
         ref="targetElAboutContent"
@@ -97,26 +96,32 @@ onMounted(() => {
             Namecheap, and Hostinger, providing smooth website performance and
             deployment.
           </p>
-          <ul
-            class="grid grid-cols-2 sm:grid-cols-3 gap-0 sm:gap-1 items-center text-neutral-200 leading-7"
-          >
-            <li
-              v-for="(skill, index) in faSkills"
-              :key="'fa-' + index"
-              class="flex items-center gap-2 leading-7 text-sm text-neutral-200"
+
+          <div class="flex flex-row gap-10">
+            <ul
+              v-for="(column, colIndex) in columns"
+              :key="colIndex"
+              class="flex-1 space-y-3"
             >
-              <font-awesome-icon :icon="skill.icon" />
-              <span>{{ skill.name }}</span>
-            </li>
-            <li
-              v-for="(skill, index) in customSkills"
-              :key="'custom-' + index"
-              class="flex items-center gap-2 leading-7 text-sm text-neutral-200"
-            >
-              <component :is="skill.icon" class="w-4 h-4 text-neutral-400" />
-              <span>{{ skill.name }}</span>
-            </li>
-          </ul>
+              <li
+                v-for="(skill, index) in column"
+                :key="'skill-' + (colIndex * 5 + index)"
+                class="flex items-center gap-2 text-sm text-neutral-200 leading-7"
+              >
+                <font-awesome-icon
+                  v-if="typeof skill.icon === 'string'"
+                  :icon="skill.icon"
+                  class="w-4 h-4 text-neutral-200 whitespace-nowrap sm:whitespace-normal"
+                />
+                <component
+                  :is="skill.icon"
+                  v-else
+                  class="w-4 h-4 text-neutral-200"
+                />
+                <span>{{ skill.name }}</span>
+              </li>
+            </ul>
+          </div>
         </div>
 
         <div
@@ -127,45 +132,47 @@ onMounted(() => {
             <div
               class="bg-neutral-700/50 backdrop-blur p-6 rounded-xl text-center border border-neutral-600"
             >
-              <div class="text-3xl font-bold text-accent-blue mb-2">
+              <div class="text-2xl font-bold text-accent-blue mb-2">
                 {{ counts.years }}+
               </div>
-              <div class="text-neutral-400 uppercase font-medium">
+              <div class="text-neutral-400 uppercase font-medium text-sm">
                 Years of Experience
               </div>
             </div>
             <div
               class="bg-neutral-700/50 backdrop-blur p-6 rounded-xl text-center border border-neutral-600"
             >
-              <div class="text-3xl font-bold text-accent-blue mb-2">
-                {{ counts.projects }}
+              <div class="text-2xl font-bold text-accent-blue mb-2">
+                {{ counts.projectsDelivered }}
               </div>
-              <div class="text-neutral-400 uppercase font-medium">
-                Live Projects
-              </div>
-            </div>
-          </div>
-          <div class="grid grid-cols-2 gap-6">
-            <div
-              class="bg-neutral-700/50 backdrop-blur p-6 rounded-xl text-center border border-neutral-600"
-            >
-              <div class="text-3xl font-bold text-accent-blue mb-2">
-                {{ counts.clients }}+
-              </div>
-              <div class="text-neutral-400 uppercase font-medium">
-                Awesome Clients
-              </div>
-            </div>
-            <div
-              class="bg-neutral-700/50 backdrop-blur p-6 rounded-xl text-center border border-neutral-600"
-            >
-              <div class="text-3xl font-bold text-accent-blue mb-2">Coffee</div>
-              <div class="text-neutral-400 uppercase font-medium">
-                3 Cups Daily
+              <div class="text-neutral-400 uppercase font-medium text-sm">
+                Projects Delivered
               </div>
             </div>
           </div>
 
+          <div class="grid grid-cols-2 gap-6">
+            <div
+              class="bg-neutral-700/50 backdrop-blur p-6 rounded-xl text-center border border-neutral-600"
+            >
+              <div class="text-2xl font-bold text-accent-blue mb-2">
+                {{ counts.projects }}
+              </div>
+              <div class="text-neutral-400 uppercase font-medium text-sm">
+                Live Projects
+              </div>
+            </div>
+            <div
+              class="bg-neutral-700/50 backdrop-blur p-6 rounded-xl text-center border border-neutral-600"
+            >
+              <div class="text-2xl font-bold text-accent-blue mb-2">
+                {{ counts.clients }}+
+              </div>
+              <div class="text-neutral-400 uppercase font-medium text-sm">
+                Trusted by Clients
+              </div>
+            </div>
+          </div>
           <div
             class="bg-neutral-700/50 backdrop-blur p-6 rounded-xl border border-neutral-600"
           >

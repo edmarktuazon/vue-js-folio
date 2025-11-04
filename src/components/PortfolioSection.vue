@@ -90,7 +90,7 @@ const portfolioSet = [
     image: mmImg,
     link: "https://majormilestonesupports.com.au/",
     description: `A corporate web project developed for <a href="${urlText.majorMilestones.url}" target="_blank" class="text-neutral-200 underline"><em>${urlText.majorMilestones.title}</em></a> Supports with Admin
-       CMS access, a trusted Australian provider offering disability support and community care services. The project focused on clear communication, inclusivity, 
+       CMS access, a web application trusted Australian provider offering disability support and community care services. The project focused on clear communication, inclusivity, 
        and easy navigation for users seeking essential care information.`,
     techStack: [
       { name: "Tailwind CSS", icon: markRaw(TailwindCSSIcon) },
@@ -118,7 +118,7 @@ const portfolioSet = [
     year: "08/2022",
     image: orImg,
     link: "https://olivia-rodrigo-site-cloned.vercel.app/",
-    description: `A practice personal project replicating the official <a href="${urlText.oliviaRodrigo.url}" target="_blank" class="text-neutral-200 underline"><em>${urlText.oliviaRodrigo.title}</em></a> Store website. Built to improve frontend skill specially Vue.js.`,
+    description: `A practice personal web application project replicating the official <a href="${urlText.oliviaRodrigo.url}" target="_blank" class="text-neutral-200 underline"><em>${urlText.oliviaRodrigo.title}</em></a> Store website. Built to improve frontend skill specially Vue.js.`,
     techStack: [
       { name: "Tailwind CSS", icon: markRaw(TailwindCSSIcon) },
       { name: "Vue.js", icon: ["fab", "vuejs"] },
@@ -146,10 +146,10 @@ const formatDescription = (description) => {
       class="px-8 lg:px-14 2xl:px-0 w-full z-50 lg:w-full xl:max-w-[80%] 2xl:max-w-[60%]"
     >
       <div
-        class="flex justify-start items-center my-8 gap-3 relative after:hidden after:w-full after:h-[0.0625rem] after:bg-neutral-600 after:mt-2 md:after:block"
+        class="flex justify-start items-center mb-12 gap-3 relative after:hidden after:w-full after:h-[0.0625rem] after:bg-neutral-600 after:mt-2 md:after:block"
       >
         <h3
-          class="text-neutral-200 font-bold text-4xl mb-2 whitespace-wrap md:whitespace-nowrap"
+          class="text-neutral-200 font-bold text-4xl whitespace-wrap md:whitespace-nowrap"
         >
           Projects that I've Built
         </h3>
@@ -159,7 +159,7 @@ const formatDescription = (description) => {
         <div
           v-for="(portfolio, index) in portfolioSet"
           :key="index"
-          class="mb-8"
+          class="mb-12"
         >
           <div class="grid gap-10 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
             <div class="col-span-1 xl:col-span-2 md:row-end-1 row-end-auto">
@@ -182,12 +182,12 @@ const formatDescription = (description) => {
                   <font-awesome-icon
                     v-if="Array.isArray(tech.icon)"
                     :icon="tech.icon"
-                    class="w-3 h-3"
+                    class="w-4 h-4 text-neutral-200"
                   />
                   <component
                     :is="tech.icon"
                     v-else
-                    class="w-3 h-3 text-cyan-400"
+                    class="w-4 h-4 text-accent-blue"
                   />
 
                   {{ tech.name }}
