@@ -177,7 +177,7 @@ onMounted(() => {
             class="bg-neutral-700/50 backdrop-blur p-6 rounded-xl border border-neutral-600"
           >
             <h4 class="font-bold text-accent-blue mb-4 flex items-center gap-2">
-              Why Choose Me
+              Your Goal. My Execution.
             </h4>
             <ul class="text-sm text-neutral-300 space-y-3 leading-relaxed">
               <li class="flex items-start gap-3">

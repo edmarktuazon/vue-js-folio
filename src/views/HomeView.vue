@@ -167,7 +167,7 @@ const closeModal = () => {
               v-if="isRevealed"
               :src="EdmarkImg"
               alt="Edmark Tuazon"
-              class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-100 cursor-not-allowed"
+              class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-100 cursor-pointer"
               @click="viewImg"
             />
           </div>
@@ -221,8 +221,8 @@ const closeModal = () => {
           </div>
 
           <p class="text-neutral-300 text-sm leading-relaxed">
-            Click all you want 😝 Squidward’s ghosted you,<br />
-            and he’s playing clarinet in the afterlife.
+            Maybe Squidward’s ghosted you, and he’s playing clarinet in the
+            afterlife ✨
           </p>
 
           <button
