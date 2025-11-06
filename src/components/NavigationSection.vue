@@ -96,8 +96,8 @@ const scrollToSection = (sectionId) => {
           </li>
           <li>
             <a
-              href="#portfolio"
-              @click.prevent="scrollToSection('portfolio')"
+              href="#portfolios"
+              @click.prevent="scrollToSection('portfolios')"
               class="text-white hover:text-accent-blue font-bold"
             >
               {{ portfolios }}

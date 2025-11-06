@@ -139,7 +139,6 @@ const formatDescription = (description) => {
 <template>
   <section
     id="portfolios"
-    ref="portfolioSection"
     class="bg-neutral-800 py-24 min-h-screen grid place-items-center"
   >
     <div
