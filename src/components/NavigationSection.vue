@@ -3,13 +3,12 @@
 import { reactive, ref, toRefs } from "vue";
 
 const navLinks = reactive({
-  home: "Home",
   about: "About",
   portfolios: "Portfolios",
   work: "Work Experience",
   contact: "Contact",
 });
-const { home, about, portfolios, work, contact } = toRefs(navLinks);
+const { about, portfolios, work, contact } = toRefs(navLinks);
 
 const isMenuVisible = ref(false);
 
@@ -37,15 +36,6 @@ const scrollToSection = (sectionId) => {
 
         <!-- Desktop Menu -->
         <ul class="hidden md:flex gap-8 items-center">
-          <li>
-            <a
-              href="#home"
-              @click.prevent="scrollToSection('home')"
-              class="text-neutral-400"
-            >
-              {{ home }}
-            </a>
-          </li>
           <li>
             <a
               href="#about"
@@ -95,15 +85,6 @@ const scrollToSection = (sectionId) => {
           v-if="isMenuVisible"
           class="md:hidden fixed inset-0 bg-neutral-900 flex flex-col items-center justify-center gap-12 text-xl"
         >
-          <li>
-            <a
-              href="#home"
-              @click.prevent="scrollToSection('home')"
-              class="text-white hover:text-accent-blue font-bold"
-            >
-              {{ home }}
-            </a>
-          </li>
           <li>
             <a
               href="#about"
