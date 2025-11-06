@@ -1,8 +1,15 @@
 <script setup>
 import { useMotionScrollAnim } from "@/composables/useMotion.js";
+import MarkLabLogo from "../assets/images/company-logo/marklab.png";
+import DevEdLogo from "../assets/images/company-logo/deved.png";
+import DevelopedByEdLogo from "../assets/images/company-logo/developedbyed.png";
 import EvokePlcLogo from "../assets/images/company-logo/evoke.svg";
 import TeamholixLogo from "../assets/images/company-logo/teamholix.jpg";
 import FiverLogo from "../assets/images/company-logo/fiverr.png";
+
+console.log(DevEdLogo);
+console.log(MarkLabLogo);
+console.log(DevelopedByEdLogo);
 
 const { targetElWorkExperience } = useMotionScrollAnim();
 
@@ -11,10 +18,12 @@ const workExperiences = [
     period: "Present",
     role: "Frontend Web Developer - Freelance/Part-Time",
     company: "",
-    logo: "",
-    description: `Builds responsive, dynamic website, and web system for freelance 
-    clients using HTML, CSS, Tailwind, JavaScript, with occasional Vue.js 
-    PHP and MySQL integration for dynamic features and data management.`,
+    logo: DevelopedByEdLogo,
+    description: `Offers freelance website development services, creating responsive 
+    and dynamic websites and web systems for various clients. Uses HTML, CSS, 
+    Tailwind, and JavaScript, with occasional Vue.js, PHP, and MySQL integration 
+    for added functionality and data management. Also accepts commissioned web projects 
+    tailored to client goals and design requirements.`,
   },
   {
     period: "10/23/2023 - Present",
@@ -59,67 +68,41 @@ const workExperiences = [
       class="px-8 mx-auto relative lg:px-14 2xl:px-0 w-full z-50 lg:w-full xl:max-w-[80%] 2xl:max-w-[60%]"
     >
       <div
-        class="flex justify-start items-center mb-12 gap-3 relative after:hidden after:w-full after:h-[0.0625rem] after:bg-neutral-600 after:mt-2 md:after:block"
+        class="flex justify-start items-center mb-12 gap-3 relative after:hidden md:after:block after:absolute after:bottom-0 after:left-0 after:w-full after:h-px after:bg-neutral-600"
       >
-        <h3
-          class="text-neutral-200 font-bold text-4xl whitespace-wrap md:whitespace-nowrap"
-        >
-          Work Experience
-        </h3>
+        <h3 class="text-neutral-200 font-bold text-4xl">Work Experience</h3>
       </div>
 
-      <div class="overflow-x-auto z-50" ref="targetElWorkExperience">
-        <table class="w-full text-left border-separate border-spacing-y-8">
-          <tbody>
-            <tr
-              v-for="(work, index) in workExperiences"
-              :key="index"
-              class="align-top transition-all duration-200 hover:bg-neutral-800/50 rounded-lg"
-            >
-              <td class="w-36 sm:w-48 align-top">
-                <time
-                  class="text-sm font-medium text-accent-blue uppercase tracking-wider block"
-                >
-                  {{ work.period }}
-                </time>
-              </td>
+      <div class="space-y-12" ref="targetElWorkExperience">
+        <div
+          v-for="(work, index) in workExperiences"
+          :key="index"
+          class="flex flex-col md:flex-row gap-2 md:gap-6 rounded-lg hover:bg-neutral-800/50 transition"
+        >
+          <div
+            class="hidden md:flex flex-col w-36 text-sm font-medium text-accent-blue uppercase tracking-wider"
+          >
+            {{ work.period }}
+          </div>
+          <div class="hidden md:block w-[2px] bg-neutral-700 mr-6"></div>
 
-              <td class="border-l-2 border-neutral-700 pl-6 sm:pl-8">
-                <div
-                  class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3 mb-2"
-                >
-                  <div>
-                    <h4
-                      class="text-xl font-bold text-neutral-400 leading-tight"
-                    >
-                      {{ work.role }}
-                    </h4>
-                    <p class="text-neutral-300 font-medium mt-2">
-                      {{ work.company }}
-                    </p>
-                  </div>
-                  <div v-if="work.logo" class="hidden md:block">
-                    <img
-                      :src="work.logo"
-                      :alt="`${work.company} logo`"
-                      class="h-16 w-24 object-contain opacity-70 transition-opacity hover:opacity-100"
-                    />
-                  </div>
-                </div>
-                <p class="mt-3 text-neutral-200 leading-relaxed max-w-3xl">
-                  {{ work.description }}
-                </p>
-                <div v-if="work.logo" class="hidden mt-4 justify-end">
-                  <img
-                    :src="work.logo"
-                    :alt="`${work.company} logo`"
-                    class="h-8 w-auto object-contain opacity-70"
-                  />
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+          <div v-if="work.logo" class="flex-shrink-0 mb-2 md:mb-0">
+            <img
+              :src="work.logo"
+              :alt="`${work.company} logo`"
+              class="h-20 w-[5.25rem] object-fill opacity-70 transition-opacity hover:opacity-100"
+            />
+          </div>
+          <div class="flex-1">
+            <h4 class="text-xl font-bold text-neutral-400 leading-tight">
+              {{ work.role }}
+            </h4>
+            <p class="text-neutral-300 font-medium mt-1">{{ work.company }}</p>
+            <p class="mt-3 text-neutral-200 leading-relaxed">
+              {{ work.description }}
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
