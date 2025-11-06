@@ -33,7 +33,7 @@ const portfolioSet = [
     year: "10/2025",
     image: home4pawsImg,
     link: "https://hope4paws.infinityfreeapp.com/",
-    description: `A freelance web project developed for 
+    description: `A freelance web project for 
     <a href="${urlText.home4Paws.url}" target="_blank" class="text-neutral-200 underline"><em>${urlText.home4Paws.title}</em></a>,
     a pet adoption platform connecting animal shelters with potential adopters. The application features an Admin CMS for content management, 
      and allowing users to browse adoptable pets and submit adoption applications online seamlessly.`,
@@ -94,7 +94,7 @@ const portfolioSet = [
     year: "03/2025",
     image: mmImg,
     link: "https://majormilestonesupports.com.au/",
-    description: `A freelance web project developed for 
+    description: `A freelance web project for 
     <a href="${urlText.majorMilestones.url}" target="_blank" class="text-neutral-200 underline"><em>${urlText.majorMilestones.title}</em></a> 
     featuring an Admin CMS-powered web application designed to connect users with the support services they need. The platform allows easy 
     browsing of available programs, seamless interaction with the team, and efficient submission of requests, all with an intuitive and accessible interface.`,
@@ -110,7 +110,7 @@ const portfolioSet = [
     title: "Satrap Power Corporation (SPC)",
     year: "10/2025",
     image: spcImg,
-    description: `A freelance web project for Satrap Power Corporation, built using the latest Vue.js to deliver a modern, responsive, and maintainable web application.`,
+    description: `A freelance corporate web project for Satrap Power Corporation, built using the latest Vue.js to deliver a modern, responsive, and maintainable web application.`,
     techStack: [
       { name: "Tailwind CSS", icon: markRaw(TailwindCSSIcon) },
       { name: "Vue.js", icon: ["fab", "vuejs"] },
