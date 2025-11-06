@@ -65,18 +65,16 @@ const handleMouseLeave = () => {
         ref="targetElHeroContent"
       >
         <div class="space-y-4 col-span-1 md:col-span-5">
-          <h4 class="text-neutral-200 tracking-wide leading-none text-xl">
-            Hey there, I'm
-          </h4>
+          <h4 class="text-neutral-200 leading-none text-xl">Hey there, I'm</h4>
           <h1
-            class="font-bold text-neutral-400 my-4 leading-none text-[clamp(4.625rem,_4.2802rem_+_1.7241vw,_5.25rem)]"
+            class="font-bold text-neutral-400 my-4 ml-0 md:-ml-1 leading-none text-[clamp(4.625rem,_4.2802rem_+_1.7241vw,_5.25rem)]"
           >
             Edmark Tuazon
           </h1>
-          <h3 class="text-neutral-200 tracking-wide text-lg">
+          <h3 class="text-neutral-200 text-lg">
             A Frontend Web Developer with over 2 years of commercial experience,
-            specializing in building responsive interfaces and dynamic user
-            experiences for the modern web.
+            specializing in and focusing on developing user-friendly and dynamic
+            web interfaces.
           </h3>
           <div class="pt-8">
             <h3 class="text-neutral-200 mb-3">Let's connect!</h3>

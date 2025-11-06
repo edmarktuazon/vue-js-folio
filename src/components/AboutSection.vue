@@ -177,7 +177,7 @@ onMounted(() => {
             class="bg-neutral-700/50 backdrop-blur p-6 rounded-xl border border-neutral-600"
           >
             <h4 class="font-bold text-accent-blue mb-4 flex items-center gap-2">
-              Your Goal. My Execution.
+              Why work with Me?
             </h4>
             <ul class="text-sm text-neutral-300 space-y-3 leading-relaxed">
               <li class="flex items-start gap-3">
@@ -188,7 +188,7 @@ onMounted(() => {
               </li>
               <li class="flex items-start gap-3">
                 <span
-                  ><strong>Smooth UX Development</strong> – I build websites
+                  ><strong>Interactive & Responsive</strong> – I build websites
                   that provide seamless user interactions while maintaining
                   reliable performance.</span
                 >
@@ -196,8 +196,8 @@ onMounted(() => {
               <li class="flex items-start gap-3">
                 <span
                   ><strong>Team & Client-Oriented</strong> – I adapt to working
-                  with clients alone or alongside designers to ensure projects
-                  meet expectations.</span
+                  with clients alone or alongside designers or backend
+                  developers to ensure projects meet expectations.</span
                 >
               </li>
             </ul>

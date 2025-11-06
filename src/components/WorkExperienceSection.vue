@@ -20,9 +20,9 @@ const workExperiences = [
     role: "Frontend Web Developer",
     company: "Freelance/Part-Time/Commission",
     logo: DevelopedByEdLogo,
-    description: `I’m offering freelance/part-time, and commission-based website development services, 
+    description: `I’m offering freelance/part-time/commission-based website development services, 
     creating responsive and dynamic websites and web systems for various clients. I use HTML, 
-    CSS, Tailwind, and JavaScript, with occasional Vue.js, PHP, and MySQL integration for 
+    CSS/SASS, Tailwind CSS, and JavaScript, with occasional Vue.js, PHP, and MySQL integration for 
     enhanced interactivity and data handling when required by the client or based on project requirements.`,
   },
   {
@@ -30,9 +30,9 @@ const workExperiences = [
     role: "HTML Email Campaign Developer",
     company: "WHG Customer Services Philippines Inc. | evoke plc  - Full-Time",
     logo: EvokePlcLogo,
-    description: `Customize HTML/CSS email templates for targeted campaigns across the US and international 
+    description: `Customize HTML and CSS email templates for targeted campaigns across the US and international 
     markets, using IBM Watson Campaign (Silverpop) and Acoustic for implementation and testing. 
-    Additionally, customize and deliver site-wide pop-up messages using HTML/CSS via the in-house Online Message Group (OMG) system.`,
+    Additionally, customize and deliver site-wide pop-up messages using HTML and CSS via the in-house Online Message Group (OMG) system.`,
   },
   {
     period: "February 2022 - March 2025",
