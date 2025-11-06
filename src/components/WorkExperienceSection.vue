@@ -81,30 +81,36 @@ const workExperiences = [
         <div
           v-for="(work, index) in workExperiences"
           :key="index"
-          class="flex flex-col md:flex-row gap-2 md:gap-6 rounded-lg hover:bg-neutral-800/50 transition"
+          class="flex flex-col md:flex-row gap-4 md:gap-6 rounded-lg hover:bg-neutral-800/50 transition"
         >
           <div
-            class="hidden md:flex flex-col w-36 text-sm font-medium text-accent-blue uppercase tracking-wider"
+            class="hidden md:flex flex-col w-48 text-sm font-medium text-accent-blue uppercase tracking-wider"
           >
             {{ work.period }}
           </div>
-          <div class="hidden md:block w-[2px] bg-neutral-700 mr-6"></div>
-
-          <div v-if="work.logo" class="flex-shrink-0 mb-2 md:mb-0">
-            <img
-              :src="work.logo"
-              :alt="`${work.company} logo`"
-              class="h-20 w-[5.25rem] object-fill opacity-70 transition-opacity hover:opacity-100"
-            />
-          </div>
-          <div class="flex-1">
-            <h4 class="text-xl font-bold text-neutral-400 leading-tight">
-              {{ work.role }}
-            </h4>
-            <p class="text-neutral-300 font-medium mt-1">{{ work.company }}</p>
-            <p class="mt-3 text-neutral-200 leading-relaxed">
-              {{ work.description }}
-            </p>
+          <div class="hidden md:block w-[0.125rem] bg-neutral-700"></div>
+          <div class="flex flex-col sm:flex-row items-start gap-5 w-full">
+            <div v-if="work.logo" class="flex-shrink-0">
+              <img
+                :src="work.logo"
+                :alt="`${work.company} logo`"
+                class="h-20 w-[5.25rem] object-fill opacity-70 transition-opacity hover:opacity-100"
+              />
+              <div
+                class="block md:hidden mt-4 text-xs font-medium text-accent-blue uppercase tracking-wider"
+              >
+                {{ work.period }}
+              </div>
+            </div>
+            <div class="flex-1">
+              <h4 class="text-xl font-bold text-neutral-400 leading-tight">
+                {{ work.role }}
+              </h4>
+              <p class="text-neutral-300 font-medium">{{ work.company }}</p>
+              <p class="mt-3 text-neutral-200 leading-relaxed">
+                {{ work.description }}
+              </p>
+            </div>
           </div>
         </div>
       </div>
