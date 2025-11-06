@@ -68,9 +68,13 @@ const workExperiences = [
       class="px-8 mx-auto relative lg:px-14 2xl:px-0 w-full z-50 lg:w-full xl:max-w-[80%] 2xl:max-w-[60%]"
     >
       <div
-        class="flex justify-start items-center mb-12 gap-3 relative after:hidden md:after:block after:absolute after:bottom-0 after:left-0 after:w-full after:h-px after:bg-neutral-600"
+        class="flex justify-start items-center mb-16 gap-3 relative after:hidden after:w-full after:h-[0.0625rem] after:bg-neutral-600 after:mt-2 md:after:block"
       >
-        <h3 class="text-neutral-200 font-bold text-4xl">Work Experience</h3>
+        <h3
+          class="text-neutral-200 font-bold text-4xl whitespace-wrap md:whitespace-nowrap"
+        >
+          Work Experience
+        </h3>
       </div>
 
       <div class="space-y-12" ref="targetElWorkExperience">
