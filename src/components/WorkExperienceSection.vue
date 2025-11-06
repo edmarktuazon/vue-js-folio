@@ -26,7 +26,7 @@ const workExperiences = [
     tailored to client goals and design requirements.`,
   },
   {
-    period: "10/23/2023 - Present",
+    period: "October 2023 - Present",
     role: "HTML Email Campaign Developer - Full-Time",
     company: "WHG Customer Services Philippines Inc. | evoke plc",
     logo: EvokePlcLogo,
@@ -36,7 +36,7 @@ const workExperiences = [
     deliver site-wide pop-up messages using HTML/CSS via OMG system.`,
   },
   {
-    period: "02/2022 - 03/2025",
+    period: "February 2022 - March 2025",
     role: "Frontend Web Developer - Part-Time",
     company: "Teamholix Communication Design Inc.",
     logo: TeamholixLogo,
@@ -48,7 +48,7 @@ const workExperiences = [
     and overall quality.`,
   },
   {
-    period: "02/2022 - 03/2025",
+    period: "February 2022 - March 2023",
     role: "Frontend Web Developer - Freelance",
     company: "Fiverr & Outside",
     logo: FiverLogo,
@@ -77,18 +77,18 @@ const workExperiences = [
         </h3>
       </div>
 
-      <div class="space-y-12" ref="targetElWorkExperience">
+      <div ref="targetElWorkExperience">
         <div
           v-for="(work, index) in workExperiences"
           :key="index"
-          class="flex flex-col md:flex-row gap-4 md:gap-6 rounded-lg hover:bg-neutral-800/50 transition"
+          class="flex flex-col md:flex-row rounded-lg hover:bg-neutral-800/50 transition"
         >
-          <div
+          <!-- <div
             class="hidden md:flex flex-col w-48 text-sm font-medium text-accent-blue uppercase tracking-wider"
           >
             {{ work.period }}
-          </div>
-          <div class="hidden md:block w-[0.125rem] bg-neutral-700"></div>
+          </div> -->
+          <!-- <div class="hidden md:block w-[0.125rem] bg-neutral-700"></div> -->
           <div class="flex flex-col sm:flex-row items-start gap-5 w-full">
             <div v-if="work.logo" class="flex-shrink-0">
               <img
@@ -103,13 +103,24 @@ const workExperiences = [
               </div>
             </div>
             <div class="flex-1">
-              <h4 class="text-xl font-bold text-neutral-400 leading-tight">
-                {{ work.role }}
-              </h4>
+              <div class="flex items-center gap-4">
+                <h4 class="text-xl font-bold text-neutral-400 leading-tight">
+                  {{ work.role }}
+                </h4>
+
+                <div
+                  class="hidden md:flex flex-col w-56 text-sm font-medium text-accent-blue uppercase tracking-wider"
+                >
+                  {{ work.period }}
+                </div>
+              </div>
               <p class="text-neutral-300 font-medium">{{ work.company }}</p>
               <p class="mt-3 text-neutral-200 leading-relaxed">
                 {{ work.description }}
               </p>
+              <div class="my-10">
+                <span class="w-full h-[0.0625rem] bg-neutral-900 block"></span>
+              </div>
             </div>
           </div>
         </div>
