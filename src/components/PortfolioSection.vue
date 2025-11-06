@@ -10,7 +10,7 @@ import TailwindCSSIcon from "../components/icons/IconTailwindCSS.vue";
 import { useMotionScrollAnim } from "@/composables/useMotion.js";
 import { reactive, markRaw } from "vue";
 
-const { targetElPortfolio } = useMotionScrollAnim();
+const { targetElPortfolios } = useMotionScrollAnim();
 
 const urlText = reactive({
   home4Paws: {
@@ -33,7 +33,10 @@ const portfolioSet = [
     year: "10/2025",
     image: home4pawsImg,
     link: "https://hope4paws.infinityfreeapp.com/",
-    description: `A freelance web project developed for <a href="${urlText.home4Paws.url}" target="_blank" class="text-neutral-200 underline"><em>${urlText.home4Paws.title}</em></a> with Admin CMS access, a pet adoption web application designed to connect animal shelters with potential adopters, allows users to browse adoptable pets, learn their stories, and apply for adoption online.`,
+    description: `A freelance web project developed for 
+    <a href="${urlText.home4Paws.url}" target="_blank" class="text-neutral-200 underline"><em>${urlText.home4Paws.title}</em></a>,
+    a pet adoption platform connecting animal shelters with potential adopters. The application features an Admin CMS for content management, 
+     and allowing users to browse adoptable pets and submit adoption applications online seamlessly.`,
     techStack: [
       { name: "Tailwind CSS", icon: markRaw(TailwindCSSIcon) },
       { name: "JavaScript", icon: ["fab", "js"] },
@@ -47,8 +50,10 @@ const portfolioSet = [
     year: "01/2023",
     image: steelasiaImg,
     link: "https://www.steelasia.com/",
-    description:
-      "A corporate web project developed for SteelAsia Manufacturing Corporation, the leading steel company in the Philippines. The website highlights the company’s operations, sustainability efforts, and nationwide presence, providing an informative and professional online platform for clients and partners.",
+    description: `A corporate web project for SteelAsia Manufacturing Corporation, highlighting the 
+    company’s operations, sustainability initiatives, and nationwide presence. 
+    The website provides users with an informative platform to explore products, learn about services, 
+    and stay updated on company news and initiatives.`,
     techStack: [
       { name: "Tailwind CSS", icon: markRaw(TailwindCSSIcon) },
       { name: "JavaScript", icon: ["fab", "js"] },
@@ -60,9 +65,9 @@ const portfolioSet = [
     title: "Bayfield Equipment Corp.",
     year: "10/2022",
     image: bayfieldImg,
-    link: "https://www.bayfieldequipment.com/",
-    description:
-      "A corporate web project developed for Bayfield Equipment Corporation (BEC), the national dealer of Wirtgen Group products in the Philippines. The website showcases BEC’s product lineup, brand partnerships, and nationwide reach, highlighting its role in delivering premium construction solutions.",
+    description: `A corporate web project for Bayfield Equipment Corporation (BEC), the national dealer of Wirtgen Group 
+    products in the Philippines. The website allows users to explore BEC’s product lineup, learn about brand partnerships, 
+    and access information on services and nationwide locations, providing an informative platform for clients and partners.`,
     techStack: [
       { name: "Tailwind CSS", icon: markRaw(TailwindCSSIcon) },
       { name: "JavaScript", icon: ["fab", "js"] },
@@ -74,9 +79,9 @@ const portfolioSet = [
     title: "She Means Business",
     year: "07/2022",
     image: smbImg,
-    link: "https://shemeansbusiness.net.au/",
-    description:
-      "A corporate web project developed for She Means Business, an Australian full-service marketing agency passionate about driving growth and results for its clients. The site emphasizes brand storytelling, service clarity, and a results-driven approach.",
+    description: `A corporate web project for She Means Business, an Australian marketing agency. The website allows 
+    users to explore services, learn about the team, view case studies, and understand the agency’s results-driven 
+    approach through clear and engaging content.`,
     techStack: [
       { name: "Tailwind CSS", icon: markRaw(TailwindCSSIcon) },
       { name: "JavaScript", icon: ["fab", "js"] },
@@ -89,9 +94,10 @@ const portfolioSet = [
     year: "03/2025",
     image: mmImg,
     link: "https://majormilestonesupports.com.au/",
-    description: `A corporate web project developed for <a href="${urlText.majorMilestones.url}" target="_blank" class="text-neutral-200 underline"><em>${urlText.majorMilestones.title}</em></a> Supports with Admin
-       CMS access, a web application trusted Australian provider offering disability support and community care services. The project focused on clear communication, inclusivity, 
-       and easy navigation for users seeking essential care information.`,
+    description: `A freelance web project developed for 
+    <a href="${urlText.majorMilestones.url}" target="_blank" class="text-neutral-200 underline"><em>${urlText.majorMilestones.title}</em></a> 
+    featuring an Admin CMS-powered web application designed to connect users with the support services they need. The platform allows easy 
+    browsing of available programs, seamless interaction with the team, and efficient submission of requests, all with an intuitive and accessible interface.`,
     techStack: [
       { name: "Tailwind CSS", icon: markRaw(TailwindCSSIcon) },
       { name: "JavaScript", icon: ["fab", "js"] },
@@ -104,9 +110,7 @@ const portfolioSet = [
     title: "Satrap Power Corporation (SPC)",
     year: "10/2025",
     image: spcImg,
-    link: "https://satrap-power-corporation.vercel.app/",
-    description:
-      "A personal web project developed for Satrap Power Corporation using latest Vue.js, a renewable energy company under the LCS Group. The site highlights SPC’s mission, sustainable energy projects, and commitment to empowering local communities.",
+    description: `A freelance web project for Satrap Power Corporation, built using the latest Vue.js to deliver a modern, responsive, and maintainable web application.`,
     techStack: [
       { name: "Tailwind CSS", icon: markRaw(TailwindCSSIcon) },
       { name: "Vue.js", icon: ["fab", "vuejs"] },
@@ -138,7 +142,7 @@ const formatDescription = (description) => {
 
 <template>
   <section
-    id="portfolio"
+    id="portfolios"
     ref="portfolioSection"
     class="bg-neutral-800 py-24 min-h-screen grid place-items-center"
   >
@@ -155,7 +159,7 @@ const formatDescription = (description) => {
         </h3>
       </div>
 
-      <div ref="targetElPortfolio">
+      <div ref="targetElPortfolios">
         <div
           v-for="(portfolio, index) in portfolioSet"
           :key="index"

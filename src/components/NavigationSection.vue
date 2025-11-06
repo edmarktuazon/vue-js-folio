@@ -5,10 +5,11 @@ import { reactive, ref, toRefs } from "vue";
 const navLinks = reactive({
   home: "Home",
   about: "About",
-  portfolio: "Portfolios",
+  portfolios: "Portfolios",
+  work: "Work Experience",
   contact: "Contact",
 });
-const { home, about, portfolio, contact } = toRefs(navLinks);
+const { home, about, portfolios, work, contact } = toRefs(navLinks);
 
 const isMenuVisible = ref(false);
 
@@ -56,11 +57,20 @@ const scrollToSection = (sectionId) => {
           </li>
           <li>
             <a
-              href="#portfolio"
-              @click.prevent="scrollToSection('portfolio')"
+              href="#portfolios"
+              @click.prevent="scrollToSection('portfolios')"
               class="text-neutral-400"
             >
-              {{ portfolio }}
+              {{ portfolios }}
+            </a>
+          </li>
+          <li>
+            <a
+              href="#work"
+              @click.prevent="scrollToSection('work')"
+              class="text-neutral-400"
+            >
+              {{ work }}
             </a>
           </li>
           <li>
@@ -74,15 +84,12 @@ const scrollToSection = (sectionId) => {
           </li>
         </ul>
 
-        <!-- Mobile Hamburger -->
         <div class="md:hidden cursor-pointer z-50" @click="toggleMenu">
           <span class="block bg-neutral-200 h-[2px] w-5 rounded mb-1"></span>
           <span class="block bg-neutral-200 h-[2px] w-5 rounded mb-1"></span>
           <span class="block bg-neutral-200 h-[2px] w-5 rounded"></span>
         </div>
       </div>
-
-      <!-- Mobile Menu -->
       <transition name="fade">
         <ul
           v-if="isMenuVisible"
@@ -112,7 +119,16 @@ const scrollToSection = (sectionId) => {
               @click.prevent="scrollToSection('portfolio')"
               class="text-white hover:text-accent-blue font-bold"
             >
-              {{ portfolio }}
+              {{ portfolios }}
+            </a>
+          </li>
+          <li>
+            <a
+              href="#work"
+              @click.prevent="scrollToSection('work')"
+              class="text-white hover:text-accent-blue font-bold"
+            >
+              {{ work }}
             </a>
           </li>
           <li>

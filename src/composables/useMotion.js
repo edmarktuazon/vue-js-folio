@@ -4,7 +4,8 @@ import { ref, onMounted, onUnmounted } from "vue";
 export function useMotionScrollAnim() {
   const targetElHeroContent = ref();
   const targetElAboutContent = ref();
-  const targetElPortfolio = ref();
+  const targetElPortfolios = ref();
+  const targetElWorkExperience = ref();
   let lastScrollY = ref(0);
   let isScrollingDown = ref(false);
 
@@ -44,7 +45,17 @@ export function useMotionScrollAnim() {
     },
   });
 
-  useMotion(targetElPortfolio, {
+  useMotion(targetElPortfolios, {
+    initial: { opacity: 0, y: 40 },
+    visibleOnce: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: { duration: 900 },
+      apply: () => isScrollingDown.value,
+    },
+  });
+  useMotion(targetElWorkExperience, {
     initial: { opacity: 0, y: 40 },
     visibleOnce: {
       opacity: 1,
@@ -58,6 +69,7 @@ export function useMotionScrollAnim() {
   return {
     targetElHeroContent,
     targetElAboutContent,
-    targetElPortfolio,
+    targetElPortfolios,
+    targetElWorkExperience,
   };
 }
