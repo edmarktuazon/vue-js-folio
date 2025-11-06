@@ -30,12 +30,12 @@ const urlText = reactive({
 const portfolioSet = [
   {
     title: "Home4Paws",
-    year: "10/2025",
+    year: "October 2025",
     image: home4pawsImg,
     link: "https://hope4paws.infinityfreeapp.com/",
-    description: `A freelance web project for 
+    description: `A freelance web project for
     <a href="${urlText.home4Paws.url}" target="_blank" class="text-neutral-200 underline"><em>${urlText.home4Paws.title}</em></a>,
-    a pet adoption platform connecting animal shelters with potential adopters. The application features an Admin CMS for content management, 
+    a pet adoption platform connecting animal shelters with potential adopters. The application features an Admin CMS for content management,
      and allowing users to browse adoptable pets and submit adoption applications online seamlessly.`,
     techStack: [
       { name: "Tailwind CSS", icon: markRaw(TailwindCSSIcon) },
@@ -46,57 +46,24 @@ const portfolioSet = [
     type: "Freelance Project",
   },
   {
-    title: "Steel Asia",
-    year: "01/2023",
-    image: steelasiaImg,
-    link: "https://www.steelasia.com/",
-    description: `A corporate web project for SteelAsia Manufacturing Corporation, highlighting the 
-    company’s operations, sustainability initiatives, and nationwide presence. 
-    The website provides users with an informative platform to explore products, learn about services, 
-    and stay updated on company news and initiatives.`,
+    title: "Satrap Power Corporation (SPC)",
+    year: "October 2025",
+    image: spcImg,
+    description: `A freelance corporate web project for Satrap Power Corporation, built using the latest Vue.js to deliver a modern, responsive, and maintainable web application.`,
     techStack: [
       { name: "Tailwind CSS", icon: markRaw(TailwindCSSIcon) },
-      { name: "JavaScript", icon: ["fab", "js"] },
-      { name: "PHP", icon: ["fab", "php"] },
+      { name: "Vue.js", icon: ["fab", "vuejs"] },
     ],
-    type: "Corporate Project",
-  },
-  {
-    title: "Bayfield Equipment Corp.",
-    year: "10/2022",
-    image: bayfieldImg,
-    description: `A corporate web project for Bayfield Equipment Corporation (BEC), the national dealer of Wirtgen Group 
-    products in the Philippines. The website allows users to explore BEC’s product lineup, learn about brand partnerships, 
-    and access information on services and nationwide locations, providing an informative platform for clients and partners.`,
-    techStack: [
-      { name: "Tailwind CSS", icon: markRaw(TailwindCSSIcon) },
-      { name: "JavaScript", icon: ["fab", "js"] },
-      { name: "PHP", icon: ["fab", "php"] },
-    ],
-    type: "Corporate Project",
-  },
-  {
-    title: "She Means Business",
-    year: "07/2022",
-    image: smbImg,
-    description: `A corporate web project for She Means Business, an Australian marketing agency. The website allows 
-    users to explore services, learn about the team, view case studies, and understand the agency’s results-driven 
-    approach through clear and engaging content.`,
-    techStack: [
-      { name: "Tailwind CSS", icon: markRaw(TailwindCSSIcon) },
-      { name: "JavaScript", icon: ["fab", "js"] },
-      { name: "PHP", icon: ["fab", "php"] },
-    ],
-    type: "Corporate Project",
+    type: "Freelance Corporate Project",
   },
   {
     title: "Major Milestones",
-    year: "03/2025",
+    year: "March 2025",
     image: mmImg,
     link: "https://majormilestonesupports.com.au/",
-    description: `A freelance web project for 
-    <a href="${urlText.majorMilestones.url}" target="_blank" class="text-neutral-200 underline"><em>${urlText.majorMilestones.title}</em></a> 
-    featuring an Admin CMS-powered web application designed to connect users with the support services they need. The platform allows easy 
+    description: `A freelance web project for
+    <a href="${urlText.majorMilestones.url}" target="_blank" class="text-neutral-200 underline"><em>${urlText.majorMilestones.title}</em></a>
+    featuring an Admin CMS-powered web application designed to connect users with the support services they need. The platform allows easy
     browsing of available programs, seamless interaction with the team, and efficient submission of requests, all with an intuitive and accessible interface.`,
     techStack: [
       { name: "Tailwind CSS", icon: markRaw(TailwindCSSIcon) },
@@ -107,19 +74,38 @@ const portfolioSet = [
     type: "Freelance Project",
   },
   {
-    title: "Satrap Power Corporation (SPC)",
-    year: "10/2025",
-    image: spcImg,
-    description: `A freelance corporate web project for Satrap Power Corporation, built using the latest Vue.js to deliver a modern, responsive, and maintainable web application.`,
+    title: "Steel Asia",
+    year: "January 2023",
+    image: steelasiaImg,
+    link: "https://www.steelasia.com/",
+    description: `A corporate web project for SteelAsia Manufacturing Corporation, highlighting the
+    company’s operations, sustainability initiatives, and nationwide presence.
+    The website provides users with an informative platform to explore products, learn about services,
+    and stay updated on company news and initiatives.`,
     techStack: [
       { name: "Tailwind CSS", icon: markRaw(TailwindCSSIcon) },
-      { name: "Vue.js", icon: ["fab", "vuejs"] },
+      { name: "JavaScript", icon: ["fab", "js"] },
+      { name: "PHP", icon: ["fab", "php"] },
     ],
-    type: "Freelance Corporate Project",
+    type: "Corporate Project",
+  },
+  {
+    title: "Bayfield Equipment Corp.",
+    year: "October 2022",
+    image: bayfieldImg,
+    description: `A corporate web project for Bayfield Equipment Corporation (BEC), the national dealer of Wirtgen Group
+    products in the Philippines. The website allows users to explore BEC’s product lineup, learn about brand partnerships,
+    and access information on services and nationwide locations, providing an informative platform for clients and partners.`,
+    techStack: [
+      { name: "Tailwind CSS", icon: markRaw(TailwindCSSIcon) },
+      { name: "JavaScript", icon: ["fab", "js"] },
+      { name: "PHP", icon: ["fab", "php"] },
+    ],
+    type: "Corporate Project",
   },
   {
     title: "Olivia Rodrigo Site",
-    year: "08/2022",
+    year: "August 2022",
     image: orImg,
     link: "https://olivia-rodrigo-site-cloned.vercel.app/",
     description: `A practice personal web application project replicating the official <a href="${urlText.oliviaRodrigo.url}" target="_blank" class="text-neutral-200 underline"><em>${urlText.oliviaRodrigo.title}</em></a> Store website. Built to improve frontend skill specially Vue.js.`,
@@ -129,11 +115,21 @@ const portfolioSet = [
     ],
     type: "Personal Project",
   },
-].sort((currentItem, nextItem) => {
-  const [currentMonth, currentYear] = currentItem.year.split("/").map(Number);
-  const [nextMonth, nextYear] = nextItem.year.split("/").map(Number);
-  return nextYear - currentYear || nextMonth - currentMonth;
-});
+  {
+    title: "She Means Business",
+    year: "July 2022",
+    image: smbImg,
+    description: `A corporate web project for She Means Business, an Australian marketing agency. The website allows
+    users to explore services, learn about the team, view case studies, and understand the agency’s results-driven
+    approach through clear and engaging content.`,
+    techStack: [
+      { name: "Tailwind CSS", icon: markRaw(TailwindCSSIcon) },
+      { name: "JavaScript", icon: ["fab", "js"] },
+      { name: "PHP", icon: ["fab", "php"] },
+    ],
+    type: "Corporate Project",
+  },
+];
 
 const formatDescription = (description) => {
   return description;
@@ -167,7 +163,7 @@ const formatDescription = (description) => {
         >
           <div class="grid gap-10 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
             <div class="col-span-1 xl:col-span-2 md:row-end-1 row-end-auto">
-              <span class="text-accent-blue text-sm"
+              <span class="text-accent-blue uppercase text-xs tracking-wider"
                 >{{ portfolio.type }} - {{ portfolio.year }}</span
               >
               <h4 class="text-4xl font-bold mt-2 text-neutral-400">

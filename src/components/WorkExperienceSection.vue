@@ -5,6 +5,7 @@ import DevEdLogo from "../assets/images/company-logo/deved.png";
 import DevelopedByEdLogo from "../assets/images/company-logo/developedbyed.png";
 import EvokePlcLogo from "../assets/images/company-logo/evoke.svg";
 import TeamholixLogo from "../assets/images/company-logo/teamholix.jpg";
+import QuoteLogo from "../assets/images/company-logo/quote.jfif";
 import FiverLogo from "../assets/images/company-logo/fiverr.png";
 
 console.log(DevEdLogo);
@@ -15,47 +16,55 @@ const { targetElWorkExperience } = useMotionScrollAnim();
 
 const workExperiences = [
   {
-    period: "Present",
-    role: "Frontend Web Developer - Freelance/Part-Time",
-    company: "",
+    period: "March 2025 - Present",
+    role: "Frontend Web Developer",
+    company: "Freelance/Part-Time/Commission",
     logo: DevelopedByEdLogo,
-    description: `Offers freelance website development services, creating responsive 
-    and dynamic websites and web systems for various clients. Uses HTML, CSS, 
-    Tailwind, and JavaScript, with occasional Vue.js, PHP, and MySQL integration 
-    for added functionality and data management. Also accepts commissioned web projects 
-    tailored to client goals and design requirements.`,
+    description: `I’m offering freelance/part-time, and commission-based website development services, 
+    creating responsive and dynamic websites and web systems for various clients. I use HTML, 
+    CSS, Tailwind, and JavaScript, with occasional Vue.js, PHP, and MySQL integration for 
+    enhanced interactivity and data handling when required by the client or based on project requirements.`,
   },
   {
     period: "October 2023 - Present",
-    role: "HTML Email Campaign Developer - Full-Time",
-    company: "WHG Customer Services Philippines Inc. | evoke plc",
+    role: "HTML Email Campaign Developer",
+    company: "WHG Customer Services Philippines Inc. | evoke plc  - Full-Time",
     logo: EvokePlcLogo,
-    description: `Create HTML/CSS email templates and manage targeted campaigns
-    across the US and international markets using IBM Watson Campaign
-    (Silverpop) and Acoustic for implementation and testing. Build and
-    deliver site-wide pop-up messages using HTML/CSS via OMG system.`,
+    description: `Customize HTML/CSS email templates for targeted campaigns across the US and international 
+    markets, using IBM Watson Campaign (Silverpop) and Acoustic for implementation and testing. 
+    Additionally, customize and deliver site-wide pop-up messages using HTML/CSS via the in-house Online Message Group (OMG) system.`,
   },
   {
     period: "February 2022 - March 2025",
-    role: "Frontend Web Developer - Part-Time",
-    company: "Teamholix Communication Design Inc.",
+    role: "Frontend Web Developer",
+    company: "Teamholix Communication Design Inc. - Part-Time",
     logo: TeamholixLogo,
-    description: `Converted Adobe XD UI/UX designs into fully functional 
+    description: `Converted Adobe XD UI/UX designs into fully developed
     web interfaces using HTML5, CSS3, Tailwind CSS or Bootstrap 4/5, 
-    and vanilla JavaScript, with PHP includes for modular structuring. 
-    Deployed and maintained the website via FTP, performing UI testing, 
+    and vanilla JavaScript, with PHP includes for modular structuring. Additionally,
+    deployed and maintained the website via FTP, performing UI testing, 
     debugging, and optimization to ensure layout consistency, performance, 
     and overall quality.`,
   },
   {
+    period: "March 2023 - August 2023",
+    role: "Virtual Assistant - Content Editor/Writer",
+    company: "Quote.com - Freelance",
+    logo: QuoteLogo,
+    description: `Managed and updated website content and data, maintaining accuracy in Google Sheets and 
+    WordPress for an insurance company. Additionally, optimized on-page SEO elements such as title tags, 
+    meta descriptions, and headers, while leveraging AI tools (ChatGPT+) to enhance content creation, 
+    SEO performance, and overall workflow efficiency.`,
+  },
+  {
     period: "February 2022 - March 2023",
-    role: "Frontend Web Developer - Freelance",
-    company: "Fiverr & Outside",
+    role: "Frontend Web Developer",
+    company: "Fiverr & Outside - Freelance",
     logo: FiverLogo,
     description: `Developed responsive and accessible web pages from UI/UX 
     prototypes using HTML5, CSS3/SASS, Tailwind CSS, and JavaScript, while 
     providing ongoing client support through troubleshooting, refactoring, 
-    and enhancements, and configuring domain and hosting environments 
+    enhancements, configuring domain and hosting environments 
     (Hostinger, GoDaddy, Namecheap) to ensure proper DNS setup and 
     server-side deployment.`,
   },
@@ -94,31 +103,42 @@ const workExperiences = [
               <img
                 :src="work.logo"
                 :alt="`${work.company} logo`"
-                class="h-20 w-[5.25rem] object-fill opacity-70 transition-opacity hover:opacity-100"
+                class="h-20 w-[5.25rem] object-fill"
               />
-              <div
-                class="block md:hidden mt-4 text-xs font-medium text-accent-blue uppercase tracking-wider"
+              <!-- <div
+                class="block md:hidden text-xs font-medium text-accent-blue uppercase tracking-wider"
               >
                 {{ work.period }}
-              </div>
+              </div> -->
             </div>
             <div class="flex-1">
-              <div class="flex items-center gap-4">
-                <h4 class="text-xl font-bold text-neutral-400 leading-tight">
-                  {{ work.role }}
-                </h4>
-
+              <div class="flex flex-col items-start gap-2">
                 <div
-                  class="hidden md:flex flex-col w-56 text-sm font-medium text-accent-blue uppercase tracking-wider"
+                  class="flex flex-col lg:flex-row items-start lg:items-center gap-2"
                 >
-                  {{ work.period }}
+                  <div
+                    class="text-sm text-accent-blue uppercase tracking-wider order-1 lg:order-3"
+                  >
+                    {{ work.period }}
+                  </div>
+
+                  <span
+                    class="bg-neutral-200 h-1 w-1 rounded-full hidden lg:block order-2"
+                  ></span>
+
+                  <h4
+                    class="text-xl font-bold text-neutral-400 leading-tight order-2 lg:order-1"
+                  >
+                    {{ work.role }}
+                  </h4>
                 </div>
+                <h5 class="text-neutral-300 font-medium">{{ work.company }}</h5>
               </div>
-              <p class="text-neutral-300 font-medium">{{ work.company }}</p>
+
               <p class="mt-3 text-neutral-200 leading-relaxed">
                 {{ work.description }}
               </p>
-              <div class="my-10">
+              <div class="my-10" v-if="index !== workExperiences.length - 1">
                 <span class="w-full h-[0.0625rem] bg-neutral-900 block"></span>
               </div>
             </div>
