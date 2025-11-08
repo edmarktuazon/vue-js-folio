@@ -5,7 +5,7 @@ import { reactive, ref, toRefs } from "vue";
 const navLinks = reactive({
   about: "About",
   portfolios: "Portfolios",
-  work: "Work Experience",
+  work: "Works",
   contact: "Contact",
 });
 const { about, portfolios, work, contact } = toRefs(navLinks);

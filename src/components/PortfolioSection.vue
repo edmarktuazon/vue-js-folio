@@ -150,7 +150,7 @@ const formatDescription = (description) => {
         <h3
           class="text-neutral-200 font-bold text-4xl whitespace-wrap md:whitespace-nowrap"
         >
-          Projects that I've Built
+          Featured Projects that I've built
         </h3>
       </div>
 

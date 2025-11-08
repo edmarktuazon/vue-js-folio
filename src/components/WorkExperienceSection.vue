@@ -26,6 +26,23 @@ const workExperiences = [
     enhanced interactivity and data handling when required by the client or based on project requirements.`,
   },
   {
+    period: `February 2022 - <span class="line-through">March 2023</span> - Present`,
+    role: "Frontend Web Developer",
+    company: "Fiverr - Freelance",
+    logo: FiverLogo,
+    description: `Developed responsive and accessible web pages from UI/UX 
+    prototypes using HTML5, CSS3/SASS, Tailwind CSS, and JavaScript, while 
+    providing ongoing client support through troubleshooting, refactoring, 
+    enhancements, configuring domain and hosting environments 
+    (Hostinger, GoDaddy, Namecheap) to ensure proper DNS setup and 
+    server-side deployment. 
+    <br />
+    <br />
+   After being inactive for almost 3 years, I’m excited to return to fiverr again with a refreshed 
+   profile, trying to get potential clients and offer them a frontend or full stack web application development. 
+   Take a peek at my profile <a href="https://www.fiverr.com/s/EgQ67z0" target="_blank" class="underline"><em>here</em></a>.`,
+  },
+  {
     period: "October 2023 - Present",
     role: "HTML Email Campaign Developer",
     company: "WHG Customer Services Philippines Inc. | evoke plc  - Full-Time",
@@ -55,18 +72,6 @@ const workExperiences = [
     WordPress for an insurance company. Additionally, optimized on-page SEO elements such as title tags, 
     meta descriptions, and headers, while leveraging AI tools (ChatGPT+) to enhance content creation, 
     SEO performance, and overall workflow efficiency.`,
-  },
-  {
-    period: "February 2022 - March 2023",
-    role: "Frontend Web Developer",
-    company: "Fiverr & Outside - Freelance",
-    logo: FiverLogo,
-    description: `Developed responsive and accessible web pages from UI/UX 
-    prototypes using HTML5, CSS3/SASS, Tailwind CSS, and JavaScript, while 
-    providing ongoing client support through troubleshooting, refactoring, 
-    enhancements, configuring domain and hosting environments 
-    (Hostinger, GoDaddy, Namecheap) to ensure proper DNS setup and 
-    server-side deployment.`,
   },
 ];
 </script>
@@ -118,10 +123,8 @@ const workExperiences = [
                 >
                   <div
                     class="text-sm text-accent-blue uppercase tracking-wider order-1 lg:order-3"
-                  >
-                    {{ work.period }}
-                  </div>
-
+                    v-html="work.period"
+                  ></div>
                   <span
                     class="bg-neutral-200 h-1 w-1 rounded-full hidden lg:block order-2"
                   ></span>
@@ -135,9 +138,10 @@ const workExperiences = [
                 <h5 class="text-neutral-300 font-medium">{{ work.company }}</h5>
               </div>
 
-              <p class="mt-3 text-neutral-200 leading-relaxed">
-                {{ work.description }}
-              </p>
+              <p
+                class="mt-3 text-neutral-200 leading-relaxed"
+                v-html="work.description"
+              ></p>
               <div class="my-10" v-if="index !== workExperiences.length - 1">
                 <span class="w-full h-[0.0625rem] bg-neutral-900 block"></span>
               </div>

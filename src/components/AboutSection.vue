@@ -89,12 +89,17 @@ onMounted(() => {
         <div class="col-span-1 xl:col-span-5">
           <p class="text-neutral-200 leading-7 mb-8">
             Using modern frontend technologies and hands-on skills, I have
-            experience developing dynamic, responsive websites. For efficient UI
-            development, I use frameworks like Tailwind CSS and Bootstrap, and I
-            manage version control with Git and GitHub. Furthermore, I have
-            managed domain registration and web hosting services with GoDaddy,
-            Namecheap, and Hostinger, providing smooth website performance and
-            deployment.
+            experience developing dynamic, responsive websites. I build
+            interactive user interfaces with Vue.js and design efficient layouts
+            using frameworks like Tailwind CSS and Bootstrap. Although my main
+            focus is frontend development, I also handle backend work using PHP
+            and MySQL when a project requires it, ensuring proper data
+            management and functionality without compromising performance.
+            <br />
+            <br />
+            I manage version control with Git and GitHub, and handle domain
+            registration and web hosting through GoDaddy, Namecheap, and
+            Hostinger to ensure smooth website performance and deployment.
           </p>
 
           <div class="flex flex-row gap-10">
@@ -183,7 +188,7 @@ onMounted(() => {
               <li class="flex items-start gap-3">
                 <span
                   ><strong>Quality-Driven</strong> – Exactly as intended, with
-                  well-crafted UI and excellent functionality.</span
+                  well crafted UI and excellent usability.</span
                 >
               </li>
               <li class="flex items-start gap-3">
