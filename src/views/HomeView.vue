@@ -21,7 +21,6 @@ const links = reactive({
 const { facebook, instagram, linkedin, github } = toRefs(links);
 const isRevealed = ref(false);
 const showModal = ref(false);
-const showHoverBait = ref(false);
 
 onMounted(() => {
   const saved = localStorage.getItem("edmark-revealed");
@@ -41,13 +40,6 @@ const viewImg = () => {
 
 const closeModal = () => {
   showModal.value = false;
-};
-
-const handleMouseEnter = () => {
-  if (isRevealed.value) showHoverBait.value = true;
-};
-const handleMouseLeave = () => {
-  showHoverBait.value = false;
 };
 </script>
 
@@ -146,9 +138,9 @@ const handleMouseLeave = () => {
           >
             <p class="text-sm leading-snug">
               Not me but this is my favorite character, kinda like my
-              personality 🤨 But Squidy’s looks sad, maybe a new project would
-              cheer him up! 😁 If you're interested to see real me, click the
-              image — unless you’d rather stay with Squidward 🙄
+              personality 🤨 However Squidy’s looks sad, maybe a new project
+              would cheer him up! 😁 If you're interested to see real me, click
+              the image — unless you’d rather stay with Squidward 🙄
             </p>
             <span
               class="absolute bottom-[-6px] left-1/2 -translate-x-1/2 w-3 h-3 bg-neutral-600 rotate-45"
@@ -156,29 +148,12 @@ const handleMouseLeave = () => {
           </div>
           <div
             class="relative w-full max-w-md mx-auto aspect-square rounded-xl overflow-hidden shadow-xl group"
-            @mouseenter="handleMouseEnter"
-            @mouseleave="handleMouseLeave"
           >
-            <div
-              v-if="isRevealed && showHoverBait"
-              class="absolute inset-0 z-10 flex items-center justify-center pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-            >
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent backdrop-blur-sm rounded-xl"
-              ></div>
-              <p
-                class="relative text-center p-4 w-64 bg-neutral-800/80 backdrop-blur-md rounded-full shadow-inner flex items-center gap-1.5 text-sm font-medium text-neutral-400"
-              >
-                You want to push me back into Squidward 😭 But he’s ghosted you.
-                Don't click it again!
-              </p>
-            </div>
-
             <img
               v-if="!isRevealed"
               :src="SquidWardImg"
               alt="Squidward"
-              class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 cursor-pointer"
+              class="absolute inset-0 w-full h-full object-cover transition-all duration-500 opacity-100 cursor-pointer hover:scale-105"
               :class="{ 'opacity-0': isRevealed }"
               @click="viewImg"
             />
@@ -189,10 +164,6 @@ const handleMouseLeave = () => {
               class="absolute inset-0 w-full h-full object-cover transition-all duration-500 opacity-100 cursor-pointer hover:scale-105"
               @click="viewImg"
             />
-            <div
-              v-if="isRevealed"
-              class="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-neutral-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-            ></div>
           </div>
 
           <transition
@@ -243,14 +214,14 @@ const handleMouseLeave = () => {
             />
           </div>
           <p class="text-neutral-300 text-sm leading-relaxed">
-            Just like I said, Squidward’s ghosted you and gone, playing clarinet
-            in the afterlife. Let’s leave him alone and peaceful ✨
+            Uh oh.. Maybe Squidward’s ghosted you and gone. Now he's playing
+            clarinet in the afterlife. Let’s leave him alone and peaceful ✨
           </p>
           <button
             @click="closeModal"
             class="mx-auto px-5 py-2 bg-neutral-700 text-neutral-300 rounded-full font-medium hover:bg-neutral-600 hover:text-white transition"
           >
-            Okay, I understand
+            Okay, I understand 😒
           </button>
         </div>
       </div>
