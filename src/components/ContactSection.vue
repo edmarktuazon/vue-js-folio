@@ -6,7 +6,7 @@ const formData = ref({
   email: "",
   message: "",
   type: "quote",
-  honeypot: "",
+  honeypot: "", // ← Anti-spam trap
 });
 
 const isSubmitting = ref(false);
@@ -30,6 +30,7 @@ const submitForm = async () => {
   isSubmitting.value = true;
   submitMessage.value = "";
 
+  // === SPAM PROTECTION ===
   if (formData.value.honeypot !== "") {
     submitMessage.value = "Spam detected.";
     isSubmitting.value = false;
@@ -43,25 +44,24 @@ const submitForm = async () => {
   }
 
   try {
-    const response = await fetch(
-      "https://portfolio-api.onrender.com/send-email",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: formData.value.name,
-          email: formData.value.email,
-          message: formData.value.message,
-        }),
-      }
-    );
-
-    if (!response.ok) throw new Error("Network error");
+    const response = await fetch("https://deved.onrender.com/send-email", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: formData.value.name,
+        email: formData.value.email,
+        message: formData.value.message,
+        type: formData.value.type,
+      }),
+    });
 
     const result = await response.json();
 
     if (result.success) {
-      submitMessage.value = result.message;
+      submitMessage.value =
+        result.message ||
+        "Thanks for reaching out and your message was successfully sent!";
+
       formData.value = {
         name: "",
         email: "",
@@ -70,11 +70,13 @@ const submitForm = async () => {
         honeypot: "",
       };
       setFormType("quote");
+
       timeoutId = setTimeout(() => {
         submitMessage.value = "";
       }, 4000);
     } else {
-      submitMessage.value = result.message || "Something went wrong.";
+      submitMessage.value =
+        result.message || "Something went wrong. Please try again";
     }
   } catch (error) {
     submitMessage.value = "Connection error. Try again.";
