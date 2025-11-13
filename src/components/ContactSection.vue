@@ -47,7 +47,7 @@ const submitForm = async () => {
     const baseURL =
       import.meta.env.MODE === "development"
         ? "http://localhost:5000"
-        : "https://deved.onrender.com";
+        : "https://deved-backend.onrender.com";
 
     const response = await fetch(`${baseURL}/send-email`, {
       method: "POST",
