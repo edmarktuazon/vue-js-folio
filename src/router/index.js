@@ -1,4 +1,3 @@
-// src/router/index.js
 import { createRouter, createWebHistory } from "vue-router";
 
 const router = createRouter({
@@ -12,26 +11,20 @@ const router = createRouter({
         metaTags: [
           {
             name: "description",
-            content:
-              "Using modern frontend technologies and hands-on skills, I have experience developing dynamic, responsive websites. For efficient UI development, I use frameworks like Tailwind CSS and Bootstrap, and I manage version control with Git and GitHub. Furthermore, I have managed domain registration and web hosting services with GoDaddy, Namecheap, and Hostinger, providing smooth website performance and deployment.",
+            content: "Using modern frontend technologies...",
           },
-          {
-            name: "keywords",
-            content:
-              "Edmark Tuazon, Frontend Developer, Vue.js Developer, Tailwind CSS, PHP, Freelance Web Developer, Manila, Responsive Web Design, CMS Websites, Web Application Development, UI/UX Development, Modern Frontend Technologies, Website Deployment",
-          },
+          { name: "keywords", content: "Edmark Tuazon, Frontend Developer..." },
           { name: "author", content: "Edmark Tuazon" },
           { name: "robots", content: "index, follow" },
           { property: "og:type", content: "website" },
-          { property: "og:url", content: "https://edmarktuazon.com/" },
+          { property: "og:url", content: "https://deved.onrender.com/" },
           {
             property: "og:title",
             content: "Edmark Tuazon - Frontend Web Developer",
           },
           {
             property: "og:description",
-            content:
-              "Using modern frontend technologies and hands-on skills, I have experience developing dynamic, responsive websites. For efficient UI development, I use frameworks like Tailwind CSS and Bootstrap, and I manage version control with Git and GitHub. Furthermore, I have managed domain registration and web hosting services with GoDaddy, Namecheap, and Hostinger, providing smooth website performance and deployment.",
+            content: "Using modern frontend technologies...",
           },
           { property: "og:locale", content: "en_PH" },
           { property: "og:site_name", content: "Edmark Tuazon Portfolio" },
@@ -63,7 +56,7 @@ const router = createRouter({
           { property: "og:type", content: "website" },
           {
             property: "og:url",
-            content: "https://edmarktuazon.com/privacy-policy",
+            content: "https://deved.onrender.com/privacy-policy",
           },
           { property: "og:title", content: "Privacy Policy | Edmark Tuazon" },
           {
@@ -87,18 +80,21 @@ const router = createRouter({
 });
 
 router.afterEach((to) => {
-  document.title = to.meta.title || "Edmark Tuazon | Web Developer";
+  document.title = to.meta.title || "Edmark Tuazon";
+
+  const selectors = 'meta[name], meta[property], link[rel="canonical"]';
+  document.querySelectorAll(selectors).forEach((tag) => tag.remove());
 
   const metaTags = to.meta.metaTags || [];
-  metaTags.forEach((tag) => {
-    const element = document.createElement(tag.tag || "meta");
-    Object.keys(tag).forEach((key) => {
+  metaTags.forEach((tagConfig) => {
+    const tag = document.createElement(tagConfig.tag || "meta");
+    Object.keys(tagConfig).forEach((key) => {
       if (key !== "tag" && key !== "content") {
-        element.setAttribute(key, tag[key]);
+        tag.setAttribute(key, tagConfig[key]);
       }
     });
-    if (tag.content) element.setAttribute("content", tag.content);
-    document.head.appendChild(element);
+    if (tagConfig.content) tag.setlAttribute("content", tagConfig.content);
+    document.head.appendChild(tag);
   });
 });
 
