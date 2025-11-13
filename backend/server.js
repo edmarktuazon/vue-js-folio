@@ -10,29 +10,44 @@ dotenv.config();
 
 const app = express();
 
+// CORS for your frontend
 app.use(
   cors({
-    origin: "https://deved.onrender.com",
+    origin: ["https://deved.onrender.com", "http://localhost:5173"],
   })
 );
 
-app.use(express.json());
+app.use(express.json({ limit: "10mb" }));
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 5,
   message: { success: false, message: "Too many requests. Try again later." },
+  standardHeaders: true,
+  legacyHeaders: false,
 });
+
 app.use("/send-email", limiter);
 
 app.get("/", (req, res) => {
-  res.json({ status: "API running", time: new Date().toISOString() });
+  res.json({
+    status: "API running",
+    endpoint: "/send-email (POST)",
+    time: new Date().toISOString(),
+  });
+});
+
+app.get("/test", (req, res) => {
+  res.json({ message: "Test route working!" });
 });
 
 app.post("/send-email", async (req, res) => {
+  console.log("Received POST to /send-email:", req.body);
+
   const { name, email, message } = req.body;
 
   if (!name?.trim() || !email?.trim() || !message?.trim()) {
+    console.log("Validation failed: missing fields");
     return res
       .status(400)
       .json({ success: false, message: "All fields required." });
@@ -40,11 +55,12 @@ app.post("/send-email", async (req, res) => {
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
+    console.log("Validation failed: invalid email");
     return res.status(400).json({ success: false, message: "Invalid email." });
   }
 
   try {
-    const transporter = nodemailer.createTransport({
+    const transporter = nodemailer.createTransporter({
       service: "gmail",
       auth: {
         user: process.env.EMAIL_USER,
@@ -53,7 +69,7 @@ app.post("/send-email", async (req, res) => {
     });
 
     await transporter.sendMail({
-      from: `"${name}" <${email}>`,
+      from: `"${name.trim()}" <${email}>`,
       sender: email,
       replyTo: email,
       to: process.env.EMAIL_USER,
@@ -108,6 +124,7 @@ app.post("/send-email", async (req, res) => {
       `.trim(),
     });
 
+    console.log("Email sent successfully to:", process.env.EMAIL_USER);
     res.json({
       success: true,
       message:
@@ -119,8 +136,11 @@ app.post("/send-email", async (req, res) => {
   }
 });
 
-// Render.com port
+// Render.com port (dynamic)
 const PORT = process.env.PORT || 10000;
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`API running on port ${PORT}`);
+  console.log("Available endpoints:");
+  console.log("- GET / (health check)");
+  console.log("- POST /send-email (contact form)");
 });
