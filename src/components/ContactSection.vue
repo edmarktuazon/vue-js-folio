@@ -44,7 +44,12 @@ const submitForm = async () => {
   }
 
   try {
-    const response = await fetch("https://deved.onrender.com/send-email", {
+    const baseURL =
+      import.meta.env.MODE === "development"
+        ? "http://localhost:5000"
+        : "https://deved.onrender.com";
+
+    const response = await fetch(`${baseURL}/send-email`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
