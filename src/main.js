@@ -3,26 +3,21 @@ import "../src/style.css";
 import App from "./App.vue";
 import router from "./router";
 
-// -------------------------------------
-// 🧩 Font Awesome Setup
-// -------------------------------------
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { MotionPlugin } from "@vueuse/motion";
 
 // Solid icons
 import {
-  faCheck,
   faCode,
   faFile,
-  faMoon,
   faPaperPlane,
-  faSun,
   faGlobe,
   faServer,
   faCloud,
   faArrowUpRightFromSquare,
   faDatabase,
-  faPalette,
+  faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 
 // Brand icons
@@ -38,18 +33,15 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 
 // solid icons
-library.add(faCheck);
 library.add(faFile);
 library.add(faPaperPlane);
-library.add(faSun);
-library.add(faMoon);
 library.add(faCode);
 library.add(faGlobe);
 library.add(faServer);
 library.add(faCloud);
 library.add(faArrowUpRightFromSquare);
 library.add(faDatabase);
-library.add(faPalette);
+library.add(faChevronRight);
 
 // brand icons
 library.add(faHtml5);
@@ -61,14 +53,6 @@ library.add(faGitAlt);
 library.add(faGithub);
 library.add(faPhp);
 
-// -------------------------------------
-// ⚙️ Motion Plugin
-// -------------------------------------
-import { MotionPlugin } from "@vueuse/motion";
-
-// -------------------------------------
-// 🚀 Create App
-// -------------------------------------
 const app = createApp(App);
 
 app.component("font-awesome-icon", FontAwesomeIcon);

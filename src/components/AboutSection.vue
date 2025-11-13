@@ -51,8 +51,8 @@ onMounted(() => {
       if (entries[0].isIntersecting) {
         animateCounter("years", 2);
         animateCounter("projects", 7);
-        animateCounter("projectsDelivered", 73);
-        animateCounter("clients", 80);
+        animateCounter("projectsDelivered", 23);
+        animateCounter("clients", 30);
         observer.unobserve(section);
       }
     },
@@ -95,13 +95,11 @@ onMounted(() => {
             focus is frontend development, I also handle backend work using PHP
             and MySQL when a project requires it, ensuring proper data
             management and functionality without compromising performance.
-            <br />
-            <br />
-            I manage version control with Git and GitHub, and handle domain
-            registration and web hosting through GoDaddy, Namecheap, and
-            Hostinger to ensure smooth website performance and deployment.
+            Additionally, I manage version control with Git and GitHub, and
+            handle domain registration and web hosting through GoDaddy,
+            Namecheap, and Hostinger to ensure smooth website performance and
+            deployment.
           </p>
-
           <div class="flex flex-row gap-10">
             <ul
               v-for="(column, colIndex) in columns"
@@ -211,4 +209,5 @@ onMounted(() => {
       </div>
     </div>
   </section>
+  <RouterView />
 </template>

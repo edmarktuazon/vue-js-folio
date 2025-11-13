@@ -65,8 +65,9 @@ const scrollToSection = (sectionId) => {
           </li>
           <li>
             <a
-              href="mailto:edmarktuazon03@gmail.com"
+              href="#contact"
               target="_blank"
+              @click.prevent="scrollToSection('contact')"
               class="text-neutral-400"
             >
               {{ contact }}
@@ -114,8 +115,9 @@ const scrollToSection = (sectionId) => {
           </li>
           <li>
             <a
-              href="mailto:edmarktuazon03@gmail.com"
+              href="#contact"
               target="_blank"
+              @click.prevent="scrollToSection('contact')"
               class="text-white hover:text-accent-blue font-bold"
             >
               {{ contact }}

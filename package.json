@@ -15,7 +15,11 @@
     "@fortawesome/vue-fontawesome": "^3.0.2",
     "@vueuse/core": "^9.12.0",
     "@vueuse/motion": "^2.0.0-beta.12",
-    "canvas-confetti": "^1.9.4",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.2.1",
+    "nodemailer": "^7.0.10",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6"
   },

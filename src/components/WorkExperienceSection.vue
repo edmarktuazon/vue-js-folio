@@ -16,6 +16,15 @@ const { targetElWorkExperience } = useMotionScrollAnim();
 
 const workExperiences = [
   {
+    period: "October 2023 - Present",
+    role: "HTML Email Campaign Developer",
+    company: "WHG Customer Services Philippines Inc. | evoke plc  - Full-Time",
+    logo: EvokePlcLogo,
+    description: `Customize HTML and CSS email templates for targeted campaigns across the US and international 
+    markets, using IBM Watson Campaign (Silverpop) and Acoustic for implementation and testing. 
+    Additionally, customize and deliver site-wide pop-up messages using HTML and CSS via the in-house Online Message Group (OMG) system.`,
+  },
+  {
     period: "March 2025 - Present",
     role: "Frontend Web Developer",
     company: "Freelance/Part-Time/Commission",
@@ -41,15 +50,6 @@ const workExperiences = [
    After being inactive for almost 3 years, I’m excited to return to fiverr again with a refreshed 
    profile, trying to get potential clients and offer them a frontend or full stack web application development. 
    Take a peek at my profile <a href="https://www.fiverr.com/s/EgQ67z0" target="_blank" class="underline"><em>here</em></a>.`,
-  },
-  {
-    period: "October 2023 - Present",
-    role: "HTML Email Campaign Developer",
-    company: "WHG Customer Services Philippines Inc. | evoke plc  - Full-Time",
-    logo: EvokePlcLogo,
-    description: `Customize HTML and CSS email templates for targeted campaigns across the US and international 
-    markets, using IBM Watson Campaign (Silverpop) and Acoustic for implementation and testing. 
-    Additionally, customize and deliver site-wide pop-up messages using HTML and CSS via the in-house Online Message Group (OMG) system.`,
   },
   {
     period: "February 2022 - March 2025",
