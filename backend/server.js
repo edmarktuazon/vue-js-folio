@@ -4,11 +4,17 @@ import dotenv from "dotenv";
 import rateLimit from "express-rate-limit";
 import nodemailer from "nodemailer";
 import process from "process";
+import path from "path";
+import { fileURLToPath } from "url";
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+// For __dirname in ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Middleware
 app.use(cors());
@@ -60,33 +66,15 @@ app.post("/send-email", async (req, res) => {
   <meta charset="UTF-8" />
   <title>New Message from ${name}</title>
   <style>
-    body {
-      background: #0f0f0f;
-      font-family: 'Inter', system-ui, sans-serif;
-      color: #c1c1c1;
-      margin: 0;
-      padding: 0;
-    }
-    .container {
-      max-width: 600px;
-      margin: 32px auto;
-      background: #1d1e21;
-      border: 1px solid #28292cb6;
-      border-radius: 16px;
-      overflow: hidden;
-    }
-    .header {
-      background: #161719;
-      padding: 28px 24px;
-      text-align: center;
-      border-bottom: 1px solid #28292cb6;
-    }
-    .body { padding: 32px; }
-    .label { color: #aaaaaa; font-size: 13px; text-transform: uppercase; margin-bottom: 6px; }
-    .value { color: #c1c1c1; font-size: 16px; }
-    .message-box { background: #161719; padding: 20px; border-left: 4px solid #c1c1c1; border-radius: 12px; margin: 24px 0; }
-    .reply-btn { display: inline-block; padding: 12px 24px; background: #c1c1c1; color: #1d1e21 !important; text-decoration: none; border-radius: 8px; font-weight: 600; }
-    .footer { background: #161719; padding: 20px; text-align: center; font-size: 12px; color: #6c717e; border-top: 1px solid #28292cb6; }
+    body { background: #0f0f0f; font-family: 'Inter', system-ui, sans-serif; color: #c1c1c1; margin:0; padding:0;}
+    .container { max-width:600px; margin:32px auto; background:#1d1e21; border:1px solid #28292cb6; border-radius:16px; overflow:hidden;}
+    .header { background:#161719; padding:28px 24px; text-align:center; border-bottom:1px solid #28292cb6; }
+    .body { padding:32px; }
+    .label { color:#aaaaaa; font-size:13px; text-transform:uppercase; margin-bottom:6px; }
+    .value { color:#c1c1c1; font-size:16px; }
+    .message-box { background:#161719; padding:20px; border-left:4px solid #c1c1c1; border-radius:12px; margin:24px 0; }
+    .reply-btn { display:inline-block; padding:12px 24px; background:#c1c1c1; color:#1d1e21 !important; text-decoration:none; border-radius:8px; font-weight:600; }
+    .footer { background:#161719; padding:20px; text-align:center; font-size:12px; color:#6c717e; border-top:1px solid #28292cb6; }
   </style>
 </head>
 <body>
@@ -105,7 +93,7 @@ app.post("/send-email", async (req, res) => {
     </div>
     <div class="footer">
       <p>Copyright © 2022-2025 Edmark Tuazon. All rights reserved.</p>
-      <p>Sent from <a href="https://deved.onrender.com/">DevelopedByEd</a></p>
+      <p>Sent from <a href="/">DevelopedByEd</a></p>
     </div>
   </div>
 </body>
@@ -122,6 +110,12 @@ app.post("/send-email", async (req, res) => {
     console.error("Email error:", error);
     res.status(500).json({ success: false, message: "Failed to send." });
   }
+});
+
+// Serve frontend (Vite build output)
+app.use(express.static(path.join(__dirname, "../dist")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../dist/index.html"));
 });
 
 // Health Check
