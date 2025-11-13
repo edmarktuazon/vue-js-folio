@@ -107,16 +107,16 @@ app.post("/send-email", async (req, res) => {
         "Thanks for reaching out and your message was successfully sent!",
     });
   } catch (error) {
-    console.error("Email error:", error);
+    console.error("Email error:", error.message, error.stack);
     res.status(500).json({ success: false, message: "Failed to send." });
   }
 });
 
-// Serve frontend (Vite build output)
-app.use(express.static(path.join(__dirname, "../dist")));
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../dist/index.html"));
-});
+// // Serve frontend (Vite build output) - Commented out since no frontend folder
+// app.use(express.static(path.join(__dirname, "../../dist")));
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "../../dist/index.html"));
+// });
 
 // Health Check
 app.get("/", (req, res) => res.json({ status: "API running" }));
