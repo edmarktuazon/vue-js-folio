@@ -91,10 +91,12 @@ const submitForm = async () => {
       timeoutId = setTimeout(() => (submitMessage.value = ""), 6000);
     } else {
       submitMessage.value =
-        data.message || "Failed to send. Please try again later";
+        data.message || "Failed to send. Please try again later.";
     }
-  } catch {
-    submitMessage.value = "Too many request. Please try again later";
+  } catch (err) {
+    console.error("Frontend fetch error:", err);
+    submitMessage.value =
+      "Network error. Please check your connection and try again.";
   } finally {
     isSubmitting.value = false;
   }
@@ -191,9 +193,8 @@ onUnmounted(() => timeoutId && clearTimeout(timeoutId));
               <label
                 for="name"
                 class="block text-sm font-medium text-neutral-400 mb-2"
+                >Your Name</label
               >
-                Your Name
-              </label>
               <input
                 id="name"
                 v-model="formData.name"
@@ -209,9 +210,8 @@ onUnmounted(() => timeoutId && clearTimeout(timeoutId));
               <label
                 for="email"
                 class="block text-sm font-medium text-neutral-400 mb-2"
+                >Email Address</label
               >
-                Email Address
-              </label>
               <input
                 id="email"
                 v-model="formData.email"
@@ -288,7 +288,8 @@ onUnmounted(() => timeoutId && clearTimeout(timeoutId));
                 v-if="submitMessage"
                 :class="[
                   'p-4 rounded-xl text-sm font-medium text-center border',
-                  submitMessage.includes('sent')
+                  submitMessage.includes('Got your message') ||
+                  submitMessage.includes('earliest')
                     ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30'
                     : 'bg-red-500/10 text-red-400 border-red-500/30',
                 ]"
@@ -313,7 +314,6 @@ onUnmounted(() => timeoutId && clearTimeout(timeoutId));
 </template>
 
 <style scoped>
-/* Slide + Fade for feedback */
 .slide-fade-enter-active,
 .slide-fade-leave-active {
   transition: all 0.4s ease;
