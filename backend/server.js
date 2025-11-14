@@ -16,9 +16,18 @@ console.log(
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+// CORS: ALLOW ONLY YOUR FRONTEND (FIX FOR "Failed to fetch")
+app.use(
+  cors({
+    origin: "https://deved.onrender.com", // ← CHANGE IF YOU HAVE CUSTOM DOMAIN
+    methods: ["GET", "POST"],
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 
+// Rate limiting: 5 emails per 15 mins
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 5,
@@ -26,10 +35,11 @@ const limiter = rateLimit({
 });
 app.use("/send-email", limiter);
 
+// Nodemailer: Gmail SMTP with App Password
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
   port: 587,
-  secure: false,
+  secure: false, // Use STARTTLS
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
@@ -39,6 +49,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+// Verify SMTP connection on startup
 transporter.verify((err) => {
   if (err) {
     console.error("SMTP Connection Failed:", err.message);
@@ -47,16 +58,30 @@ transporter.verify((err) => {
   }
 });
 
+// Health check endpoint
 app.get("/", (req, res) => {
   res.send("Backend OK! Running on Render.");
 });
 
+// Health check (optional)
+app.get("/health", (req, res) => {
+  res.json({ status: "OK", message: "Backend is alive!" });
+});
+
+// Send email endpoint
 app.post("/send-email", async (req, res) => {
   const { name, email, message, type, honeypot } = req.body;
 
-  if (honeypot) return res.json({ success: false, message: "Spam detected." });
-  if (!name || !email || !message)
+  // Anti-spam
+  if (honeypot) {
+    console.log("Spam attempt blocked (honeypot filled)");
+    return res.json({ success: false, message: "Spam detected." });
+  }
+
+  // Validation
+  if (!name || !email || !message) {
     return res.json({ success: false, message: "Fill all fields." });
+  }
 
   const subject =
     type === "quote"
@@ -64,7 +89,7 @@ app.post("/send-email", async (req, res) => {
       : `Project Idea from ${name}`;
 
   const currentYear = new Date().getFullYear();
-  const PORTFOLIO_URL = "https://deved.onrender.com";
+  const PORTFOLIO_URL = "https://deved.onrender.com"; // ← FRONTEND URL
 
   const html = `
 <!DOCTYPE html>
@@ -138,6 +163,9 @@ app.post("/send-email", async (req, res) => {
       html,
     });
 
+    console.log(
+      `Email sent successfully to ${process.env.EMAIL_USER} from ${email}`
+    );
     res.json({
       success: true,
       message:
@@ -145,6 +173,7 @@ app.post("/send-email", async (req, res) => {
     });
   } catch (error) {
     console.error("Send Error:", error.message);
+    console.error("Full Error Object:", error);
     res.json({
       success: false,
       message: "Failed to send. Please try again later.",
@@ -152,6 +181,8 @@ app.post("/send-email", async (req, res) => {
   }
 });
 
+// Bind to 0.0.0.0 for Render
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
+  console.log(`Health check: https://your-backend.onrender.com/health`);
 });
