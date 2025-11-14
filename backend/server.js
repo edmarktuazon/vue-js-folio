@@ -26,18 +26,25 @@ const limiter = rateLimit({
 });
 app.use("/send-email", limiter);
 
-// Nodemailer setup
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  host: "smtp.gmail.com",
+  port: 587,
+  secure: false,
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
   },
+  tls: {
+    rejectUnauthorized: false,
+  },
 });
 
 transporter.verify((err) => {
-  if (err) console.error("SMTP Error:", err.message);
-  else console.log("SMTP Ready! Can send emails.");
+  if (err) {
+    console.error("SMTP Connection Failed:", err.message);
+  } else {
+    console.log("SMTP Connected! Ready to send emails.");
+  }
 });
 
 app.get("/", (req, res) => {
