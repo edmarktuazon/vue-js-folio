@@ -249,7 +249,10 @@ app.post("/send-email", async (req, res) => {
     });
   } catch (error) {
     console.error("Send Error:", error.message);
-    res.json({ success: false, message: "Failed to send. Try again." });
+    res.json({
+      success: false,
+      message: "Failed to send. Please try again later.",
+    });
   }
 });
 

@@ -78,7 +78,8 @@ const submitForm = async () => {
     const data = await res.json();
 
     if (data.success) {
-      submitMessage.value = "Message sent! I’ll reply within 24 hours.";
+      submitMessage.value =
+        "Got your message! I’ll get back to you at the earliest opportunity.";
       formData.value = {
         name: "",
         email: "",
@@ -89,10 +90,11 @@ const submitForm = async () => {
       setFormType("quote");
       timeoutId = setTimeout(() => (submitMessage.value = ""), 6000);
     } else {
-      submitMessage.value = data.message || "Failed to send. Please try again.";
+      submitMessage.value =
+        data.message || "Failed to send. Please try again later";
     }
   } catch {
-    submitMessage.value = "Network error. Please check your connection.";
+    submitMessage.value = "Too many request. Please try again later";
   } finally {
     isSubmitting.value = false;
   }
