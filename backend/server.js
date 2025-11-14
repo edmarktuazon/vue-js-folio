@@ -16,10 +16,9 @@ console.log(
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// CORS: ALLOW ONLY YOUR FRONTEND (FIX FOR "Failed to fetch")
 app.use(
   cors({
-    origin: "https://deved.onrender.com", // ← CHANGE IF YOU HAVE CUSTOM DOMAIN
+    origin: "https://deved.onrender.com",
     methods: ["GET", "POST"],
     credentials: true,
   })
@@ -68,17 +67,14 @@ app.get("/health", (req, res) => {
   res.json({ status: "OK", message: "Backend is alive!" });
 });
 
-// Send email endpoint
 app.post("/send-email", async (req, res) => {
   const { name, email, message, type, honeypot } = req.body;
 
-  // Anti-spam
   if (honeypot) {
     console.log("Spam attempt blocked (honeypot filled)");
     return res.json({ success: false, message: "Spam detected." });
   }
 
-  // Validation
   if (!name || !email || !message) {
     return res.json({ success: false, message: "Fill all fields." });
   }
@@ -89,7 +85,7 @@ app.post("/send-email", async (req, res) => {
       : `Project Idea from ${name}`;
 
   const currentYear = new Date().getFullYear();
-  const PORTFOLIO_URL = "https://deved.onrender.com"; // ← FRONTEND URL
+  const PORTFOLIO_URL = "https://deved.onrender.com";
 
   const html = `
 <!DOCTYPE html>
@@ -181,8 +177,6 @@ app.post("/send-email", async (req, res) => {
   }
 });
 
-// Bind to 0.0.0.0 for Render
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
-  console.log(`Health check: https://your-backend.onrender.com/health`);
 });
