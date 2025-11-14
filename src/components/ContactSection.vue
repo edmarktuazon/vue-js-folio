@@ -66,7 +66,7 @@ const submitForm = async () => {
   }
 
   const API_URL = import.meta.env.PROD
-    ? "https://deved.onrender.com"
+    ? "https://deved-api.onrender.com"
     : "http://localhost:5000";
 
   try {

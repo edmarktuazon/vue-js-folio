@@ -57,7 +57,7 @@ app.post("/send-email", async (req, res) => {
       : `Project Idea from ${name}`;
 
   const currentYear = new Date().getFullYear();
-  const PORTFOLIO_URL = "https://deved.onrender.com"; // ← PALITAN MO 'TO KAPAG MAY BAGONG DOMAIN
+  const PORTFOLIO_URL = "https://deved.onrender.com";
 
   const html = `
 <!DOCTYPE html>
