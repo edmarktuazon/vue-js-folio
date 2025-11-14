@@ -1,125 +1,258 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import express from "express";
 import cors from "cors";
-import dotenv from "dotenv";
 import rateLimit from "express-rate-limit";
 import nodemailer from "nodemailer";
 import process from "process";
-import path from "path";
-import { fileURLToPath } from "url";
 
-dotenv.config();
+console.log("EMAIL_USER:", process.env.EMAIL_USER ? "Loaded" : "MISSING");
+console.log(
+  "EMAIL_PASS:",
+  process.env.EMAIL_PASS ? "Loaded (hidden)" : "MISSING"
+);
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-
-// For __dirname in ES modules
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 // Middleware
 app.use(cors());
 app.use(express.json());
 
-// Rate limit (5 requests per 15 minutes)
+// Rate limiting
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
+  windowMs: 15 * 60 * 1000, // 15 minutes
   max: 5,
-  message: { success: false, message: "Too many requests. Try again later." },
+  message: "Too many requests, please try again later.",
 });
 app.use("/send-email", limiter);
 
-// API Route
+// Nodemailer setup
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
+  },
+});
+
+// Verify SMTP on startup
+transporter.verify((err, success) => {
+  if (err) {
+    console.error("SMTP Error:", err.message);
+  } else {
+    console.log("SMTP Ready! Can send emails.");
+  }
+});
+
+app.get("/", (req, res) => {
+  res.send("Backend OK! Running on Render.");
+});
+
 app.post("/send-email", async (req, res) => {
-  const { name, email, message } = req.body;
+  const { name, email, message, type, honeypot } = req.body;
 
-  // Validation
-  if (!name?.trim() || !email?.trim() || !message?.trim()) {
-    return res
-      .status(400)
-      .json({ success: false, message: "All fields required." });
+  if (honeypot) {
+    return res.json({ success: false, message: "Spam detected." });
   }
 
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
-    return res.status(400).json({ success: false, message: "Invalid email." });
+  if (!name || !email || !message) {
+    return res.json({ success: false, message: "Fill all fields." });
   }
 
-  try {
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
+  const subject =
+    type === "quote"
+      ? `Quote Request from ${name}`
+      : `Project Idea from ${name}`;
 
-    await transporter.sendMail({
-      from: `"${name}" <${email}>`,
-      sender: email,
-      replyTo: email,
-      to: process.env.EMAIL_USER,
-      subject: `Website Inquiry via Portfolio: ${name.trim()} sent a message`,
-      html: `
+  const html = `
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <title>New Message from ${name}</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New ${type === "quote" ? "Quote Request" : "Project Idea"}</title>
   <style>
-    body { background: #0f0f0f; font-family: 'Inter', system-ui, sans-serif; color: #c1c1c1; margin:0; padding:0;}
-    .container { max-width:600px; margin:32px auto; background:#1d1e21; border:1px solid #28292cb6; border-radius:16px; overflow:hidden;}
-    .header { background:#161719; padding:28px 24px; text-align:center; border-bottom:1px solid #28292cb6; }
-    .body { padding:32px; }
-    .label { color:#aaaaaa; font-size:13px; text-transform:uppercase; margin-bottom:6px; }
-    .value { color:#c1c1c1; font-size:16px; }
-    .message-box { background:#161719; padding:20px; border-left:4px solid #c1c1c1; border-radius:12px; margin:24px 0; }
-    .reply-btn { display:inline-block; padding:12px 24px; background:#c1c1c1; color:#1d1e21 !important; text-decoration:none; border-radius:8px; font-weight:600; }
-    .footer { background:#161719; padding:20px; text-align:center; font-size:12px; color:#6c717e; border-top:1px solid #28292cb6; }
+    body {
+      margin: 0;
+      padding: 0;
+      background: #1d1e21;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #c1c1c1;
+    }
+    .container {
+      max-width: 600px;
+      margin: 30px auto;
+      background: #161719;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+      border: 1px solid #28292cb6;
+    }
+    .header {
+      background: linear-gradient(135deg, #1d1e21, #161719);
+      padding: 28px;
+      text-align: center;
+      border-bottom: 1px solid #28292cb6;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 600;
+      color: #ffffff;
+    }
+    .header p {
+      margin: 8px 0 0;
+      font-size: 14px;
+      color: #aaaaaa;
+    }
+    .content {
+      padding: 32px;
+    }
+    .label {
+      font-weight: 600;
+      color: #c1c1c1;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    .value {
+      background: #1d1e21;
+      padding: 14px 18px;
+      border-radius: 10px;
+      border-left: 4px solid #c1c1c1;
+      margin-bottom: 20px;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #ffffff;
+      font-family: inherit;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+    .footer {
+      background: #1d1e21;
+      color: #6c717e;
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
+      border-top: 1px solid #28292cb6;
+    }
+    .footer a {
+      color: #c1c1c1;
+      text-decoration: none;
+    }
+    .btn {
+      display: inline-block;
+      background: #c1c1c1;
+      color: #1d1e21 !important;
+      padding: 12px 32px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      margin: 20px 0;
+      font-size: 15px;
+      transition: all 0.2s;
+    }
+    .btn:hover {
+      background: #ffffff;
+      transform: translateY(-1px);
+    }
+    .type-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      border: 1px solid;
+    }
+    .type-quote {
+      background: rgba(34, 197, 94, 0.15);
+      color: #86efac;
+      border-color: #22c55e;
+    }
+    .type-project {
+      background: rgba(251, 191, 36, 0.15);
+      color: #fbbf24;
+      border-color: #f59e0b;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="header"><h1>Inquiry</h1></div>
-    <div class="body">
-      <div><div class="label">From:</div><div class="value"><strong>${name.trim()}</strong></div></div>
-      <div><div class="label">Email:</div><div class="value"><a href="mailto:${email}">${email}</a></div></div>
-      <div><div class="label">Message:</div><div class="message-box"><p>${message.replace(
-        /\n/g,
-        "<br>"
-      )}</p></div></div>
-      <a href="mailto:${email}" class="reply-btn">Reply to ${
-        name.split(" ")[0]
-      }</a>
+    <!-- Header -->
+    <div class="header">
+      <h1>New Submission</h1>
+      <p>${
+        type === "quote" ? "Quote Request" : "Project Idea"
+      } from your portfolio</p>
     </div>
+
+    <!-- Content -->
+    <div class="content">
+      <div class="type-badge ${
+        type === "quote" ? "type-quote" : "type-project"
+      }">
+        ${type === "quote" ? "Quote Request" : "Project Idea"}
+      </div>
+
+      <div class="label">Name</div>
+      <div class="value">${name}</div>
+
+      <div class="label">Email</div>
+      <div class="value">
+        <a href="mailto:${email}" style="color:#c1c1c1;text-decoration:none;">${email}</a>
+      </div>
+
+      <div class="label">Message</div>
+      <div class="value">${message.replace(/\n/g, "<br>")}</div>
+
+      <div style="text-align:center;">
+        <a href="mailto:${email}?subject=Re: ${encodeURIComponent(
+    subject
+  )}" class="btn">
+          Reply to ${name.split(" ")[0]}
+        </a>
+      </div>
+
+      <p style="color:#aaaaaa;font-size:14px;margin-top:28px;text-align:center;">
+        Sent via your portfolio contact form
+      </p>
+    </div>
+
+    <!-- Footer -->
     <div class="footer">
-      <p>Copyright © 2022-2025 Edmark Tuazon. All rights reserved.</p>
-      <p>Sent from <a href="/">DevelopedByEd</a></p>
+      <p>Copyright ©2022-2025 <a href="https://deved.onrender.com/">DevelopedByEd</a></p>
     </div>
   </div>
 </body>
 </html>
-      `.trim(),
+`;
+
+  try {
+    await transporter.sendMail({
+      from: `"Portfolio" <${process.env.EMAIL_USER}>`,
+      to: process.env.EMAIL_USER,
+      replyTo: email,
+      subject,
+      html,
     });
 
     res.json({
       success: true,
       message:
-        "Thanks for reaching out and your message was successfully sent!",
+        "Got your message! I’ll get back to you at the earliest opportunity.",
     });
   } catch (error) {
-    console.error("Email error:", error.message, error.stack);
-    res.status(500).json({ success: false, message: "Failed to send." });
+    console.error("Send Error:", error.message);
+    res.json({ success: false, message: "Failed to send. Try again." });
   }
 });
 
-// Serve frontend (Vite build output)
-app.use(express.static(path.join(__dirname, "../dist")));
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../dist/index.html"));
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server running on port ${PORT}`);
 });
-
-// Health Check
-app.get("/", (req, res) => res.json({ status: "API running" }));
-
-// Start server
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

@@ -1,14 +1,15 @@
 <!-- NavigationSection.vue -->
 <script setup>
+import CV from "../assets/docs/edmarktuazon-cv.pdf";
 import { reactive, ref, toRefs } from "vue";
 
 const navLinks = reactive({
-  about: "About",
   portfolios: "Portfolios",
   work: "Works",
   contact: "Contact",
+  resume: "Resume",
 });
-const { about, portfolios, work, contact } = toRefs(navLinks);
+const { portfolios, work, contact, resume } = toRefs(navLinks);
 
 const isMenuVisible = ref(false);
 
@@ -34,17 +35,7 @@ const scrollToSection = (sectionId) => {
           <span class="text-neutral-400 font-bold">DevelopedByEd.</span>
         </a>
 
-        <!-- Desktop Menu -->
         <ul class="hidden md:flex gap-8 items-center">
-          <li>
-            <a
-              href="#about"
-              @click.prevent="scrollToSection('about')"
-              class="text-neutral-400"
-            >
-              {{ about }}
-            </a>
-          </li>
           <li>
             <a
               href="#portfolios"
@@ -71,6 +62,11 @@ const scrollToSection = (sectionId) => {
               class="text-neutral-400"
             >
               {{ contact }}
+            </a>
+          </li>
+          <li>
+            <a :href="CV" target="_blank" class="text-neutral-400">
+              {{ resume }}
             </a>
           </li>
         </ul>
@@ -88,15 +84,6 @@ const scrollToSection = (sectionId) => {
         >
           <li>
             <a
-              href="#about"
-              @click.prevent="scrollToSection('about')"
-              class="text-white hover:text-accent-blue font-bold"
-            >
-              {{ about }}
-            </a>
-          </li>
-          <li>
-            <a
               href="#portfolios"
               @click.prevent="scrollToSection('portfolios')"
               class="text-white hover:text-accent-blue font-bold"
@@ -118,9 +105,14 @@ const scrollToSection = (sectionId) => {
               href="#contact"
               target="_blank"
               @click.prevent="scrollToSection('contact')"
-              class="text-white hover:text-accent-blue font-bold"
+              class="text-neutral-400"
             >
               {{ contact }}
+            </a>
+          </li>
+          <li>
+            <a :href="CV" target="_blank" class="text-neutral-400">
+              {{ resume }}
             </a>
           </li>
         </ul>

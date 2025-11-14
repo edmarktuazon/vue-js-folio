@@ -77,7 +77,10 @@ const workExperiences = [
 </script>
 
 <template>
-  <section id="work" class="bg-neutral-800 py-20 min-h-screen">
+  <section
+    id="work"
+    class="bg-neutral-800 py-24 min-h-screen grid place-items-center"
+  >
     <div
       class="px-8 mx-auto relative lg:px-14 2xl:px-0 w-full z-50 lg:w-full xl:max-w-[80%] 2xl:max-w-[60%]"
     >

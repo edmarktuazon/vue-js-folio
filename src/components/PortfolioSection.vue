@@ -165,7 +165,7 @@ const formatDescription = (description) => {
               <span class="text-accent-blue uppercase text-xs tracking-wider"
                 >{{ portfolio.type }} - {{ portfolio.year }}</span
               >
-              <h4 class="text-4xl font-bold mt-2 text-neutral-400">
+              <h4 class="text-3xl font-bold mt-2 text-neutral-400">
                 {{ portfolio.title }}
               </h4>
               <p

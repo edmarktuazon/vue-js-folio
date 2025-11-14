@@ -3,7 +3,6 @@ import { ref, onMounted, onUnmounted } from "vue";
 
 export function useMotionScrollAnim() {
   const targetElHeroContent = ref();
-  const targetElAboutContent = ref();
   const targetElPortfolios = ref();
   const targetElWorkExperience = ref();
   const targetElContact = ref();
@@ -31,17 +30,6 @@ export function useMotionScrollAnim() {
       y: 0,
       scale: 1,
       transition: { duration: 700 },
-      apply: () => isScrollingDown.value,
-    },
-  });
-
-  useMotion(targetElAboutContent, {
-    initial: { opacity: 0, y: 40 },
-    visibleOnce: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: { duration: 900 },
       apply: () => isScrollingDown.value,
     },
   });
@@ -79,7 +67,6 @@ export function useMotionScrollAnim() {
 
   return {
     targetElHeroContent,
-    targetElAboutContent,
     targetElPortfolios,
     targetElWorkExperience,
     targetElContact,
