@@ -30,7 +30,6 @@ const scrollToSection = (sectionId) => {
   <header class="fixed top-0 w-full z-[999] bg-neutral-900">
     <nav class="px-8 xl:px-14 2xl:px-0">
       <div class="flex lg:justify-around justify-between items-center py-6">
-        <!-- Logo -->
         <a href="/" class="z-50">
           <span class="text-neutral-400 font-bold">DevelopedByEd.</span>
         </a>
@@ -86,7 +85,7 @@ const scrollToSection = (sectionId) => {
             <a
               href="#portfolios"
               @click.prevent="scrollToSection('portfolios')"
-              class="text-white hover:text-accent-blue font-bold"
+              class="text-neutral-400 font-bold"
             >
               {{ portfolios }}
             </a>
@@ -95,7 +94,7 @@ const scrollToSection = (sectionId) => {
             <a
               href="#work"
               @click.prevent="scrollToSection('work')"
-              class="text-white hover:text-accent-blue font-bold"
+              class="text-neutral-400 font-bold"
             >
               {{ work }}
             </a>
@@ -105,13 +104,13 @@ const scrollToSection = (sectionId) => {
               href="#contact"
               target="_blank"
               @click.prevent="scrollToSection('contact')"
-              class="text-neutral-400"
+              class="text-neutral-400 font-bold"
             >
               {{ contact }}
             </a>
           </li>
           <li>
-            <a :href="CV" target="_blank" class="text-neutral-400">
+            <a :href="CV" target="_blank" class="text-neutral-400 font-bold">
               {{ resume }}
             </a>
           </li>

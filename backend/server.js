@@ -26,7 +26,6 @@ app.use(
 
 app.use(express.json());
 
-// Rate limiting: 5 emails per 15 mins
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 5,
@@ -34,11 +33,10 @@ const limiter = rateLimit({
 });
 app.use("/send-email", limiter);
 
-// Nodemailer: Gmail SMTP with App Password
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
   port: 587,
-  secure: false, // Use STARTTLS
+  secure: false,
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
@@ -48,7 +46,6 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-// Verify SMTP connection on startup
 transporter.verify((err) => {
   if (err) {
     console.error("SMTP Connection Failed:", err.message);
@@ -57,12 +54,10 @@ transporter.verify((err) => {
   }
 });
 
-// Health check endpoint
 app.get("/", (req, res) => {
   res.send("Backend OK! Running on Render.");
 });
 
-// Health check (optional)
 app.get("/health", (req, res) => {
   res.json({ status: "OK", message: "Backend is alive!" });
 });

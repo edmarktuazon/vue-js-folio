@@ -300,11 +300,12 @@ onUnmounted(() => timeoutId && clearTimeout(timeoutId));
 
             <p class="text-xs text-neutral-400 text-center mt-6">
               Your information is secure and never shared.
-              <a
-                href="/privacy-policy"
+              <router-link
+                to="/privacy-policy"
                 class="underline hover:text-neutral-300 transition"
-                >Privacy Policy</a
               >
+                Privacy Policy
+              </router-link>
             </p>
           </form>
         </div>
