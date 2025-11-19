@@ -57,10 +57,11 @@ const columns = [skills.slice(0, 5), skills.slice(5, 9), skills.slice(9, 13)];
         <div class="flex-1 space-y-6">
           <div class="col-span-1 xl:col-span-5">
             <p class="text-neutral-200 leading-7 mb-8">
-              Using modern frontend technologies and hands-on skills, I have
-              experience developing dynamic, responsive websites. I build
-              interactive user interfaces with Vue.js and design efficient
-              layouts using frameworks like Tailwind CSS and Bootstrap.
+              I build websites using modern frontend technologies and practical,
+              hands-on development skills. I have experience developing dynamic
+              and responsive websites, creating interactive user interfaces with
+              JavaScript, Vue.js, and designing efficient layouts using
+              frameworks like Tailwind CSS or Bootstrap.
               <br />
               <br />
               Although my main focus is frontend development, I also handle
