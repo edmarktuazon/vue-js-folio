@@ -1,4 +1,5 @@
 <script setup>
+import bmg from "../assets/images/bmg-login.png";
 import steelasiaImg from "../assets/images/steelasia.png";
 import bayfieldImg from "../assets/images/bayfield.png";
 import smbImg from "../assets/images/smb.png";
@@ -13,6 +14,10 @@ import { reactive, markRaw } from "vue";
 const { targetElPortfolios } = useMotionScrollAnim();
 
 const urlText = reactive({
+  Bmg: {
+    url: "https://bringmegame.com/",
+    title: "Bring Me Game",
+  },
   home4Paws: {
     url: "https://hope4paws.infinityfreeapp.com/",
     title: "Home4Paws",
@@ -28,6 +33,22 @@ const urlText = reactive({
 });
 
 const portfolioSet = [
+  {
+    title: "Bring Me Game",
+    year: "December 2025",
+    image: bmg,
+    link: "https://bringmegame.com/",
+    description: `A freelance web project for <a href="${urlText.Bmg.url}" target="_blank" class="text-neutral-200 underline"><em>${urlText.Bmg.title}</em></a>, 
+    a simple gaming platform that highlights one of the Philippines' most popular games. Players can enter 
+    their Instagram username to join and have a chance to win exciting prizes. The Admin contacts the selected winners based on the fastest submissions. 
+    The platform includes an Admin panel that allows for entering game prompts, viewing winners and participants, and managing photos submitted by users.`,
+    techStack: [
+      { name: "Tailwind CSS", icon: markRaw(TailwindCSSIcon) },
+      { name: "Vue.js", icon: ["fab", "vuejs"] },
+      { name: "Firebase", icon: ["fa", "database"] },
+    ],
+    type: "Freelance Project",
+  },
   {
     title: "Home4Paws",
     year: "October 2025",

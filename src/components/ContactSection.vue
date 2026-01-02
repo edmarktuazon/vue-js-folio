@@ -180,7 +180,7 @@ onUnmounted(() => timeoutId && clearTimeout(timeoutId));
 
           <form
             @submit.prevent="submitForm"
-            class="space-y-6 bg-neutral-800 p-8 rounded-2xl border border-neutral-700"
+            class="space-y-6 bg-neutral-800 p-5 md:p-8 rounded-2xl border border-neutral-700"
           >
             <input
               v-model="formData.honeypot"

@@ -21,21 +21,17 @@ const links = reactive({
 const { facebook, instagram, linkedin, github } = toRefs(links);
 
 const skills = reactive([
-  { name: "HTML5", icon: "fa-brands fa-html5" },
-  { name: "CSS3 (SASS)", icon: "fa-brands fa-css3-alt" },
   { name: "Tailwind CSS", icon: markRaw(TailwindCSSIcon) },
-  { name: "Bootstrap", icon: "fa-brands fa-bootstrap" },
-  { name: "JavaScript", icon: "fa-brands fa-js" },
   { name: "Vue.js", icon: "fa-brands fa-vuejs" },
+  { name: "JavaScript", icon: "fa-brands fa-js" },
   { name: "PHP", icon: "fa-brands fa-php" },
   { name: "MySQL", icon: "fa-solid fa-database" },
-  { name: "Git", icon: "fa-brands fa-git-alt" },
-  { name: "GitHub", icon: "fa-brands fa-github" },
+  { name: "Firebase", icon: "fa-solid fa-database" },
   { name: "GoDaddy", icon: "fa-solid fa-globe" },
   { name: "Hostinger", icon: "fa-solid fa-server" },
   { name: "Namecheap", icon: "fa-solid fa-cloud" },
 ]);
-const columns = [skills.slice(0, 5), skills.slice(5, 9), skills.slice(9, 13)];
+const columns = [skills.slice(0, 3), skills.slice(3, 6), skills.slice(6, 9)];
 </script>
 
 <template>
@@ -65,18 +61,18 @@ const columns = [skills.slice(0, 5), skills.slice(5, 9), skills.slice(9, 13)];
               <br />
               <br />
               Although my main focus is frontend development, I also handle
-              backend work using Express.js, Node.js, PHP and MySQL when a
-              project requires it, ensuring proper data management and
+              backend work using Express.js, Node.js, Firebase, PHP and MySQL
+              when a project requires it, ensuring proper data management and
               functionality without compromising performance. Additionally, I
-              manage version control with Git and GitHub, and handle domain
-              registration and web hosting through GoDaddy, Namecheap, and
-              Hostinger to ensure smooth website performance and deployment.
+              manage domain registration and web hosting through GoDaddy,
+              Namecheap, and Hostinger to ensure smooth website performance and
+              deployment.
             </p>
-            <div class="flex flex-row gap-10">
+            <div class="grid grid-cols-3 gap-4 md:gap-0">
               <ul
                 v-for="(column, colIndex) in columns"
                 :key="colIndex"
-                class="flex-1 space-y-3"
+                class="space-y-3"
               >
                 <li
                   v-for="(skill, index) in column"

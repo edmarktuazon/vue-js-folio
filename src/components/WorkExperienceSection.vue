@@ -1,16 +1,16 @@
 <script setup>
 import { useMotionScrollAnim } from "@/composables/useMotion.js";
-import MarkLabLogo from "../assets/images/company-logo/marklab.png";
-import DevEdLogo from "../assets/images/company-logo/deved.png";
+// import MarkLabLogo from "../assets/images/company-logo/marklab.png";
+// import DevEdLogo from "../assets/images/company-logo/deved.png";
 import DevelopedByEdLogo from "../assets/images/company-logo/developedbyed.png";
 import EvokePlcLogo from "../assets/images/company-logo/evoke.svg";
 import TeamholixLogo from "../assets/images/company-logo/teamholix.jpg";
 import QuoteLogo from "../assets/images/company-logo/quote.jfif";
-import FiverLogo from "../assets/images/company-logo/fiverr.png";
+// import FiverLogo from "../assets/images/company-logo/fiverr.png";
 
-console.log(DevEdLogo);
-console.log(MarkLabLogo);
-console.log(DevelopedByEdLogo);
+// console.log(DevEdLogo);
+// console.log(MarkLabLogo);
+// console.log(DevelopedByEdLogo);
 
 const { targetElWorkExperience } = useMotionScrollAnim();
 
@@ -31,26 +31,26 @@ const workExperiences = [
     logo: DevelopedByEdLogo,
     description: `I’m offering freelance/part-time/commission-based website development services, 
     creating responsive and dynamic websites and web systems for various clients. I use HTML, 
-    CSS/SASS, Tailwind CSS, and JavaScript, with occasional Vue.js, PHP, and MySQL integration for 
+    CSS/SASS, Tailwind CSS, and JavaScript, with occasional Vue.js, Firebase, PHP, and MySQL integration for 
     enhanced interactivity and data handling when required by the client or based on project requirements.`,
   },
-  {
-    period: `February 2022 - <span class="line-through">March 2023</span> - Present`,
-    role: "Frontend Web Developer",
-    company: "Fiverr - Freelance",
-    logo: FiverLogo,
-    description: `Developed responsive and accessible web pages from UI/UX 
-    prototypes using HTML5, CSS3/SASS, Tailwind CSS, and JavaScript, while 
-    providing ongoing client support through troubleshooting, refactoring, 
-    enhancements, configuring domain and hosting environments 
-    (Hostinger, GoDaddy, Namecheap) to ensure proper DNS setup and 
-    server-side deployment. 
-    <br />
-    <br />
-   After being inactive for almost 3 years, I’m excited to return to fiverr again with a refreshed 
-   profile, trying to get potential clients and offer them a frontend or full stack web application development. 
-   Take a peek at my profile <a href="https://www.fiverr.com/s/EgQ67z0" target="_blank" class="underline"><em>here</em></a>.`,
-  },
+  //   {
+  //     period: `February 2022 - <span class="line-through">March 2023</span> - Present`,
+  //     role: "Frontend Web Developer",
+  //     company: "Fiverr - Freelance",
+  //     logo: FiverLogo,
+  //     description: `Developed responsive and accessible web pages from UI/UX
+  //     prototypes using HTML5, CSS3/SASS, Tailwind CSS, and JavaScript, while
+  //     providing ongoing client support through troubleshooting, refactoring,
+  //     enhancements, configuring domain and hosting environments
+  //     (Hostinger, GoDaddy, Namecheap) to ensure proper DNS setup and
+  //     server-side deployment.
+  //     <br />
+  //     <br />
+  //    After being inactive for almost 3 years, I’m excited to return to fiverr again with a refreshed
+  //    profile, trying to get potential clients and offer them a frontend or full stack web application development.
+  //    Take a peek at my profile <a href="https://www.fiverr.com/s/EgQ67z0" target="_blank" class="underline"><em>here</em></a>.`,
+  //   },
   {
     period: "February 2022 - March 2025",
     role: "Frontend Web Developer",
