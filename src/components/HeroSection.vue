@@ -47,7 +47,7 @@ const columns = [skills.slice(0, 3), skills.slice(3, 6), skills.slice(6, 9)];
       <h1
         class="font-bold text-neutral-400 my-4 ml-0 md:-ml-1 leading-none text-[clamp(4.625rem,_4.2802rem_+_1.7241vw,_5.25rem)]"
       >
-        Edmark Tuazon
+        Edmark Tuazon.
       </h1>
       <div class="flex flex-col md:flex-row gap-8">
         <div class="flex-1 space-y-6">
@@ -57,7 +57,7 @@ const columns = [skills.slice(0, 3), skills.slice(3, 6), skills.slice(6, 9)];
               hands-on development skills. I have experience developing dynamic
               and responsive websites, creating interactive user interfaces with
               JavaScript, Vue.js, and designing efficient layouts using
-              frameworks like Tailwind CSS or Bootstrap.
+              frameworks like Tailwind CSS.
               <br />
               <br />
               Although my main focus is frontend development, I also handle
