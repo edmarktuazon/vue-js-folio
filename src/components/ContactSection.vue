@@ -29,7 +29,6 @@ I’d like to request a project quotation. Here are the details:
 
 Project Type:
 Key Features:
-Timeline:
 Budget (Optional):
 
 Looking forward to your estimate!${closing}`
@@ -40,7 +39,7 @@ I have an exciting project idea that I’d love to bring to life with your exper
 Goal:
 Key Features:
 Tech (Optional):
-Timeline/Budget:
+Budget (Optional):
 
 Looking forward to discussing the next steps!${closing}`;
 };
@@ -141,10 +140,11 @@ onUnmounted(() => timeoutId && clearTimeout(timeoutId));
               }}
             </p>
             <div
-              class="flex gap-3 p-1 bg-neutral-800 rounded-xl w-full max-w-md"
+              class="flex p-2 gap-2 bg-neutral-800 rounded-xl w-full max-w-md"
             >
               <button
                 @click="setFormType('quote')"
+                class="hover:bg-neutral-300 hover:text-neutral-900 transition"
                 :class="[
                   'flex-1 py-3 px-5 rounded-lg font-bold',
                   formData.type === 'quote'
@@ -157,10 +157,11 @@ onUnmounted(() => timeoutId && clearTimeout(timeoutId));
               </button>
               <button
                 @click="setFormType('project')"
+                class="hover:bg-neutral-300 hover:text-neutral-900 transition"
                 :class="[
                   'flex-1 py-3 px-5 rounded-lg font-bold',
                   formData.type === 'project'
-                    ? 'bg-neutral-400 text-neutral-900 shadow-lg'
+                    ? 'bg-neutral-400  text-neutral-900 shadow-lg'
                     : 'text-neutral-200',
                 ]"
                 aria-pressed="formData.type === 'project'"
@@ -250,9 +251,9 @@ onUnmounted(() => timeoutId && clearTimeout(timeoutId));
             <button
               type="submit"
               :disabled="isSubmitting"
-              class="w-full py-4 bg-neutral-400 text-neutral-900 font-bold rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-400/50 transition disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-md"
+              class="w-full py-4 bg-neutral-400 hover:bg-neutral-300 text-neutral-900 font-bold rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-400/50 transition disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-md"
             >
-              <span v-if="isSubmitting">
+              <span v-if="isSubmitting" class="flex gap-2 items-center">
                 <svg
                   class="animate-spin h-5 w-5"
                   fill="none"

@@ -16,9 +16,26 @@ console.log(
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+const allowedOrigins = [
+  "https://deved.onrender.com",
+  "http://localhost:5173",
+  "http://localhost:3000",
+  "http://localhost:5000",
+  "http://127.0.0.1:5173",
+];
+
 app.use(
   cors({
-    origin: "https://deved.onrender.com",
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        console.log("Blocked origin:", origin);
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     methods: ["GET", "POST"],
     credentials: true,
   })
@@ -160,7 +177,7 @@ app.post("/send-email", async (req, res) => {
     res.json({
       success: true,
       message:
-        "Got your message! I’ll get back to you at the earliest opportunity.",
+        "Got your message! I'll get back to you at the earliest opportunity.",
     });
   } catch (error) {
     console.error("Send Error:", error.message);
@@ -174,4 +191,5 @@ app.post("/send-email", async (req, res) => {
 
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
+  console.log(`Allowed origins:`, allowedOrigins);
 });
