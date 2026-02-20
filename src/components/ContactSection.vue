@@ -118,7 +118,7 @@ onUnmounted(() => timeoutId && clearTimeout(timeoutId));
           <h2
             class="text-4xl md:text-5xl font-bold text-neutral-200 tracking-tight"
           >
-            Let’s Shape the Web Together
+            Let’s shape the Web together
           </h2>
           <p class="mt-3 text-neutral-400 text-lg max-w-2xl mx-auto">
             Whether you need a quote or want to kick off a project. Let's talk.
