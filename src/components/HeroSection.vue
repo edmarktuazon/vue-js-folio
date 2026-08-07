@@ -25,8 +25,7 @@ const skills = reactive([
   { name: "Vue.js", icon: "fa-brands fa-vuejs" },
   { name: "JavaScript", icon: "fa-brands fa-js" },
   { name: "PHP", icon: "fa-brands fa-php" },
-  { name: "MySQL", icon: "fa-solid fa-database" },
-  { name: "Firebase", icon: "fa-solid fa-database" },
+  { name: "Firebase/Supabase/MySQL", icon: "fa-solid fa-database" },
   { name: "GoDaddy", icon: "fa-solid fa-globe" },
   { name: "Hostinger", icon: "fa-solid fa-server" },
   { name: "Namecheap", icon: "fa-solid fa-cloud" },
@@ -52,21 +51,15 @@ const columns = [skills.slice(0, 3), skills.slice(3, 6), skills.slice(6, 9)];
       <div class="flex flex-col md:flex-row gap-8">
         <div class="flex-1 space-y-6">
           <div class="col-span-1 xl:col-span-5">
-            <p class="text-neutral-200 leading-7 mb-8">
-              I build websites using modern frontend technologies and practical,
-              hands-on development skills. I have experience developing dynamic
-              and responsive websites, creating interactive user interfaces with
-              JavaScript, Vue.js, and designing efficient layouts using
-              frameworks like Tailwind CSS.
-              <br />
-              <br />
-              Although my main focus is frontend development, I also handle
-              backend work using Express.js, Node.js, Firebase, PHP and MySQL
-              when a project requires it, ensuring proper data management and
-              functionality without compromising performance. Additionally, I
-              manage domain registration and web hosting through GoDaddy,
-              Namecheap, and Hostinger to ensure smooth website performance and
-              deployment.
+            <p class="text-neutral-200 leading-7 mb-8 text-justify">
+              I build modern, responsive websites using JavaScript, Vue.js, and
+              Tailwind CSS, with hands-on experience creating dynamic and
+              interactive user interfaces. While my main focus is frontend
+              development, I also work with Express.js, Node.js, Firebase,
+              Supabase, PHP, and MySQL for backend functionality and data
+              management. I also handle domain registration, hosting, and
+              deployment using platforms such as GoDaddy, Namecheap, and
+              Hostinger.
             </p>
             <div class="grid grid-cols-3 gap-4 md:gap-0">
               <ul
