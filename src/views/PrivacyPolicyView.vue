@@ -1,3 +1,7 @@
+<script setup>
+const currentYear = new Date().getFullYear();
+</script>
+
 <template>
   <div
     class="bg-neutral-800 py-24 min-h-screen flex items-center justify-center px-4"
@@ -149,7 +153,7 @@
       </section>
 
       <div class="text-center text-neutral-500 text-sm mt-16">
-        <p>© 2022-2025 Edmark Tuazon</p>
+        <p>© 2022-{{ currentYear }} Edmark Tuazon</p>
         <p class="mt-2">
           <router-link
             to="/"

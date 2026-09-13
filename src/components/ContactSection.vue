@@ -23,25 +23,27 @@ const setFormType = (type) => {
 
   formData.value.message =
     type === "quote"
-      ? `Hi Edmark! 
+      ? `Hi Edmark,
 
 I’d like to request a project quotation. Here are the details:
 
 Project Type:
 Key Features:
 Budget (Optional):
+Additional Details:
 
-Looking forward to your estimate!${closing}`
-      : `Hi Edmark!
+Looking forward to your estimate${closing}`
+      : `Hi Edmark,
 
 I have an exciting project idea that I’d love to bring to life with your expertise. Here are the details:
 
 Goal:
 Key Features:
-Tech (Optional):
 Budget (Optional):
+Timeline:
+Additional Details:
 
-Looking forward to discussing the next steps!${closing}`;
+Looking forward to discussing the next steps${closing}`;
 };
 
 onMounted(() => {
@@ -135,8 +137,8 @@ onUnmounted(() => timeoutId && clearTimeout(timeoutId));
               <strong v-else>Have a project in mind?</strong>
               {{
                 formData.type === "quote"
-                  ? "I’ll review your requirements and deliver a full, no-pressure quote within a day."
-                  : "Let’s refine your concept, pick the right tools, and build a step-by-step plan."
+                  ? "I’ll review your requirements and deliver a full quote within a day."
+                  : "Let’s refine your idea and execute it with purpose."
               }}
             </p>
             <div
@@ -171,7 +173,7 @@ onUnmounted(() => timeoutId && clearTimeout(timeoutId));
             </div>
             <div>
               <a
-                href="mailto:edmarktuazon03@gmail.com"
+                href="mailto:me.edmarktuazon@gmail.com"
                 class="text-neutral-400 underline text-sm"
               >
                 Or email me directly

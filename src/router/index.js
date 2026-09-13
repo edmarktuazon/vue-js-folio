@@ -110,6 +110,22 @@ const router = createRouter({
         ],
       },
     },
+    {
+      path: "/:pathMatch(.*)*",
+      name: "not-found",
+      component: () => import("../views/404View.vue"),
+      meta: {
+        title: "Edmark Tuazon | Page Not Found",
+        metaTags: [
+          {
+            name: "description",
+            content:
+              "The page you're looking for doesn't exist or has been moved.",
+          },
+          { name: "robots", content: "noindex, nofollow" },
+        ],
+      },
+    },
   ],
   scrollBehavior() {
     return { top: 0, behavior: "smooth" };

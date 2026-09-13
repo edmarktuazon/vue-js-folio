@@ -5,7 +5,7 @@ import GitHubIcon from "../components/icons/IconGitHub.vue";
 import InstagramIcon from "../components/icons/IconInstagram.vue";
 import LinkedInIcon from "../components/icons/IconLinkedIn.vue";
 import EdmarkImg from "../assets/images/edmark.jpg";
-import CV from "../assets/docs/edmarktuazon-cv.pdf";
+import CV from "../assets/docs/Edmark_Tuazon_CV.pdf";
 import { reactive, toRefs, markRaw } from "vue";
 import { useMotionScrollAnim } from "@/composables/useMotion.js";
 
@@ -52,14 +52,17 @@ const columns = [skills.slice(0, 3), skills.slice(3, 6), skills.slice(6, 9)];
         <div class="flex-1 space-y-6">
           <div class="col-span-1 xl:col-span-5">
             <p class="text-neutral-200 leading-7 mb-8 text-justify">
-              I build modern, responsive websites using JavaScript, Vue.js, and
-              Tailwind CSS, with hands-on experience creating dynamic and
-              interactive user interfaces. While my main focus is frontend
-              development, I also work with Express.js, Node.js, Firebase,
-              Supabase, PHP, and MySQL for backend functionality and data
-              management. I also handle domain registration, hosting, and
-              deployment using platforms such as GoDaddy, Namecheap, and
-              Hostinger.
+              Experience as a front-end developer specializing in custom static
+              and dynamic websites using Tailwind CSS, JavaScript, and Vue.js,
+              with a focus on usability, performance, and responsive design.
+              Expanded into full-stack development to support client projects
+              requiring backend functionality, leveraging Node.js, Express.js,
+              Firebase, Supabase, PHP, and MySQL, along with AI tools (Claude)
+              to accelerate development. Experienced in server management
+              including domain setup and deployment (GoDaddy, Namecheap,
+              Hostinger). Additional background in email campaign development
+              and legacy HTML email templates, ensuring cross-platform
+              consistency and compatibility.
             </p>
             <div class="grid grid-cols-3 gap-4 md:gap-0">
               <ul
@@ -105,12 +108,13 @@ const columns = [skills.slice(0, 3), skills.slice(3, 6), skills.slice(6, 9)];
                 <a :href="instagram" target="_blank">
                   <InstagramIcon class="w-6 h-6 text-neutral-400" />
                 </a>
-                <a :href="linkedin" target="_blank">
-                  <LinkedInIcon class="w-6 h-6 text-neutral-400" />
-                </a>
                 <a :href="facebook" target="_blank">
                   <FacebookIcon class="w-6 h-6 text-neutral-400" />
                 </a>
+                <a :href="linkedin" target="_blank">
+                  <LinkedInIcon class="w-6 h-6 text-neutral-400" />
+                </a>
+
                 <a :href="github" target="_blank">
                   <GitHubIcon class="w-6 h-6 text-neutral-400" />
                 </a>

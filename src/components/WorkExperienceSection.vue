@@ -10,30 +10,37 @@ const workExperiences = [
   {
     period: "October 2023 - Present",
     role: "HTML Email Campaign Developer",
-    company: "WHG Customer Services Philippines Inc. | evoke plc  - Full-Time",
+    company:
+      "WHG Customer Services Philippines Inc. / evoke plc - Full-Time Hybrid",
     logo: EvokePlcLogo,
-    description: `Customize HTML and CSS email templates for targeted campaigns across the US and international 
-    markets, using IBM Watson Campaign (Silverpop) and Acoustic for implementation and testing. 
-    Additionally, customize and deliver site-wide pop-up messages using HTML and CSS via the in-house Online Message Group (OMG) system.`,
+    description: `Part of the Marketing Technology team, supporting the development and execution of targeted B2B and B2C marketing campaigns across US and international brands.
+ <br /><br />
+• Customize and implement legacy HTML and CSS email templates for targeted campaigns across brands, including WSOP, Mr. Green, and 888casino. Deploy the CRM-approved email templates to IBM Watson Campaign (Silverpop)/Acoustic Marketing Cloud for template IDs creation and internal testing.
+<br /><br />
+• Modify site-wide HTML and CSS web based pop-up message for WSOP, and Mr. Green brand website. Powered by the in-house Online Message Group (OMG) system. Configure the CRM-approved OMG template into the OMG system to generate unique template IDs.
+<br /><br />
+• Create SMS and Push notifications content for WSOP, Mr. Green, and 888casino. Implement the CRM-approved SMS and Push using the in-house UCC Admin system to set up the sending name, language, message body, and ID generation.`,
   },
   {
     period: "January 2026 - July 2026",
     role: "WordPress & Wix Developer (Support)",
-    company: "Link Helpers SEO & Web Design Phoenix - Freelance",
+    company: "Link Helpers SEO & Web Design Phoenix - Freelance Remote",
     logo: LinkHelpers,
-    description: `Performed website maintenance for WordPress and Wix websites, including content, image, and layout updates, conduct website performance audits using Google PageSpeed Insights, and troubleshot front-end issues to maintain website functionality and performance.`,
+    description: `
+    Supporting the Web, SEO team and Owner & Chief Strategist by maintaining, troubleshooting, and optimizing existing websites.
+<br /><br />
+• Perform website maintenance for WordPress and Wix websites, including content, image, and layout updates; conduct website performance audits using Google PageSpeed Insights and troubleshoot front-end issues to maintain site functionality and performance.`,
   },
   {
     period: "February 2022 - March 2025",
     role: "Frontend Web Developer",
-    company: "Teamholix Communication Design Inc. - Part-Time",
+    company: "Teamholix Communication Design Inc. - Contract Remote",
     logo: TeamholixLogo,
-    description: `Converted Adobe XD UI/UX designs into fully developed
-    web interfaces using HTML5, CSS3, Tailwind CSS or Bootstrap 4/5, 
-    and vanilla JavaScript, with PHP includes for modular structuring. Additionally,
-    deployed and maintained the website via FTP, performing UI testing, 
-    debugging, and optimization to ensure layout consistency, performance, 
-    and overall quality.`,
+    description: `Work closely with the Owner and Web Designer team to develop responsive and production-ready web interfaces by translating UI/UX designs into functional websites, followed by deployment, testing, debugging, and performance optimization.
+<br /><br />
+• Convert Adobe XD UI/UX designs into fully functional web interfaces using HTML5, CSS3, Tailwind CSS/Bootstrap5, and vanilla JavaScript, with PHP includes for modular website structuring.
+<br /><br />
+• Deploy and maintain websites via FTP, performing UI testing, debugging, and optimization to ensure layout consistency, performance, responsiveness, and overall quality.`,
   },
 ];
 </script>
