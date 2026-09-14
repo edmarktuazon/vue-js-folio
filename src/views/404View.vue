@@ -1,4 +1,4 @@
-<template>
+<template v-cloak>
   <section
     class="bg-neutral-800 min-h-screen flex flex-col items-center justify-center px-6 py-20"
   >

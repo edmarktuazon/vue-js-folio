@@ -59,4 +59,6 @@ app.component("font-awesome-icon", FontAwesomeIcon);
 app.use(router);
 app.use(MotionPlugin);
 
-app.mount("#app");
+router.isReady().then(() => {
+  app.mount("#app");
+});
