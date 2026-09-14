@@ -52,9 +52,7 @@ const columns = [skills.slice(0, 3), skills.slice(3, 6), skills.slice(6, 9)];
         <div class="flex-1 space-y-6">
           <div class="col-span-1 xl:col-span-5">
             <p class="text-neutral-200 leading-7 mb-8 text-justify">
-              Experience as a front-end developer specializing in custom static
-              and dynamic websites using Tailwind CSS, JavaScript, and Vue.js,
-              with a focus on usability, performance, and responsive design.
+              Experience as a front-end developer specializing in creating custom static and dynamic websites using my core front-end tech stack of Tailwind CSS, JavaScript, and Vue.js, emphasizing usability, performance and responsive design. 
               Expanded into full-stack development to support client projects
               requiring backend functionality, leveraging Node.js, Express.js,
               Firebase, Supabase, PHP, and MySQL, along with AI tools (Claude)
