@@ -4,16 +4,11 @@ dotenv.config();
 import express from "express";
 import cors from "cors";
 import rateLimit from "express-rate-limit";
-import nodemailer from "nodemailer";
 import process from "process";
 
 console.log(
-  "BREVO_SMTP_LOGIN:",
-  process.env.BREVO_SMTP_LOGIN ? "Loaded" : "MISSING"
-);
-console.log(
-  "BREVO_SMTP_KEY:",
-  process.env.BREVO_SMTP_KEY ? "Loaded (hidden)" : "MISSING"
+  "BREVO_API_KEY:",
+  process.env.BREVO_API_KEY ? "Loaded (hidden)" : "MISSING"
 );
 console.log("SENDER_EMAIL:", process.env.SENDER_EMAIL ? "Loaded" : "MISSING");
 
@@ -56,26 +51,7 @@ const limiter = rateLimit({
 app.set("trust proxy", 1);
 app.use("/send-email", limiter);
 
-// Brevo SMTP
-const transporter = nodemailer.createTransport({
-  host: "smtp-relay.brevo.com",
-  port: 587,
-  secure: false,
-  auth: {
-    user: process.env.BREVO_SMTP_LOGIN,
-    pass: process.env.BREVO_SMTP_KEY,
-  },
-});
-
-transporter.verify((err) => {
-  if (err) {
-    console.error("SMTP Connection Failed:", err.message);
-  } else {
-    console.log("SMTP Connected! Ready to send emails.");
-  }
-});
-
-// Form validation)
+// Basic email format check and for form validation
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function escapeHtml(str) {
@@ -85,6 +61,31 @@ function escapeHtml(str) {
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#39;");
+}
+
+async function sendViaBrevo({ toEmail, replyToEmail, subject, html }) {
+  const response = await fetch("https://api.brevo.com/v3/smtp/email", {
+    method: "POST",
+    headers: {
+      "api-key": process.env.BREVO_API_KEY,
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify({
+      sender: { name: "Portfolio", email: process.env.SENDER_EMAIL },
+      to: [{ email: toEmail }],
+      replyTo: { email: replyToEmail },
+      subject,
+      htmlContent: html,
+    }),
+  });
+
+  if (!response.ok) {
+    const errorBody = await response.text();
+    throw new Error(`Brevo API error (${response.status}): ${errorBody}`);
+  }
+
+  return response.json();
 }
 
 app.get("/", (req, res) => {
@@ -147,7 +148,6 @@ app.post("/send-email", async (req, res) => {
   const currentYear = new Date().getFullYear();
   const PORTFOLIO_URL = "https://deved.onrender.com";
 
-  // Escape all user-controlled values
   const safeName = escapeHtml(name);
   const safeEmail = escapeHtml(email);
   const safeMessage = escapeHtml(message).replace(/\n/g, "<br>");
@@ -213,10 +213,9 @@ app.post("/send-email", async (req, res) => {
 `;
 
   try {
-    await transporter.sendMail({
-      from: `"Portfolio" <${process.env.SENDER_EMAIL}>`,
-      to: process.env.SENDER_EMAIL,
-      replyTo: email,
+    await sendViaBrevo({
+      toEmail: process.env.SENDER_EMAIL,
+      replyToEmail: email,
       subject,
       html,
     });
@@ -231,7 +230,6 @@ app.post("/send-email", async (req, res) => {
     });
   } catch (error) {
     console.error("Send Error:", error.message);
-    console.error("Full Error Object:", error);
     res.status(500).json({
       success: false,
       message: "Failed to send. Please try again later.",
