@@ -7,11 +7,15 @@ import rateLimit from "express-rate-limit";
 import nodemailer from "nodemailer";
 import process from "process";
 
-console.log("EMAIL_USER:", process.env.EMAIL_USER ? "Loaded" : "MISSING");
 console.log(
-  "EMAIL_PASS:",
-  process.env.EMAIL_PASS ? "Loaded (hidden)" : "MISSING"
+  "BREVO_SMTP_LOGIN:",
+  process.env.BREVO_SMTP_LOGIN ? "Loaded" : "MISSING"
 );
+console.log(
+  "BREVO_SMTP_KEY:",
+  process.env.BREVO_SMTP_KEY ? "Loaded (hidden)" : "MISSING"
+);
+console.log("SENDER_EMAIL:", process.env.SENDER_EMAIL ? "Loaded" : "MISSING");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -21,7 +25,6 @@ const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:3000",
   "http://localhost:5000",
-  "http://127.0.0.1:5173",
 ];
 
 app.use(
@@ -41,7 +44,8 @@ app.use(
   })
 );
 
-app.use(express.json());
+// Limit request body size to prevent abuse via huge payloads
+app.use(express.json({ limit: "10kb" }));
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
@@ -52,13 +56,14 @@ const limiter = rateLimit({
 app.set("trust proxy", 1);
 app.use("/send-email", limiter);
 
+// Brevo SMTP
 const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 465,
-  secure: true,
+  host: "smtp-relay.brevo.com",
+  port: 587,
+  secure: false,
   auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
+    user: process.env.BREVO_SMTP_LOGIN,
+    pass: process.env.BREVO_SMTP_KEY,
   },
 });
 
@@ -69,6 +74,18 @@ transporter.verify((err) => {
     console.log("SMTP Connected! Ready to send emails.");
   }
 });
+
+// Form validation)
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
 
 app.get("/", (req, res) => {
   res.send("Backend OK! Running on Render.");
@@ -87,16 +104,53 @@ app.post("/send-email", async (req, res) => {
   }
 
   if (!name || !email || !message) {
-    return res.json({ success: false, message: "Fill all fields." });
+    return res
+      .status(400)
+      .json({ success: false, message: "Fill all fields." });
   }
 
+  if (typeof email !== "string" || !EMAIL_REGEX.test(email.trim())) {
+    return res
+      .status(400)
+      .json({ success: false, message: "Please enter a valid email address." });
+  }
+
+  if (
+    typeof name !== "string" ||
+    name.trim().length === 0 ||
+    name.length > 100
+  ) {
+    return res
+      .status(400)
+      .json({ success: false, message: "Please enter a valid name." });
+  }
+
+  if (
+    typeof message !== "string" ||
+    message.trim().length === 0 ||
+    message.length > 5000
+  ) {
+    return res.status(400).json({
+      success: false,
+      message: "Message must be between 1 and 5000 characters.",
+    });
+  }
+
+  // Only allow known values
+  const safeType = type === "quote" ? "quote" : "project";
+
   const subject =
-    type === "quote"
+    safeType === "quote"
       ? `Quote Request from ${name}`
       : `Project Idea from ${name}`;
 
   const currentYear = new Date().getFullYear();
   const PORTFOLIO_URL = "https://deved.onrender.com";
+
+  // Escape all user-controlled values
+  const safeName = escapeHtml(name);
+  const safeEmail = escapeHtml(email);
+  const safeMessage = escapeHtml(message).replace(/\n/g, "<br>");
 
   const html = `
 <!DOCTYPE html>
@@ -104,7 +158,7 @@ app.post("/send-email", async (req, res) => {
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>New ${type === "quote" ? "Quote Request" : "Project Idea"}</title>
+  <title>New ${safeType === "quote" ? "Quote Request" : "Project Idea"}</title>
   <style>
     body { margin:0; padding:0; background:#1d1e21; font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; color:#c1c1c1; }
     .container { max-width:600px; margin:30px auto; background:#161719; border-radius:16px; overflow:hidden; box-shadow:0 12px 32px rgba(0,0,0,0.3); border:1px solid #28292cb6; }
@@ -127,26 +181,23 @@ app.post("/send-email", async (req, res) => {
     <div class="header">
       <h1>New Submission</h1>
       <p>${
-        type === "quote" ? "Quote Request" : "Project Idea"
+        safeType === "quote" ? "Quote Request" : "Project Idea"
       } from your portfolio</p>
     </div>
     <div class="content">
       <div class="type-badge ${
-        type === "quote" ? "type-quote" : "type-project"
+        safeType === "quote" ? "type-quote" : "type-project"
       }">
-        ${type === "quote" ? "Quote Request" : "Project Idea"}
+        ${safeType === "quote" ? "Quote Request" : "Project Idea"}
       </div>
-      <div class="label">Name</div><div class="value">${name}</div>
-      <div class="label">Email</div><div class="value"><a href="mailto:${email}" style="color:#c1c1c1;text-decoration:none;">${email}</a></div>
-      <div class="label">Message</div><div class="value">${message.replace(
-        /\n/g,
-        "<br>"
-      )}</div>
+      <div class="label">Name</div><div class="value">${safeName}</div>
+      <div class="label">Email</div><div class="value"><a href="mailto:${safeEmail}" style="color:#c1c1c1;text-decoration:none;">${safeEmail}</a></div>
+      <div class="label">Message</div><div class="value">${safeMessage}</div>
       <div style="text-align:center;">
-        <a href="mailto:${email}?subject=Re: ${encodeURIComponent(
+        <a href="mailto:${safeEmail}?subject=Re: ${encodeURIComponent(
     subject
   )}" class="btn">
-          Reply to ${name.split(" ")[0]}
+          Reply to ${safeName.split(" ")[0]}
         </a>
       </div>
       <p style="color:#aaaaaa;font-size:14px;margin-top:28px;text-align:center;">
@@ -163,15 +214,15 @@ app.post("/send-email", async (req, res) => {
 
   try {
     await transporter.sendMail({
-      from: `"Portfolio" <${process.env.EMAIL_USER}>`,
-      to: process.env.EMAIL_USER,
+      from: `"Portfolio" <${process.env.SENDER_EMAIL}>`,
+      to: process.env.SENDER_EMAIL,
       replyTo: email,
       subject,
       html,
     });
 
     console.log(
-      `Email sent successfully to ${process.env.EMAIL_USER} from ${email}`
+      `Email sent successfully to ${process.env.SENDER_EMAIL} from ${email}`
     );
     res.json({
       success: true,
@@ -181,7 +232,7 @@ app.post("/send-email", async (req, res) => {
   } catch (error) {
     console.error("Send Error:", error.message);
     console.error("Full Error Object:", error);
-    res.json({
+    res.status(500).json({
       success: false,
       message: "Failed to send. Please try again later.",
     });
