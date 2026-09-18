@@ -17,7 +17,9 @@ const currentYear = new Date().getFullYear();
         >
           Privacy Policy
           <br />
-          <span class="text-lg font-normal">Last Update November 13, 2025</span>
+          <span class="text-lg font-normal"
+            >Last Update September 18, 2026</span
+          >
         </h3>
       </div>
 
@@ -26,8 +28,8 @@ const currentYear = new Date().getFullYear();
           1. Who I Am
         </h2>
         <p class="text-neutral-200 leading-relaxed">
-          Hi, I’m <strong>Edmark Tuazon</strong>, a freelance web developer from
-          the Philippines. This is my personal portfolio site. I care about your
+          Hi, I’m <strong>Edmark Tuazon</strong>, a website developer from the
+          Philippines. This is my personal portfolio site. I care about your
           privacy — that’s why I keep things simple and honest.
         </p>
       </section>
@@ -86,10 +88,10 @@ const currentYear = new Date().getFullYear();
           Your message comes through <strong>secure HTTPS</strong>. I receive it
           in my personal Gmail:
           <a
-            href="mailto:edmarktuazon03@gmail.com"
+            href="mailto:me.edmarktuazon@gmail.com"
             target="_blank"
             class="underline"
-            >edmarktuazon03@gmail.com</a
+            >me.edmarktuazon@gmail.com</a
           >.
         </p>
         <p class="text-neutral-200 leading-relaxed mt-4">
@@ -113,9 +115,9 @@ const currentYear = new Date().getFullYear();
         <p class="text-neutral-200 leading-relaxed mt-4">
           Just email me:
           <a
-            href="mailto:edmarktuazon03@gmail.com"
+            href="mailto:me.edmarktuazon@gmail.com"
             class="underline hover:text-neutral-100"
-            >edmarktuazon03@gmail.com</a
+            >me.edmarktuazon@gmail.com</a
           >
         </p>
       </section>
@@ -145,9 +147,9 @@ const currentYear = new Date().getFullYear();
           Got questions? Worried? <br />
           I’m just one email away
           <a
-            href="mailto:edmarktuazon03@gmail.com"
+            href="mailto:me.edmarktuazon@gmail.com"
             class="underline text-neutral-200 leading-relaxed pt-4"
-            >edmarktuazon03@gmail.com</a
+            >me.edmarktuazon@gmail.com</a
           >.
         </p>
       </section>

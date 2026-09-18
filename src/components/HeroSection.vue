@@ -42,27 +42,30 @@ const columns = [skills.slice(0, 3), skills.slice(3, 6), skills.slice(6, 9)];
       class="py-24 px-8 lg:px-14 2xl:px-0 z-50 w-full lg:w-full xl:max-w-[80%] 2xl:max-w-[60%]"
       ref="targetElHeroContent"
     >
-      <h4 class="text-neutral-200 leading-none text-xl">Hey there, I'm</h4>
-      <h1
-        class="font-bold text-neutral-400 my-4 ml-0 md:-ml-1 leading-none text-[clamp(4.625rem,_4.2802rem_+_1.7241vw,_5.25rem)]"
-      >
-        Edmark Tuazon.
-      </h1>
       <div class="flex flex-col md:flex-row gap-8">
         <div class="flex-1 space-y-6">
+          <h4 class="text-neutral-200 leading-none text-xl">Hey there, I'm</h4>
+          <h1
+            class="font-bold text-neutral-400 my-4 ml-0 md:-ml-1 leading-none text-[clamp(4.625rem,_4.2802rem_+_1.7241vw,_7.25rem)]"
+          >
+            Edmark Tuazon.
+          </h1>
           <div class="col-span-1 xl:col-span-5">
             <p class="text-neutral-200 leading-7 mb-8 text-justify">
-              Experience as a front-end developer specializing in creating custom static and dynamic websites using my core front-end tech stack of Tailwind CSS, JavaScript, and Vue.js, emphasizing usability, performance and responsive design. 
-              Expanded into full-stack development to support client projects
-              requiring backend functionality, leveraging Node.js, Express.js,
-              Firebase, Supabase, PHP, and MySQL, along with AI tools (Claude)
-              to accelerate development. Experienced in server management
-              including domain setup and deployment (GoDaddy, Namecheap,
-              Hostinger). Additional background in email campaign development
-              and legacy HTML email templates, ensuring cross-platform
-              consistency and compatibility.
+              Experience as a front-end developer specializing in creating
+              custom static and dynamic websites using my core front-end tech
+              stack of Tailwind CSS, JavaScript, and Vue.js, emphasizing
+              usability, performance and responsive design. Expanded into
+              full-stack development to support client projects requiring
+              backend functionality, leveraging Node.js, Express.js, Firebase,
+              Supabase, PHP, and MySQL, along with AI tools (Claude) to
+              accelerate development. Experienced in server management including
+              domain setup and deployment (GoDaddy, Namecheap, Hostinger).
+              Additional background in email campaign development and legacy
+              HTML email templates, ensuring cross-platform consistency and
+              compatibility.
             </p>
-            <div class="grid grid-cols-3 gap-4 md:gap-0">
+            <div class="grid grid-cols-3 gap-4 md:gap-0 sr-only">
               <ul
                 v-for="(column, colIndex) in columns"
                 :key="colIndex"

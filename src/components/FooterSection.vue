@@ -9,7 +9,7 @@ const currentYear = new Date().getFullYear();
         Copyright &copy;2022-{{ currentYear }} Edmark Tuazon. All rights
         reserved.
       </p>
-      <p class="text-center text-sm text-neutral-200">Version 1.3.0</p>
+      <p class="text-center text-sm text-neutral-200">Version 1.4.2</p>
     </div>
   </footer>
 </template>

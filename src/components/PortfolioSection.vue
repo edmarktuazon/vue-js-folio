@@ -39,8 +39,8 @@ const portfolioSet = [
     image: akobakwitImg,
     link: "https://akobakwit.com/",
     description: `A freelance web project for
-    <a href="${urlText.akobakwit.url}" target="_blank" class="text-neutral-200 underline"><em>${urlText.akobakwit.title}</em></a>,
-    a non-governmental organization (NGO) and advocacy group focused on promoting the rights and welfare of internally displaced persons (IDPs) in the Philippines. The organization’s modern website was built using Vue.js and Supabase, featuring a custom admin dashboard for managing website content and blog posts. I developed the frontend, integrated Supabase for database and backend functionality, and implemented the admin interface, enabling the team to efficiently create, edit, publish, and manage articles through a centralized content management system.`,
+    <a href="${urlText.akobakwit.url}" target="_blank" class="text-neutral-200 underline"><em>${urlText.akobakwit.title}</em></a>, an
+    (NGO) advocating for the rights and welfare of internally displaced persons (IDPs) in the Philippines. Built with Vue.js and Supabase, the site includes a custom admin dashboard for managing content and blog posts. I developed the frontend, integrated Supabase for the backend, and built the admin interface by create, edit, and publish articles through a centralized CMS.`,
     techStack: [
       { name: "Tailwind CSS", icon: markRaw(TailwindCSSIcon) },
       { name: "Vue.js", icon: ["fab", "vuejs"] },
@@ -233,7 +233,7 @@ const formatDescription = (description) => {
                 <img
                   :src="portfolio.image"
                   :alt="portfolio.title"
-                  class="w-full h-full object-contain transform transition-transform duration-300"
+                  class="w-full h-full object-cover transform transition-transform duration-300"
                   :class="
                     portfolio.type !== 'Corporate Project' &&
                     portfolio.type !== 'Freelance Corporate Project'
@@ -242,7 +242,7 @@ const formatDescription = (description) => {
                   "
                 />
                 <div
-                  class="absolute inset-0 bg-black object-contain bg-opacity-50 opacity-0 transition-opacity duration-300 flex items-center justify-center gap-2 text-white text-lg font-semibold"
+                  class="absolute inset-0 bg-black object-cover bg-opacity-50 opacity-0 transition-opacity duration-300 flex items-center justify-center gap-2 text-white text-lg font-semibold"
                   :class="
                     portfolio.type !== 'Corporate Project' &&
                     portfolio.type !== 'Freelance Corporate Project'

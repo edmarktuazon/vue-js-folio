@@ -32,18 +32,17 @@ Key Features:
 Budget (Optional):
 Additional Details:
 
-Looking forward to your estimate${closing}`
+Looking forward to your estimate.${closing}`
       : `Hi Edmark,
 
 I have an exciting project idea that I’d love to bring to life with your expertise. Here are the details:
 
-Goal:
 Key Features:
 Budget (Optional):
 Timeline:
 Additional Details:
 
-Looking forward to discussing the next steps${closing}`;
+Looking forward to discussing the next steps.${closing}`;
 };
 
 onMounted(() => {
@@ -196,7 +195,7 @@ onUnmounted(() => timeoutId && clearTimeout(timeoutId));
               <label
                 for="name"
                 class="block text-sm font-medium text-neutral-400 mb-2"
-                >Your Name</label
+                >Name</label
               >
               <input
                 id="name"
@@ -205,7 +204,6 @@ onUnmounted(() => timeoutId && clearTimeout(timeoutId));
                 required
                 :disabled="isSubmitting"
                 class="w-full px-4 py-3 bg-neutral-900 border border-neutral-600 rounded-xl text-neutral-300 placeholder-neutral-200 focus:outline-none focus:ring-2 focus:ring-neutral-400 focus:border-transparent transition"
-                placeholder="e.g., Jane Doe"
               />
             </div>
 
@@ -222,7 +220,6 @@ onUnmounted(() => timeoutId && clearTimeout(timeoutId));
                 required
                 :disabled="isSubmitting"
                 class="w-full px-4 py-3 bg-neutral-900 border border-neutral-600 rounded-xl text-neutral-300 placeholder-neutral-200 focus:outline-none focus:ring-2 focus:ring-neutral-400 focus:border-transparent transition"
-                placeholder="janedoe@gmail.com"
               />
             </div>
 
