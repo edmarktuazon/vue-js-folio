@@ -175,7 +175,7 @@ onUnmounted(() => timeoutId && clearTimeout(timeoutId));
                 href="mailto:me.edmarktuazon@gmail.com"
                 class="text-neutral-400 underline text-sm"
               >
-                Or email me directly
+                Or reach out directly — I'm also open to full-time roles.
               </a>
             </div>
           </div>
@@ -204,6 +204,7 @@ onUnmounted(() => timeoutId && clearTimeout(timeoutId));
                 required
                 :disabled="isSubmitting"
                 class="w-full px-4 py-3 bg-neutral-900 border border-neutral-600 rounded-xl text-neutral-300 placeholder-neutral-200 focus:outline-none focus:ring-2 focus:ring-neutral-400 focus:border-transparent transition"
+                placeholder="Juan Dela Cruz"
               />
             </div>
 
@@ -220,6 +221,7 @@ onUnmounted(() => timeoutId && clearTimeout(timeoutId));
                 required
                 :disabled="isSubmitting"
                 class="w-full px-4 py-3 bg-neutral-900 border border-neutral-600 rounded-xl text-neutral-300 placeholder-neutral-200 focus:outline-none focus:ring-2 focus:ring-neutral-400 focus:border-transparent transition"
+                placeholder="you@example.com"
               />
             </div>
 

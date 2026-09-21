@@ -42,7 +42,7 @@ const columns = [skills.slice(0, 3), skills.slice(3, 6), skills.slice(6, 9)];
       class="py-24 px-8 lg:px-14 2xl:px-0 z-50 w-full lg:w-full xl:max-w-[80%] 2xl:max-w-[60%]"
       ref="targetElHeroContent"
     >
-      <div class="flex flex-col md:flex-row gap-8">
+      <div class="flex flex-col items-center md:flex-row gap-8">
         <div class="flex-1 space-y-6">
           <h4 class="text-neutral-200 leading-none text-xl">Hey there, I'm</h4>
           <h1

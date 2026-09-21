@@ -38,6 +38,19 @@ const handleClick = () => {
             </a>
           </li>
           <li>
+            <!-- Open to Work Link (Desktop) -->
+            <a
+              href="#contact"
+              @click="handleClick"
+              class="text-neutral-100 border-b border-dashed border-neutral-500 pb-0.5 inline-flex items-center gap-2"
+            >
+              <span
+                class="w-[7px] h-[7px] rounded-full bg-green-400 shadow-[0_0_5px_rgba(74,222,128,0.6)] inline-block"
+              ></span>
+              Open to Work
+            </a>
+          </li>
+          <li>
             <!-- Get a Quote Button (Desktop) -->
             <a
               href="#contact"
@@ -73,7 +86,20 @@ const handleClick = () => {
             </a>
           </li>
           <li>
-            <!-- Get a Quote Button (Desktop) -->
+            <!-- Open to Work Link (Desktop) -->
+            <a
+              href="#contact"
+              @click="handleClick"
+              class="text-neutral-100 border-b border-dashed border-neutral-500 pb-0.5 inline-flex items-center gap-2"
+            >
+              <span
+                class="w-[7px] h-[7px] rounded-full bg-green-400 shadow-[0_0_5px_rgba(74,222,128,0.6)] inline-block"
+              ></span>
+              Open to Work
+            </a>
+          </li>
+          <li>
+            <!-- Get a Quote Button (Mobile) -->
             <a
               href="#contact"
               @click="handleClick"

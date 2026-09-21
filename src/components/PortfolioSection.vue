@@ -53,6 +53,8 @@ const portfolioSet = [
     year: "December 2025",
     image: bmg,
     link: "https://bringmegame.com/",
+    // Client's site is down: visually hidden, still in the DOM
+    srOnly: true,
     description: `A freelance web project for <a href="${urlText.Bmg.url}" target="_blank" class="text-neutral-200 underline"><em>${urlText.Bmg.title}</em></a>, 
     a simple gaming platform that highlights one of the Philippines' most popular games. Players can enter 
     their Instagram username to join and have a chance to win exciting prizes. The Admin contacts the selected winners based on the fastest submissions. 
@@ -177,7 +179,7 @@ const formatDescription = (description) => {
         <div
           v-for="(portfolio, index) in portfolioSet"
           :key="index"
-          class="mb-12"
+          :class="portfolio.srOnly ? 'sr-only' : 'mb-12'"
         >
           <div class="grid gap-10 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
             <div class="col-span-1 xl:col-span-2 md:row-end-1 row-end-auto">
@@ -224,7 +226,7 @@ const formatDescription = (description) => {
                 :class="
                   portfolio.type === 'Corporate Project' ||
                   portfolio.type === 'Freelance Corporate Project'
-                    ? 'pointer-events-none opacity-70 cursor-not-allowed'
+                    ? 'pointer-events-none opacity-70 cursor-not-allowed block overflow-hidden relative'
                     : 'group block overflow-hidden relative'
                 "
                 target="_blank"
@@ -233,7 +235,7 @@ const formatDescription = (description) => {
                 <img
                   :src="portfolio.image"
                   :alt="portfolio.title"
-                  class="w-full h-full object-cover transform transition-transform duration-300"
+                  class="w-full h-full object-contain transform transition-transform duration-300"
                   :class="
                     portfolio.type !== 'Corporate Project' &&
                     portfolio.type !== 'Freelance Corporate Project'
@@ -242,7 +244,7 @@ const formatDescription = (description) => {
                   "
                 />
                 <div
-                  class="absolute inset-0 bg-black object-cover bg-opacity-50 opacity-0 transition-opacity duration-300 flex items-center justify-center gap-2 text-white text-lg font-semibold"
+                  class="absolute inset-0 bg-black object-contain bg-opacity-50 opacity-0 transition-opacity duration-300 flex items-center justify-center gap-2 text-white text-lg font-semibold"
                   :class="
                     portfolio.type !== 'Corporate Project' &&
                     portfolio.type !== 'Freelance Corporate Project'

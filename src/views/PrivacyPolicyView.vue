@@ -132,8 +132,7 @@ const currentYear = new Date().getFullYear();
       <section class="mb-12">
         <h2 class="text-2xl font-semibold mb-4 text-neutral-400">8. Changes</h2>
         <p class="text-neutral-200 leading-relaxed">
-          If I change this policy, I’ll update the date above. Big changes? I’ll
-          mention it on the site.
+          If I change this policy, I’ll update the date above.
         </p>
       </section>
 
