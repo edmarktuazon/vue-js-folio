@@ -152,6 +152,7 @@ app.post("/send-email", async (req, res) => {
   const safeEmail = escapeHtml(email);
   const safeMessage = escapeHtml(message).replace(/\n/g, "<br>");
 
+  // Form UI 
   const html = `
 <!DOCTYPE html>
 <html>
