@@ -53,7 +53,6 @@ const portfolioSet = [
     year: "December 2025",
     image: bmg,
     link: "https://bringmegame.com/",
-    // Client's site is down: visually hidden, still in the DOM
     srOnly: true,
     description: `A freelance web project for <a href="${urlText.Bmg.url}" target="_blank" class="text-neutral-200 underline"><em>${urlText.Bmg.title}</em></a>, 
     a simple gaming platform that highlights one of the Philippines' most popular games. Players can enter 
@@ -67,7 +66,7 @@ const portfolioSet = [
     type: "Freelance Project",
   },
   {
-    title: "Satrap Power Corporation (SPC)",
+    title: "Satrap Power Corporation",
     year: "October 2025",
     image: spcImg,
     description: `A freelance corporate web project for Satrap Power Corporation, built using the latest Vue.js to deliver a modern, responsive, and maintainable web application.`,
@@ -76,6 +75,7 @@ const portfolioSet = [
       { name: "Vue.js", icon: ["fab", "vuejs"] },
     ],
     type: "Freelance Corporate Project",
+    srOnly: true,
   },
   {
     title: "Major Milestones",
@@ -135,6 +135,7 @@ const portfolioSet = [
       { name: "Vue.js", icon: ["fab", "vuejs"] },
     ],
     type: "Personal Project",
+    srOnly: true,
   },
   {
     title: "She Means Business",
@@ -186,9 +187,21 @@ const formatDescription = (description) => {
               <span class="text-accent-blue uppercase text-xs tracking-wider"
                 >{{ portfolio.type }} - {{ portfolio.year }}</span
               >
-              <h4 class="text-3xl font-bold mt-2 text-neutral-400">
-                {{ portfolio.title }}
-              </h4>
+              <div class="flex items-center gap-2 flex-wrap mt-2">
+                <h4 class="text-3xl font-bold text-neutral-400">
+                  {{ portfolio.title }}
+                </h4>
+                <span
+                  v-if="
+                    portfolio.type === 'Corporate Project' ||
+                    portfolio.type === 'Freelance Corporate Project'
+                  "
+                  class="inline-flex items-center gap-1.5 text-xs font-medium text-neutral-400 bg-neutral-700/60 border border-neutral-600 px-2.5 py-1 rounded-full"
+                >
+                  <font-awesome-icon icon="fa-solid fa-lock" class="w-3 h-3" />
+                  Confidential — NDA Project
+                </span>
+              </div>
               <p
                 class="text-neutral-200 mt-4 text-justify"
                 v-html="formatDescription(portfolio.description)"

@@ -11,16 +11,13 @@ const isMenuOpen = ref(false);
 const navLinks = [
   { label: "Portfolios", href: "#portfolios" },
   { label: "Job Experience", href: "#work" },
-
-  //   { label: "Get a Quote", href: "#contact" },
-  //   { label: "Resume", href: CV, target: "_blank" },
+  { label: "Recommendations", href: "#recommendations" },
 ];
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value;
 };
 
-// Scroll to a section id without the # sign for cleaner url
 const scrollToSection = (hash) => {
   const el = document.querySelector(hash);
   if (el) {

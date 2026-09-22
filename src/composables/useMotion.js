@@ -6,6 +6,7 @@ export function useMotionScrollAnim() {
   const targetElPortfolios = ref();
   const targetElWorkExperience = ref();
   const targetElContact = ref();
+  const targetElRecommendationContent = ref();
   let lastScrollY = ref(0);
   let isScrollingDown = ref(false);
 
@@ -64,11 +65,22 @@ export function useMotionScrollAnim() {
       apply: () => isScrollingDown.value,
     },
   });
+  useMotion(targetElRecommendationContent, {
+    initial: { opacity: 0, y: 40 },
+    visibleOnce: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: { duration: 900 },
+      apply: () => isScrollingDown.value,
+    },
+  });
 
   return {
     targetElHeroContent,
     targetElPortfolios,
     targetElWorkExperience,
     targetElContact,
+    targetElRecommendationContent,
   };
 }

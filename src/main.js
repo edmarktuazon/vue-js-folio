@@ -26,6 +26,7 @@ import {
   faCss3Alt,
   faBootstrap,
   faJs,
+  faNodeJs,
   faVuejs,
   faGitAlt,
   faGithub,
@@ -48,6 +49,7 @@ library.add(faHtml5);
 library.add(faCss3Alt);
 library.add(faBootstrap);
 library.add(faJs);
+library.add(faNodeJs);
 library.add(faVuejs);
 library.add(faGitAlt);
 library.add(faGithub);

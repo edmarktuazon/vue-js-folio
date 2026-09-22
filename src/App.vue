@@ -4,6 +4,7 @@ import HeroSection from "@/components/HeroSection.vue";
 import PortfolioSection from "@/components/PortfolioSection.vue";
 import WorkExperienceSection from "@/components/WorkExperienceSection.vue";
 import ContactSection from "@/components/ContactSection.vue";
+import RecommendationSection from "@/components/RecommendationSection.vue";
 import FooterSection from "@/components/FooterSection.vue";
 </script>
 
@@ -13,6 +14,7 @@ import FooterSection from "@/components/FooterSection.vue";
     <HeroSection />
     <PortfolioSection />
     <WorkExperienceSection />
+    <RecommendationSection />
     <ContactSection />
     <FooterSection />
   </div>
