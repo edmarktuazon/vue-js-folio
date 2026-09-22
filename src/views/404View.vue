@@ -13,7 +13,7 @@
         Page Not Found
       </h2>
 
-      <p class="text-gray-500 max-w-md mb-8">
+      <p class="text-center text-gray-500 max-w-md mb-8">
         The page you're looking for might have been removed and not existing, or
         you may have entered the wrong link.
       </p>

@@ -61,7 +61,9 @@ const columns = [skills.slice(0, 3), skills.slice(3, 6), skills.slice(6, 9)];
               Supabase, PHP, and MySQL, along with AI tools (Claude) to
               accelerate development. Experienced in server management including
               domain setup and deployment (GoDaddy, Namecheap, Hostinger).
-              Additional background in email campaign development, building and maintaining legacy HTML email templates, and using marketing tools such as Acoustic Marketing Cloud for email automation and testing.
+              Additional background in email campaign development, building and
+              maintaining legacy HTML email templates, and using marketing tools
+              such as Acoustic Marketing Cloud for email automation and testing.
             </p>
             <div class="grid grid-cols-3 gap-4 md:gap-0 sr-only">
               <ul

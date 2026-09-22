@@ -1,13 +1,31 @@
 <script setup>
+import NavigationSection from "@/components/NavigationSection.vue";
+
 const currentYear = new Date().getFullYear();
+
+import { onMounted, watch } from "vue";
+import { useRoute } from "vue-router";
+
+const route = useRoute();
+
+const scrollToHash = () => {
+  if (route.hash) {
+    const el = document.querySelector(route.hash);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  }
+};
+
+onMounted(scrollToHash);
+watch(() => route.hash, scrollToHash);
 </script>
 
 <template>
+  <NavigationSection />
   <div
     class="bg-neutral-800 py-24 min-h-screen flex items-center justify-center px-4"
   >
     <div
-      class="mx-auto px-8 lg:px-14 2xl:px-0 w-full z-50 lg:w-full xl:max-w-[80%] 2xl:max-w-[60%]"
+      class="mt-10 mx-auto px-8 lg:px-14 2xl:px-0 w-full z-50 lg:w-full xl:max-w-[80%] 2xl:max-w-[60%]"
     >
       <div
         class="flex justify-start items-center mb-16 gap-3 relative after:hidden after:w-full after:h-[0.0625rem] after:bg-neutral-600 after:mt-2 md:after:block"
