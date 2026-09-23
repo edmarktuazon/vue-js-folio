@@ -128,7 +128,9 @@ onUnmounted(() => timeoutId && clearTimeout(timeoutId));
         </div>
 
         <div class="grid lg:grid-cols-2 gap-12 xl:gap-16 items-start">
-          <div class="space-y-4">
+          <div
+            class="space-y-4 flex items-center lg:items-start justify-center flex-col"
+          >
             <p class="text-neutral-400 text-sm">
               <strong v-if="formData.type === 'quote'"
                 >Need a speedy estimate?</strong
