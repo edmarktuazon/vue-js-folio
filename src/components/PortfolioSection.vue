@@ -164,13 +164,13 @@ const formatDescription = (description) => {
     class="bg-neutral-800 py-24 min-h-screen grid place-items-center"
   >
     <div
-      class="px-8 lg:px-14 2xl:px-0 w-full z-50 lg:w-full xl:max-w-[80%] 2xl:max-w-[60%]"
+      class="px-4 md:px-8 lg:px-14 2xl:px-0 w-full z-50 lg:w-full xl:max-w-[80%] 2xl:max-w-[60%]"
     >
       <div
-        class="flex justify-start items-center mb-16 gap-3 relative after:hidden after:w-full after:h-[0.0625rem] after:bg-neutral-600 after:mt-2 md:after:block"
+        class="flex justify-start items-center mb-12 lg:mb-16 gap-3 relative after:hidden after:w-full after:h-[0.0625rem] after:bg-neutral-600 after:mt-2 md:after:block"
       >
         <h3
-          class="text-neutral-200 font-bold text-4xl whitespace-wrap md:whitespace-nowrap"
+          class="text-neutral-200 font-bold text-3xl md:text-4xl whitespace-wrap md:whitespace-nowrap"
         >
           Featured Projects that I've built
         </h3>
@@ -188,7 +188,7 @@ const formatDescription = (description) => {
                 >{{ portfolio.type }} - {{ portfolio.year }}</span
               >
               <div class="flex items-center gap-2 flex-wrap mt-2">
-                <h4 class="text-3xl font-bold text-neutral-400">
+                <h4 class="text-2xl font-bold text-neutral-400">
                   {{ portfolio.title }}
                 </h4>
                 <span
@@ -203,7 +203,7 @@ const formatDescription = (description) => {
                 </span>
               </div>
               <p
-                class="text-neutral-200 mt-4 text-justify"
+                class="text-neutral-200 mt-4"
                 v-html="formatDescription(portfolio.description)"
               ></p>
               <div class="flex flex-wrap gap-2 mt-4">

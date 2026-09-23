@@ -111,13 +111,13 @@ onUnmounted(() => timeoutId && clearTimeout(timeoutId));
     class="bg-neutral-800 py-24 min-h-screen grid place-items-center"
   >
     <div
-      class="px-8 lg:px-14 2xl:px-0 w-full z-50 lg:w-full xl:max-w-[80%] 2xl:max-w-[60%]"
+      class="px-4 md:px-8 lg:px-14 2xl:px-0 w-full z-50 lg:w-full xl:max-w-[80%] 2xl:max-w-[60%]"
       ref="targetElContact"
     >
       <div class="bg-neutral-900 p-8 md:p-12 rounded-xl">
-        <div class="text-center mb-16">
+        <div class="text-center mb-12 lg:mb-16">
           <h2
-            class="text-4xl md:text-5xl font-bold text-neutral-200 tracking-tight"
+            class="text-3xl md:text-5xl font-bold text-neutral-200 tracking-tight"
           >
             Let’s shape the Web together
           </h2>
@@ -175,7 +175,7 @@ onUnmounted(() => timeoutId && clearTimeout(timeoutId));
                 href="mailto:me.edmarktuazon@gmail.com"
                 class="text-neutral-400 underline text-sm"
               >
-                Or reach out directly — I'm also open to full-time roles.
+                Or reach out directly — I'm also available for full-time roles.
               </a>
             </div>
           </div>
@@ -252,7 +252,7 @@ onUnmounted(() => timeoutId && clearTimeout(timeoutId));
             <button
               type="submit"
               :disabled="isSubmitting"
-              class="w-full py-4 bg-neutral-400 hover:bg-neutral-300 text-neutral-900 font-bold rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-400/50 transition disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-md"
+              class="w-full py-4 bg-neutral-400 hover:bg-neutral-300 text-neutral-900 font-bold rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-400/50 transition active:scale-95 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-md"
             >
               <span v-if="isSubmitting" class="flex gap-2 items-center">
                 <svg

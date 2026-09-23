@@ -10,8 +10,8 @@ const isMenuOpen = ref(false);
 
 const navLinks = [
   { label: "Portfolios", href: "#portfolios" },
-  { label: "Job Experience", href: "#work" },
-  { label: "Recommendations", href: "#recommendations" },
+  { label: "Experience", href: "#work" },
+  { label: "Testimonials", href: "#recommendations" },
 ];
 
 const toggleMenu = () => {
@@ -63,26 +63,26 @@ const handleClick = (href) => {
             </a>
           </li>
           <li>
-            <!-- Open to Work Link (Desktop) -->
+            <!-- Open to full-time (Desktop) -->
             <a
               href="#contact"
               @click.prevent="handleClick('#contact')"
               class="text-neutral-100 border-b border-dashed border-neutral-500 pb-0.5 inline-flex items-center gap-2 cursor-pointer"
             >
               <span
-                class="w-[7px] h-[7px] rounded-full bg-green-400 shadow-[0_0_5px_rgba(74,222,128,0.6)] inline-block"
+                class="w-[7px] h-[7px] rounded-full bg-green-400 inline-block"
               ></span>
-              Open to Work
+              Open to full-time
             </a>
           </li>
           <li>
-            <!-- Get a Quote Button (Desktop) -->
+            <!-- Project Inquiry (Desktop) -->
             <a
               href="#contact"
               @click.prevent="handleClick('#contact')"
-              class="hidden md:block bg-neutral-400 hover:bg-neutral-300 text-neutral-900 font-semibold px-6 py-2.5 rounded-xl transition-all active:scale-95 cursor-pointer"
+              class="hidden md:block bg-neutral-400 hover:bg-neutral-300 text-neutral-900 font-bold focus:outline-none focus:ring-2 focus:ring-neutral-400/50 transition px-6 py-2.5 rounded-xl active:scale-95 cursor-pointer"
             >
-              Get a Quote
+              Project Inquiry
             </a>
           </li>
         </ul>
@@ -111,16 +111,16 @@ const handleClick = (href) => {
             </a>
           </li>
           <li>
-            <!-- Open to Work Link (Mobile) -->
+            <!-- Open to full-time (Mobile) -->
             <a
               href="#contact"
               @click.prevent="handleClick('#contact')"
               class="font-bold text-neutral-100 border-b border-dashed border-neutral-500 pb-0.5 inline-flex items-center gap-2 cursor-pointer"
             >
               <span
-                class="w-[7px] h-[7px] rounded-full bg-green-400 shadow-[0_0_5px_rgba(74,222,128,0.6)] inline-block"
+                class="w-[7px] h-[7px] rounded-full bg-green-400 inline-block"
               ></span>
-              Open to Work
+              Open to full-time
             </a>
           </li>
           <li>
@@ -130,7 +130,7 @@ const handleClick = (href) => {
               @click.prevent="handleClick('#contact')"
               class="font-bold bg-neutral-400 hover:bg-neutral-300 text-neutral-900 px-6 py-2.5 rounded-xl transition-all active:scale-95 cursor-pointer"
             >
-              Get a Quote
+              Project Inquiry
             </a>
           </li>
         </ul>

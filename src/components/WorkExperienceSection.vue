@@ -51,13 +51,13 @@ const workExperiences = [
     class="bg-neutral-800 py-24 min-h-screen grid place-items-center"
   >
     <div
-      class="px-8 mx-auto relative lg:px-14 2xl:px-0 w-full z-50 lg:w-full xl:max-w-[80%] 2xl:max-w-[60%]"
+      class="px-4 md:px-8 mx-auto relative lg:px-14 2xl:px-0 w-full z-50 lg:w-full xl:max-w-[80%] 2xl:max-w-[60%]"
     >
       <div
-        class="flex justify-start items-center mb-16 gap-3 relative after:hidden after:w-full after:h-[0.0625rem] after:bg-neutral-600 after:mt-2 md:after:block"
+        class="flex justify-start items-center mb-12 lg:mb-16 gap-3 relative after:hidden after:w-full after:h-[0.0625rem] after:bg-neutral-600 after:mt-2 md:after:block"
       >
         <h3
-          class="text-neutral-200 font-bold text-4xl whitespace-wrap md:whitespace-nowrap"
+          class="text-neutral-200 font-bold text-3xl md:text-4xl whitespace-wrap md:whitespace-nowrap"
         >
           Work Experience
         </h3>
@@ -111,7 +111,7 @@ const workExperiences = [
               </div>
 
               <p
-                class="mt-3 text-neutral-200 leading-relaxed text-justify"
+                class="mt-3 text-neutral-200 leading-relaxed"
                 v-html="work.description"
               ></p>
               <div class="my-10" v-if="index !== workExperiences.length - 1">

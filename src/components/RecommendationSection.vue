@@ -43,15 +43,15 @@ const getInitials = (name) => {
 </script>
 
 <template>
-  <section id="recommendations" class="bg-neutral-800 py-24 px-4 scroll-mt-24">
+  <section id="recommendations" class="bg-neutral-800 py-24 scroll-mt-24">
     <div
-      class="mx-auto px-8 lg:px-14 2xl:px-0 w-full xl:max-w-[80%] 2xl:max-w-[60%] z-50 relative"
+      class="mx-auto px-4 md:px-8 lg:px-14 2xl:px-0 w-full xl:max-w-[80%] 2xl:max-w-[60%] z-50 relative"
     >
       <div
-        class="flex justify-start items-center mb-16 gap-3 relative after:hidden after:w-full after:h-[0.0625rem] after:bg-neutral-600 after:mt-2 md:after:block"
+        class="flex justify-start items-center mb-12 lg:mb-16 gap-3 relative after:hidden after:w-full after:h-[0.0625rem] after:bg-neutral-600 after:mt-2 md:after:block"
       >
         <h3
-          class="text-neutral-200 font-bold text-4xl whitespace-wrap md:whitespace-nowrap"
+          class="text-neutral-200 font-bold text-3xl md:text-4xl whitespace-wrap md:whitespace-nowrap"
         >
           What people say about working with me
         </h3>
@@ -80,7 +80,7 @@ const getInitials = (name) => {
             </svg>
 
             <p
-              class="text-neutral-200 italic text-justify leading-relaxed mb-6 relative z-10 min-h-[220px] md:min-h-[260px] flex-grow"
+              class="text-neutral-200 italic leading-relaxed mb-6 relative z-10 min-h-[220px] md:min-h-[260px] flex-grow"
               v-html="rec.text"
             ></p>
 

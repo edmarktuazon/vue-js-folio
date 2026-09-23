@@ -33,18 +33,19 @@ const skills = reactive([
 ]);
 const columns = [skills.slice(0, 3), skills.slice(3, 6), skills.slice(6, 9)];
 
-const introText = `Experience as a front-end developer specializing in creating
-custom static and dynamic websites using my core front-end tech
-stack of Tailwind CSS, JavaScript, and Vue.js,
-emphasizing usability, performance and responsive design. Expanded into
-full-stack development to support client projects requiring
-backend functionality, leveraging Node.js, Express.js, Firebase,
-Supabase, PHP, and MySQL, along with AI tools (Claude) to
-accelerate development. Experienced in server management including
-domain setup and deployment (GoDaddy, Namecheap, Hostinger).
-Additional background in email campaign development, building and
-maintaining legacy HTML email templates, and using marketing tools
-such as Acoustic Marketing Cloud for email automation and testing.`;
+const introText = `Experience as a website developer specializing in creating custom static and dynamic websites, with a focus on usability, performance, and responsive design.
+
+<div class="flex items-center gap-4 my-6 w-full">
+    <span class="font-bold text-2xl">Technologies I work with across projects:</span>
+    <div class="flex-1 h-[0.0625rem] bg-neutral-600 hidden md:block"></div>
+</div>
+
+Front-end development is my primary area of expertise, while I also work with back-end technologies when project requirements call for full-stack functionality. 
+Here are the back-end technologies I work with. These include Node.js, Express.js, Firebase, Supabase, PHP, and MySQL, with AI tools such as Claude helping accelerate development. 
+I also handle domain setup and website deployment using GoDaddy, Namecheap, and Hostinger.
+<br />
+<br />
+I also have additional experience in email campaign development involving legacy HTML email templates and email marketing platforms such as Acoustic Marketing Cloud for automation and testing.`;
 </script>
 
 <template>
@@ -53,22 +54,19 @@ such as Acoustic Marketing Cloud for email automation and testing.`;
     class="bg-neutral-800 py-24 min-h-screen grid place-items-center relative"
   >
     <div
-      class="py-24 px-8 lg:px-14 2xl:px-0 z-50 w-full lg:w-full xl:max-w-[80%] 2xl:max-w-[60%]"
+      class="py-24 px-4 md:px-8 lg:px-14 2xl:px-0 z-50 w-full lg:w-full xl:max-w-[80%] 2xl:max-w-[60%]"
       ref="targetElHeroContent"
     >
-      <div class="flex flex-col items-center md:flex-row gap-8">
+      <div class="flex flex-col items-center md:flex-row gap-16">
         <div class="flex-1 space-y-6">
-          <h4 class="text-neutral-200 leading-none text-xl">Hey there, I'm</h4>
+          <h4 class="text-neutral-200 leading-none text-lg">Hey there, I'm</h4>
           <h1
-            class="font-bold text-neutral-400 my-4 ml-0 md:-ml-1 leading-none text-[clamp(4.625rem,_4.2802rem_+_1.7241vw,_7.25rem)]"
+            class="font-bold text-neutral-400 my-4 ml-0 md:-ml-1 leading-none text-[2.625rem] lg:text-7xl"
           >
             Edmark Tuazon.
           </h1>
           <div class="col-span-1 xl:col-span-5">
-            <p
-              class="text-neutral-200 leading-7 mb-8 text-justify"
-              v-html="introText"
-            ></p>
+            <p class="text-neutral-200 leading-7 mb-8" v-html="introText"></p>
 
             <!-- CV Download Button -->
             <a
@@ -161,7 +159,7 @@ such as Acoustic Marketing Cloud for email automation and testing.`;
 
     <a
       href="#portfolios"
-      class="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center justify-center text-neutral-500 hover:text-neutral-300 transition-colors animate-bounce"
+      class="sr-only absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center justify-center text-neutral-500 hover:text-neutral-300 transition-colors animate-bounce"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

@@ -1,7 +1,6 @@
 <script setup>
 import NavigationSection from "@/components/NavigationSection.vue";
-
-const currentYear = new Date().getFullYear();
+import FooterSection from "@/components/FooterSection.vue";
 
 import { onMounted, watch } from "vue";
 import { useRoute } from "vue-router";
@@ -172,7 +171,6 @@ watch(() => route.hash, scrollToHash);
       </section>
 
       <div class="text-center text-neutral-500 text-sm mt-16">
-        <p>© 2022-{{ currentYear }} Edmark Tuazon</p>
         <p class="mt-2">
           <router-link
             to="/"
@@ -184,4 +182,5 @@ watch(() => route.hash, scrollToHash);
       </div>
     </div>
   </div>
+  <FooterSection />
 </template>
