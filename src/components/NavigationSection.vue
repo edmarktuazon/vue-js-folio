@@ -44,7 +44,7 @@ const handleClick = (href) => {
 
 <template>
   <header class="fixed top-0 w-full z-[999] bg-neutral-900">
-    <nav class="px-8 xl:px-14 2xl:px-0">
+    <nav class="px-4 md:px-8">
       <div class="flex lg:justify-around justify-between items-center py-6">
         <!-- Logo -->
         <router-link to="/" class="z-50">
@@ -52,7 +52,7 @@ const handleClick = (href) => {
         </router-link>
 
         <!-- Desktop Nav -->
-        <ul class="hidden md:flex gap-8 items-center">
+        <ul class="hidden lg:flex gap-8 items-center">
           <li v-for="link in navLinks" :key="link.href">
             <a
               :href="link.href"
@@ -88,7 +88,7 @@ const handleClick = (href) => {
         </ul>
 
         <!-- Burger -->
-        <div class="md:hidden cursor-pointer z-50" @click="toggleMenu">
+        <div class="lg:hidden cursor-pointer z-50" @click="toggleMenu">
           <span class="block bg-neutral-200 h-[2px] w-5 rounded mb-1"></span>
           <span class="block bg-neutral-200 h-[2px] w-5 rounded mb-1"></span>
           <span class="block bg-neutral-200 h-[2px] w-5 rounded"></span>
@@ -99,7 +99,7 @@ const handleClick = (href) => {
       <transition name="fade">
         <ul
           v-if="isMenuOpen"
-          class="md:hidden fixed inset-0 bg-neutral-900 flex flex-col items-center justify-center gap-12 text-xl"
+          class="lg:hidden fixed inset-0 bg-neutral-900 flex flex-col items-center justify-center gap-12 text-xl"
         >
           <li v-for="link in navLinks" :key="link.href">
             <a

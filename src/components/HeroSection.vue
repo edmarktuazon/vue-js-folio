@@ -33,13 +33,7 @@ const skills = reactive([
 ]);
 const columns = [skills.slice(0, 3), skills.slice(3, 6), skills.slice(6, 9)];
 
-const introText = `Experience as a website developer specializing in creating custom static and dynamic websites, with a focus on usability, performance, and responsive design.
-
-<div class="flex items-center gap-4 my-6 w-full">
-    <span class="font-bold text-2xl">Technologies I work with across projects:</span>
-    <div class="flex-1 h-[0.0625rem] bg-neutral-600 hidden md:block"></div>
-</div>
-
+const introText = `
 Front-end development is my primary area of expertise, while I also work with back-end technologies when project requirements call for full-stack functionality. 
 Here are the back-end technologies I work with. These include Node.js, Express.js, Firebase, Supabase, PHP, and MySQL, with AI tools such as Claude helping accelerate development. 
 I also handle domain setup and website deployment using GoDaddy, Namecheap, and Hostinger.
@@ -57,14 +51,31 @@ I also have additional experience in email campaign development involving legacy
       class="py-24 px-4 md:px-8 lg:px-14 2xl:px-0 z-50 w-full lg:w-full xl:max-w-[80%] 2xl:max-w-[60%]"
       ref="targetElHeroContent"
     >
-      <div class="flex flex-col items-center md:flex-row gap-16">
-        <div class="flex-1 space-y-6">
-          <h4 class="text-neutral-200 leading-none text-lg">Hey there, I'm</h4>
-          <h1
-            class="font-bold text-neutral-400 my-4 ml-0 md:-ml-1 leading-none text-[2.625rem] lg:text-7xl"
+      <div class="w-full md:w-[55%] lg:w-[62%]">
+        <h4 class="pb-2 text-neutral-200 leading-none text-lg">
+          Hey there, I'm
+        </h4>
+        <h1
+          class="font-bold text-neutral-400 text-[2.6875rem] leading-none sm:text-6xl md:text-[2.875rem] lg:text-7xl"
+        >
+          Edmark Tuazon.
+          <span class="pt-2 text-neutral-200 font-normal block text-lg"
+            >Experience as a website developer specializing in creating custom
+            static and dynamic websites, with a focus on usability, performance,
+            and responsive design.</span
           >
-            Edmark Tuazon.
-          </h1>
+        </h1>
+        <div class="flex items-center gap-x-4 my-4 w-full">
+          <span class="font-semibold text-2xl text-neutral-200"
+            >Technologies I work with across projects:</span
+          >
+          <div
+            class="flex-1 h-[0.0625rem] bg-neutral-600 hidden sm:block"
+          ></div>
+        </div>
+      </div>
+      <div class="flex flex-col md:flex-row gap-12">
+        <div class="flex-1">
           <div class="col-span-1 xl:col-span-5">
             <p class="text-neutral-200 leading-7 mb-8" v-html="introText"></p>
 
