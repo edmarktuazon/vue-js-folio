@@ -34,12 +34,13 @@ const skills = reactive([
 const columns = [skills.slice(0, 3), skills.slice(3, 6), skills.slice(6, 9)];
 
 const introText = `
-Front-end development is my primary area of expertise, while I also work with back-end technologies when project requirements call for full-stack functionality. 
+Front-end development is my primary area of expertise, and I use Tailwind CSS for efficient UI development, along with JavaScript and Vue.js for interactivity and dynamic functionality.
+ I also work with back-end technologies when project requirements call for full-stack functionality. 
 Here are the back-end technologies I work with. These include Node.js, Express.js, Firebase, Supabase, PHP, and MySQL, with AI tools such as Claude helping accelerate development. 
 I also handle domain setup and website deployment using GoDaddy, Namecheap, and Hostinger.
 <br />
 <br />
-I also have additional experience in email campaign development involving legacy HTML email templates and email marketing platforms such as Acoustic Marketing Cloud for automation and testing.`;
+I also have experience in email campaign development involving legacy HTML email templates and email marketing platforms such as Acoustic Marketing Cloud for automation and testing.`;
 </script>
 
 <template>
@@ -51,19 +52,17 @@ I also have additional experience in email campaign development involving legacy
       class="py-24 px-4 md:px-8 lg:px-14 2xl:px-0 z-50 w-full lg:w-full xl:max-w-[80%] 2xl:max-w-[60%]"
       ref="targetElHeroContent"
     >
-      <div class="w-full md:w-[55%] lg:w-[62%]">
-        <h4 class="pb-2 text-neutral-200 leading-none text-lg">
-          Hey there, I'm
-        </h4>
+      <div class="w-full md:w-[55%] lg:w-[62.5%]">
+        <h4 class="pb-2 text-neutral-200 leading-none">Hey there, I'm</h4>
         <h1
           class="font-bold text-neutral-400 text-[2.6875rem] leading-none sm:text-6xl md:text-[2.875rem] lg:text-7xl"
         >
           Edmark Tuazon.
-          <span class="pt-2 text-neutral-200 font-normal block text-lg"
+          <span class="pt-2 text-neutral-200 font-normal block text-base"
             >Experience as a website developer specializing in creating custom
             static and dynamic websites, with a focus on usability, performance,
-            and responsive design.</span
-          >
+            responsive design, and interactive user experiences.
+          </span>
         </h1>
         <div class="flex items-center gap-x-4 my-4 w-full">
           <span class="font-semibold text-2xl text-neutral-200"
@@ -77,7 +76,10 @@ I also have additional experience in email campaign development involving legacy
       <div class="flex flex-col md:flex-row gap-12">
         <div class="flex-1">
           <div class="col-span-1 xl:col-span-5">
-            <p class="text-neutral-200 leading-7 mb-8" v-html="introText"></p>
+            <p
+              class="text-neutral-200 leading-7 mb-8 text-base"
+              v-html="introText"
+            ></p>
 
             <!-- CV Download Button -->
             <a
@@ -102,7 +104,7 @@ I also have additional experience in email campaign development involving legacy
                 <li
                   v-for="(skill, index) in column"
                   :key="'skill-' + (colIndex * 5 + index)"
-                  class="flex items-start gap-2 text-sm text-neutral-200 leading-7 min-w-0"
+                  class="flex items-start gap-2 text-xs text-neutral-200 leading-7 min-w-0"
                 >
                   <font-awesome-icon
                     v-if="typeof skill.icon === 'string'"

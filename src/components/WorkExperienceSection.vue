@@ -15,7 +15,7 @@ const workExperiences = [
     logo: EvokePlcLogo,
     description: `Part of the Marketing Technology team, supporting the development and execution of targeted B2B and B2C marketing campaigns across US and international brands.
  <br /><br />
-• Customize and implement legacy HTML and CSS email templates for targeted campaigns across brands, including WSOP, Mr. Green, and 888casino. Deploy the CRM-approved email templates to IBM Watson Campaign (Silverpop)/Acoustic Marketing Cloud for template IDs creation and internal testing.
+• Customize and implement legacy HTML and CSS email templates for targeted campaigns across brands, including WSOP, Mr. Green, and 888casino. Deploy the CRM-approved email templates to Acoustic Marketing Cloud for template IDs creation and internal testing.
 <br /><br />
 • Modify site-wide HTML and CSS web based pop-up message for WSOP, and Mr. Green brand website. Powered by the in-house Online Message Group (OMG) system. Configure the CRM-approved OMG template into the OMG system to generate unique template IDs.
 <br /><br />
